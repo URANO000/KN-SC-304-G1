@@ -22,7 +22,7 @@ public class Main {
 
             // Creación de usuarios
             List<User> users = new ArrayList<>();
-            users.add(new User("admin", "admin123"));
+            users.add(new User("admin", "admin123"));//NOTA: No debe de quedar quemado en el codigo, debe de ser guardado en el archiv
             users.add(new User("user1", "user123"));
 
             // Creación de la configuración
