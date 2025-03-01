@@ -16,7 +16,7 @@ public class Main {
             System.out.print("Ingrese el nombre de la sucursal: ");
             String branchName = scanner.nextLine();
 
-            System.out.print("Ingrese el número total de cajas: ");
+            System.out.print("Ingrese el número total de cajas, no menor a 3: ");
             int totalBoxes = scanner.nextInt();
             scanner.nextLine(); // Limpiar el buffer
 
