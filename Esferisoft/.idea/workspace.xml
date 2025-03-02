@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="46c621c1-f3bd-45e6-9b52-1bcde50b8ebd" name="Changes" comment="Some basic arrangements and a note in MAIN." />
+    <list default="true" id="46c621c1-f3bd-45e6-9b52-1bcde50b8ebd" name="Changes" comment="Some basic arrangements and a note in MAIN.">
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Mod1/Cola.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Mod1/Cola.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Mod1/CreacionTicket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Mod1/CreacionTicket.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Mod1/Serializacionticket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Mod1/Serializacionticket.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Mod1/Cola.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Mod1/Cola.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Mod1/CreacionTicket.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Mod1/CreacionTicket.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Mod1/Serializacionticket.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Mod1/Serializacionticket.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -34,6 +41,7 @@
     "Application.Main.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/kkoni/OneDrive/Desktop/Documents/Q4/ESTRUCTURA/Leccion06 (1)"
   }
