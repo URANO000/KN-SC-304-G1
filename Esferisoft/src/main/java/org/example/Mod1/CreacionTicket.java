@@ -4,6 +4,9 @@ import org.example.Mod0.BranchConfig;
 import org.example.Mod0.ConfigManager;
 
 import javax.swing.*;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 
 
@@ -15,8 +18,7 @@ public class CreacionTicket {
 
     static HashMap<String, Cola> colas = new HashMap<>(); //Por que? Porque el numero de cajas en el config puede ser dinamico
 
-
-    public static void main(String[] args) {
+    public void funcionesTicket() {
         //Manejar errores con try & catch es importante
 
         //primero a leer la configuracion del archivo JSON config
@@ -74,6 +76,9 @@ public class CreacionTicket {
 
     }
 
+
+
+
     //Por ahora lo voy a poner aqui hasta pensar en un mejor lugar (Mi cerebro no sirve). Por que JOptionPane tiene tantas opciones??, ayuda
 
     //Estoy segura de que hay una mejor manera, pero por ahora, no la encuentro
@@ -101,11 +106,20 @@ public class CreacionTicket {
         };
 
         //Creamos el tiquete
-        Ticket nuevoTiquete = new Ticket(nombre, id, edad, monedaCuenta, System.currentTimeMillis(), -1, tramite, tipoTramite);
+        //Aqui lo que necesito es hacer que el tiquete tenga la hora. La lógica la encontré en: https://www.w3schools.com/java/java_date.asp
+        LocalDateTime fecha = LocalDateTime.now();
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss"); //Aqui esta el formateo
+
+        String fechaConFormato = fecha.format(formato);
+
+        //pip pip ojala sirva-------------------------------------------------------------------------------------------
+        Ticket nuevoTiquete = new Ticket(nombre, id, edad, monedaCuenta, fechaConFormato, -1, tramite, tipoTramite);
         asignarTiquete(nuevoTiquete);
     }
 
-    //Mas metodos, no se que hacer con mi vida
+
+
+    //Mas metodos, no se que hacer con mi vida------------------------------------------------------------------------------
 
     public static void asignarTiquete(Ticket ticket) {
         String claveCola = switch (ticket.getTipoTramite()) {
@@ -140,8 +154,6 @@ public class CreacionTicket {
 
         JOptionPane.showMessageDialog(null, "El tiquete con el ID " + id + " no se encontró", "Error", JOptionPane.ERROR_MESSAGE);
     }
-
-
 
 
 }

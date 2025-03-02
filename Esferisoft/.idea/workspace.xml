@@ -5,10 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="46c621c1-f3bd-45e6-9b52-1bcde50b8ebd" name="Changes" comment="Some basic arrangements and a note in MAIN.">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Mod1/Cola.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Mod1/Cola.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Mod1/Cola.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Mod1/Cola.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tiquetes.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Mod0/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Mod0/FuncionConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Mod1/CreacionTicket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Mod1/CreacionTicket.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Mod1/Ticket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Mod1/Ticket.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Mod0/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Mod1/CreacionTicket.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Mod1/CreacionTicket.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Mod1/Ticket.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Mod1/Ticket.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tiquetes.json" beforeDir="false" afterPath="$PROJECT_DIR$/tiquetes.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,7 +49,7 @@
     "last_opened_file_path": "C:/Users/kkoni/OneDrive/Desktop/Documents/Q4/ESTRUCTURA/Leccion06 (1)"
   }
 }]]></component>
-  <component name="RunManager" selected="Application.CreacionTicket">
+  <component name="RunManager">
     <configuration name="CreacionTicket" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.Mod1.CreacionTicket" />
       <module name="Esferisoft" />
@@ -58,8 +63,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.example.Mod0.Main" />
+    <configuration name="FuncionConfig" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.Mod0.FuncionConfig" />
       <module name="Esferisoft" />
       <extension name="coverage">
         <pattern>
@@ -74,7 +79,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.CreacionTicket" />
-        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.FuncionConfig" />
       </list>
     </recent_temporary>
   </component>

@@ -8,7 +8,7 @@ public class Ticket {
     private int id;
     private int edad;
     private String monedaCuenta;
-    long horaCreacion;
+    String horaCreacion;  //Ya probé múltiples veces
     long horaAtencion = -1;
     private String tramite;
     private char tipoTramite;  //P: preferencial, B:dos o mas tramites (regular), o A: un solo tramite(rapida)
@@ -17,12 +17,12 @@ public class Ticket {
 
     //Constructores--------------------------------
 
-    public Ticket(String nombre, int id, int edad, String monedaCuenta, long horaCreacion, long horaAtencion, String tramite, char tipoTramite) {
+    public Ticket(String nombre, int id, int edad, String monedaCuenta, String horaCreacion, long horaAtencion, String tramite, char tipoTramite) {
         this.nombre = nombre;
         this.id = id;
         this.edad = edad;
         this.monedaCuenta = monedaCuenta;
-        this.horaCreacion = System.currentTimeMillis();
+        this.horaCreacion = horaCreacion;
         this.horaAtencion = horaAtencion;
         this.tramite = tramite;
         this.tipoTramite = tipoTramite;
@@ -67,11 +67,11 @@ public class Ticket {
         this.monedaCuenta = monedaCuenta;
     }
 
-    public long getHoraCreacion() {
+    public String getHoraCreacion() {
         return horaCreacion;
     }
 
-    public void setHoraCreacion(long horaCreacion) {
+    public void setHoraCreacion(String horaCreacion) {
         this.horaCreacion = horaCreacion;
     }
 
