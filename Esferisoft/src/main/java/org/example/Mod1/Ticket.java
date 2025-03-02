@@ -7,11 +7,31 @@ public class Ticket {
     private String nombre;
     private int id;
     private int edad;
+    private MonedaCuenta monedaCuenta;
     private LocalTime horaCreacion;
-    private int horaAtencion;
-    private String tramite;  //P: preferencial, A: un solo tramite, B: dos o mas tramites
+    private LocalTime horaAtencion;
+    private String tramite;
+    private char tipoTramite;  //P: preferencial, B:dos o mas tramites (regular), o A: un solo tramite(rapida)
 
     //El ticket puede tener un tipo solamente
+
+    //Constructores--------------------------------
+
+    public Ticket(String nombre, int id, int edad, MonedaCuenta monedaCuenta, LocalTime horaCreacion, LocalTime horaAtencion, String tramite, char tipoTramite) {
+        this.nombre = nombre;
+        this.id = id;
+        this.edad = edad;
+        this.monedaCuenta = monedaCuenta;
+        this.horaCreacion = horaCreacion;
+        this.horaAtencion = null;
+        this.tramite = tramite;
+        this.tipoTramite = tipoTramite;
+    }
+
+    public Ticket() {
+
+    }
+
 
     //Getters & setters
 
@@ -39,6 +59,14 @@ public class Ticket {
         this.edad = edad;
     }
 
+    public MonedaCuenta getMonedaCuenta() {
+        return monedaCuenta;
+    }
+
+    public void setMonedaCuenta(MonedaCuenta monedaCuenta) {
+        this.monedaCuenta = monedaCuenta;
+    }
+
     public LocalTime getHoraCreacion() {
         return horaCreacion;
     }
@@ -47,11 +75,11 @@ public class Ticket {
         this.horaCreacion = horaCreacion;
     }
 
-    public int getHoraAtencion() {
+    public LocalTime getHoraAtencion() {
         return horaAtencion;
     }
 
-    public void setHoraAtencion(int horaAtencion) {
+    public void setHoraAtencion(LocalTime horaAtencion) {
         this.horaAtencion = horaAtencion;
     }
 
@@ -63,5 +91,11 @@ public class Ticket {
         this.tramite = tramite;
     }
 
+    public char getTipoTramite() {
+        return tipoTramite;
+    }
 
+    public void setTipoTramite(char tipoTramite) {
+        this.tipoTramite = tipoTramite;
+    }
 }
