@@ -1,0 +1,27 @@
+{
+  "sucursal": "Super1",
+  "num_cajas": 5,
+  "cajas": {
+    "preferencial": 1,
+    "tramite_rapido": 1,
+    "regular": 3
+  },
+  "usuarios": [
+    {
+      "username": "asev",
+      "password": "01200628"
+    },
+    {
+      "username": "mafeh",
+      "password": "02110"
+    },
+    {
+      "username": "adjo",
+      "password": "123"
+    },
+    {
+      "username": "dan",
+      "password": "456"
+    }
+  ]
+}

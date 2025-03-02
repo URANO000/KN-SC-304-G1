@@ -1,0 +1,22 @@
+{
+  "branchName": "Sucursal1",
+  "totalBoxes": 4,
+  "users": [
+    {
+      "username": "asev",
+      "password": "01200628"
+    },
+    {
+      "username": "mafeh",
+      "password": "02110"
+    },
+    {
+      "username": "adjo",
+      "password": "123"
+    },
+    {
+      "username": "dan",
+      "password": "456"
+    }
+  ]
+}
