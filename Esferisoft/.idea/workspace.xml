@@ -5,12 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="46c621c1-f3bd-45e6-9b52-1bcde50b8ebd" name="Changes" comment="Some basic arrangements and a note in MAIN.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Mod1/Cola.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Mod1/Cola.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Mod1/CreacionTicket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Mod1/CreacionTicket.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Mod1/Serializacionticket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Mod1/Serializacionticket.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/example/Mod1/Cola.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Mod1/Cola.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Mod1/CreacionTicket.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Mod1/CreacionTicket.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Mod1/Serializacionticket.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Mod1/Serializacionticket.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tiquetes.json" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

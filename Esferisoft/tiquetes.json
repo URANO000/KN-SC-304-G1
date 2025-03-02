@@ -2,13 +2,13 @@
   "normal": {
     "cabeza": {
       "dato": {
-        "nombre": "Adriana ",
+        "nombre": "Daniel",
         "id": 3,
         "edad": 19,
-        "monedaCuenta": "Dólares",
-        "horaCreacion": 1740944416471,
+        "monedaCuenta": "Colones",
+        "horaCreacion": 1740956224997,
         "horaAtencion": -1,
-        "tramite": "Servicios",
+        "tramite": "Retiros",
         "tipoTramite": "B"
       }
     }
@@ -20,24 +20,47 @@
         "id": 1,
         "edad": 19,
         "monedaCuenta": "Colones",
-        "horaCreacion": 1740944396129,
+        "horaCreacion": 1740956147245,
         "horaAtencion": -1,
         "tramite": "Depósitos",
         "tipoTramite": "A"
       },
-      "siguiente": {}
+      "siguiente": {
+        "dato": {
+          "nombre": "Adriana",
+          "id": 2,
+          "edad": 19,
+          "monedaCuenta": "Dólares",
+          "horaCreacion": 1740956161902,
+          "horaAtencion": -1,
+          "tramite": "Servicios",
+          "tipoTramite": "A"
+        },
+        "siguiente": {
+          "dato": {
+            "nombre": "Adbeel",
+            "id": 4,
+            "edad": 21,
+            "monedaCuenta": "Colones",
+            "horaCreacion": 1740956180440,
+            "horaAtencion": -1,
+            "tramite": "Cambio de Divisas",
+            "tipoTramite": "A"
+          }
+        }
+      }
     }
   },
   "preferencial": {
     "cabeza": {
       "dato": {
-        "nombre": "Daniel",
+        "nombre": "Santiago",
         "id": 5,
         "edad": 19,
         "monedaCuenta": "Dólares",
-        "horaCreacion": 1740944469926,
+        "horaCreacion": 1740956258317,
         "horaAtencion": -1,
-        "tramite": "Retiros",
+        "tramite": "Cambio de Divisas",
         "tipoTramite": "P"
       }
     }

@@ -32,7 +32,7 @@ public class Cola {
                 //nueva persona a la derecha de la cabeza.
                 //Aquí el id de la persona es mayor al id de la cabeza --------------> Sigo las intrucciones de la leccion 07
                 if(cabeza.getSiguiente() == null) {
-                    Nodo nuevo = new Nodo();
+                    Nodo nuevo = new Nodo(t);
                     cabeza.setSiguiente(nuevo);
 
                 }
@@ -122,16 +122,16 @@ public class Cola {
         return -1; // Si no se encuentra el ticket
     }
 
-    //----------------------------Obtener lista de tiquetes o si no, serializacion no SIRVEEE
-    public List<Ticket> obtenerListaTickets() {
-        List<Ticket> tickets = new ArrayList<>();
-        Nodo actual = cabeza;
-        while (actual != null) {
-            tickets.add(actual.getDato());
-            actual = actual.getSiguiente();
-        }
-        return tickets;
-    }
+//    //----------------------------Obtener lista de tiquetes o si no, serializacion no SIRVEEE
+//    public List<Ticket> obtenerListaTickets() {
+//        List<Ticket> tickets = new ArrayList<>();
+//        Nodo actual = cabeza;
+//        while (actual != null) {
+//            tickets.add(actual.getDato());
+//            actual = actual.getSiguiente();
+//        }
+//        return tickets;
+//    }
 
 
 
