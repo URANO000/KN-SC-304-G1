@@ -21,7 +21,7 @@ public class Cola {
             if(t.getId() < cabeza.getDato().getId()) {
 
                 //Entonces se inserta el nuevo tickete primero ( en la cabeza)
-                Nodo auxiliar = new Nodo();
+                Nodo auxiliar = new Nodo(t);
                 auxiliar.setSiguiente(cabeza);
                 cabeza = auxiliar;
             }
@@ -100,6 +100,26 @@ public class Cola {
         }
         return  respuesta;
     }
+
+    //------------------------------------OBTENER POSICION DE TICKET----------------------------------------------
+    //Ya que los ticketes se van encolando utilizando su ID para hacerlo de manera ordenada, eso ya no es un issue por ahora
+    public int obtenerPosicion(int id) {
+        Nodo actual = cabeza;
+        int posicion = 0;
+
+        while (actual != null) {
+            if (actual.getDato() != null) {  // Evitar NullPointerException
+                if (actual.getDato().getId() == id) {
+                    return posicion; // Devuelve la posición si encuentra el ticket
+                }
+                posicion++;
+            }
+            actual = actual.getSiguiente();
+        }
+
+        return -1; // Si no se encuentra el ticket
+    }
+
 
 
 }

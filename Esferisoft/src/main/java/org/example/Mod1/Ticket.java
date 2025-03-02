@@ -7,7 +7,7 @@ public class Ticket {
     private String nombre;
     private int id;
     private int edad;
-    private MonedaCuenta monedaCuenta;
+    private String monedaCuenta;
     long horaCreacion;
     long horaAtencion = -1;
     private String tramite;
@@ -17,7 +17,7 @@ public class Ticket {
 
     //Constructores--------------------------------
 
-    public Ticket(String nombre, int id, int edad, MonedaCuenta monedaCuenta, long horaCreacion, long horaAtencion, String tramite, char tipoTramite) {
+    public Ticket(String nombre, int id, int edad, String monedaCuenta, long horaCreacion, long horaAtencion, String tramite, char tipoTramite) {
         this.nombre = nombre;
         this.id = id;
         this.edad = edad;
@@ -59,11 +59,11 @@ public class Ticket {
         this.edad = edad;
     }
 
-    public MonedaCuenta getMonedaCuenta() {
+    public String getMonedaCuenta() {
         return monedaCuenta;
     }
 
-    public void setMonedaCuenta(MonedaCuenta monedaCuenta) {
+    public void setMonedaCuenta(String monedaCuenta) {
         this.monedaCuenta = monedaCuenta;
     }
 
