@@ -1,5 +1,7 @@
 package org.example.Mod1;
 
+import java.util.*;
+
 public class Cola {
     private Nodo cabeza;
 
@@ -118,6 +120,17 @@ public class Cola {
         }
 
         return -1; // Si no se encuentra el ticket
+    }
+
+    //----------------------------Obtener lista de tiquetes o si no, serializacion no SIRVEEE
+    public List<Ticket> obtenerListaTickets() {
+        List<Ticket> tickets = new ArrayList<>();
+        Nodo actual = cabeza;
+        while (actual != null) {
+            tickets.add(actual.getDato());
+            actual = actual.getSiguiente();
+        }
+        return tickets;
     }
 
 

@@ -58,6 +58,9 @@ public class CreacionTicket {
                     verPosicionTicket();
                     break;
                 case 2:
+                    //Al salir, automaticamente se van a serializar las colas----------------
+                    Serializacionticket serializar = new Serializacionticket();
+                    serializar.serializarColas(colas, "tiquetes.json");
                     continuar = false;
                     break;
                 default:
