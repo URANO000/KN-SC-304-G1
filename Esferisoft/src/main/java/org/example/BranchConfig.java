@@ -13,6 +13,7 @@ import java.util.List;
 public class BranchConfig {
     private String branchName;
     private int totalBoxes;
+    private List<String> boxTypes;
     private List<User> users;
 
     // Getters y Setters
@@ -30,6 +31,14 @@ public class BranchConfig {
 
     public void setTotalBoxes(int totalBoxes) {
         this.totalBoxes = totalBoxes;
+    }
+
+    public List<String> getBoxTypes() {
+        return boxTypes;
+    }
+
+    public void setBoxTypes(List<String> boxTypes) {
+        this.boxTypes = boxTypes;
     }
 
     public List<User> getUsers() {

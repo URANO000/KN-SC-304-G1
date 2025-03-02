@@ -1,6 +1,13 @@
 {
-  "branchName": "Sucursal1",
-  "totalBoxes": 4,
+  "branchName": "Super1",
+  "totalBoxes": 5,
+  "boxTypes": [
+    "preferencial",
+    "rapida",
+    "normal",
+    "normal",
+    "normal"
+  ],
   "users": [
     {
       "username": "asev",
@@ -11,12 +18,12 @@
       "password": "02110"
     },
     {
-      "username": "adjo",
-      "password": "123"
+      "username": "ajev",
+      "password": "123456789"
     },
     {
       "username": "dan",
-      "password": "456"
+      "password": "456321"
     }
   ]
 }
