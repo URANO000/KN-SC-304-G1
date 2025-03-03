@@ -1,11 +1,9 @@
 {
   "branchName": "Super1",
-  "totalBoxes": 5,
+  "totalBoxes": 3,
   "boxTypes": [
     "preferencial",
     "rapida",
-    "normal",
-    "normal",
     "normal"
   ],
   "users": [
