@@ -9,7 +9,8 @@ Daniel Quiros
 
 ==================Requisitos implementados==========================================
 
-1. MOD 1.0: Adbeel-Para la implementación de este modulo necesite realizar cambios constantes en la configuración de la clase main y la clase user ya que tuve os problemas para que toda la información necesaria quedara registrada
+1. MOD 1.0: Adbeel-
+Para la implementación de este modulo necesite realizar cambios constantes en la configuración de la clase main y la clase user ya que tuve os problemas para que toda la información necesaria quedara registrada
 en el archivo JSON, sin embargo gracias a mi compañera Adriana logre darme cuenta de lo que necesitaba cambiar para que todo quedara en orden.
 
 2. MOD 1.1: Adriana-
@@ -32,7 +33,6 @@ User -> en esta clase se hace el registro inicial del usuario con sus respectivo
 ConfigManager -> en esta clase se guarda la configuración del archivo JSON y además tambien carga la información registrada del archivo
 BranchConfig -> desde esta clase se obtienen las cajas y se les asigna un tipo
 Main -> En el paquete por default, es el main de la app.
-
 
 MOD 1.1: 
 Clases:
