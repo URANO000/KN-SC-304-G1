@@ -1,0 +1,261 @@
+Index: src/main/java/org/example/Mod1/Serializacionticket.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example.Mod1;\r\n\r\nimport com.google.gson.Gson;\r\nimport com.google.gson.GsonBuilder;\r\nimport com.google.gson.reflect.TypeToken;\r\n\r\nimport java.io.FileReader;\r\nimport java.io.FileWriter;\r\nimport java.util.Map;\r\n\r\n\r\npublic class Serializacionticket {\r\n\r\n    //SERIALIZAR, gracias profe, por el ejemplo\r\n    //COla + nombre del archivo\r\n    public void serializarColas(Map<String, Cola> colas, String archivo) {\r\n        Gson gson = new GsonBuilder().setPrettyPrinting().create();\r\n        try(FileWriter writer = new FileWriter(archivo)){\r\n            gson.toJson(colas, writer);\r\n\r\n\r\n        }catch (Exception e) {\r\n            e.printStackTrace();\r\n        }\r\n    }\r\n\r\n    //Para deserializar (creo que el modulo 1.2 lo necesita\r\n    public Map<String, Cola> deserializarColas(String archivo) {\r\n        Gson gson = new GsonBuilder().create();\r\n        try(FileReader reader = new FileReader(archivo)) {\r\n            gson.fromJson(reader, new TypeToken<Map<String, Cola>>(){}.getType());\r\n        } catch(Exception e) {\r\n            e.printStackTrace();\r\n            return null;\r\n        }\r\n        return null;\r\n    }\r\n\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/Mod1/Serializacionticket.java b/src/main/java/org/example/Mod1/Serializacionticket.java
+--- a/src/main/java/org/example/Mod1/Serializacionticket.java	(revision b6c664af134b40f7176d858d01ba6a8749fde3c5)
++++ b/src/main/java/org/example/Mod1/Serializacionticket.java	(date 1741137716681)
+@@ -4,8 +4,11 @@
+ import com.google.gson.GsonBuilder;
+ import com.google.gson.reflect.TypeToken;
+ 
++import java.io.FileNotFoundException;
+ import java.io.FileReader;
+ import java.io.FileWriter;
++import java.lang.reflect.Type;
++import java.util.HashMap;
+ import java.util.Map;
+ 
+ 
+@@ -28,12 +31,17 @@
+     public Map<String, Cola> deserializarColas(String archivo) {
+         Gson gson = new GsonBuilder().create();
+         try(FileReader reader = new FileReader(archivo)) {
+-            gson.fromJson(reader, new TypeToken<Map<String, Cola>>(){}.getType());
+-        } catch(Exception e) {
++            Type tipo = new TypeToken<HashMap<String, Cola>>(){}.getType();
++            return gson.fromJson(reader, tipo);
++//            gson.fromJson(reader, new TypeToken<Map<String, Cola>>(){}.getType());
++        } catch(FileNotFoundException e){
++            System.err.println("Las colas no fueron encontradas! Si no hay, se inicializarán colas nuevas");
++            return new HashMap<>();
++        }
++        catch(Exception e) {
+             e.printStackTrace();
+-            return null;
++            return new HashMap<>(); //Si hay un error, se devuelve un hashmap vacio
+         }
+-        return null;
+     }
+ 
+ 
+Index: src/main/java/org/example/Mod1/CreacionTicket.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example.Mod1;\r\n\r\nimport org.example.Mod0.BranchConfig;\r\nimport org.example.Mod0.ConfigManager;\r\n\r\nimport javax.swing.*;\r\nimport java.time.LocalDateTime;\r\nimport java.time.LocalTime;\r\nimport java.time.format.DateTimeFormatter;\r\nimport java.util.HashMap;\r\n\r\n\r\n\r\npublic class CreacionTicket {\r\n\r\n    //Como en realidad no tengo la menor idea de como hacerlo de otra manera, investigué opciones\r\n    //Lo mas beneficioso en este caso es utilizar HashMap para separarlo segun el KEY (P, B, o A)\r\n\r\n    static HashMap<String, Cola> colas = new HashMap<>(); //Por que? Porque el numero de cajas en el config puede ser dinamico\r\n\r\n    public void funcionesTicket() {\r\n        //Manejar errores con try & catch es importante\r\n\r\n        //primero a leer la configuracion del archivo JSON config\r\n        BranchConfig config = ConfigManager.loadConfig();\r\n        if (config == null) {\r\n            JOptionPane.showMessageDialog(null, \"Hubo un Error al cargar la configuracion\", \"Error\", JOptionPane.ERROR_MESSAGE);\r\n            return;\r\n        }\r\n\r\n        //Creo las colas dinamicamente segun el array de tipos de caja\r\n        for (String tipoCaja : config.getBoxTypes()) {\r\n            if (!colas.containsKey(tipoCaja)) {\r\n                colas.put(tipoCaja, new Cola());\r\n            }\r\n        }\r\n\r\n        //Por ahora voy a crear un menu de asignacion de ticket\r\n\r\n        boolean continuar = true;\r\n\r\n        while(continuar) {\r\n            String[] opciones = {\"Crear nuevo ticket\", \"Ver posicion de ticket\", \"Salir\"};\r\n            int seleccion = JOptionPane.showOptionDialog(\r\n                    null,\r\n                    \"Seleccione una opción\",\r\n                    \"Sistema de tiquetes\",\r\n                    JOptionPane.DEFAULT_OPTION,\r\n                    JOptionPane.INFORMATION_MESSAGE,\r\n                    null,\r\n                    opciones,\r\n                    opciones[0]\r\n            );\r\n\r\n            switch (seleccion) {\r\n                case 0:\r\n                    crearNuevoTicket();\r\n                    break;\r\n                case 1:\r\n                    verPosicionTicket();\r\n                    break;\r\n                case 2:\r\n                    //Al salir, automaticamente se van a serializar las colas----------------\r\n                    Serializacionticket serializar = new Serializacionticket();\r\n                    serializar.serializarColas(colas, \"tiquetes.json\");\r\n                    continuar = false;\r\n                    break;\r\n                default:\r\n                    JOptionPane.showMessageDialog(null, \"Opción inválida!\");\r\n                    break;\r\n\r\n\r\n            }\r\n        }\r\n\r\n\r\n    }\r\n\r\n\r\n\r\n\r\n    //Por ahora lo voy a poner aqui hasta pensar en un mejor lugar (Mi cerebro no sirve). Por que JOptionPane tiene tantas opciones??, ayuda\r\n\r\n    //Estoy segura de que hay una mejor manera, pero por ahora, no la encuentro\r\n\r\n    public static void crearNuevoTicket() {\r\n        //Se piden los datos del usuario\r\n        String nombre = JOptionPane.showInputDialog(\"Ingrese su nombre:\");\r\n        int id = Integer.parseInt(JOptionPane.showInputDialog(\"Ingrese su ID!:\"));\r\n        int edad = Integer.parseInt(JOptionPane.showInputDialog(\"Ingrese su edad:\"));\r\n        String[] opcionesMoneda = {\"Colones\", \"Dólares\"};\r\n        String monedaCuenta = (String) JOptionPane.showInputDialog(null, \"Seleccione su tipo de cuenta:\", \"Cuenta\",\r\n                JOptionPane.QUESTION_MESSAGE, null, opcionesMoneda, opcionesMoneda[0]);\r\n\r\n        String[] opcionesTramite = {\"Depósitos\", \"Retiros\", \"Cambio de Divisas\", \"Servicios\"}; //Nunca he ido a un banco, en realidad\r\n        String tramite = (String) JOptionPane.showInputDialog(null, \"Seleccione el trámite:\", \"Tipo de Trámite\",\r\n                JOptionPane.QUESTION_MESSAGE, null, opcionesTramite, opcionesTramite[0]);\r\n\r\n        String[] opcionesTipo = {\"Preferencial (Discapacitados, Embarazadas, Adultos Mayores)\", \"Rápida (Solo un trámite)\", \"Normal(dos trámites o más)\"};\r\n        char tipoTramite = switch (JOptionPane.showOptionDialog(null, \"Seleccione el tipo de trámite:\",\r\n                \"Tipo de Cliente\", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE,\r\n                null, opcionesTipo, opcionesTipo[0])) {\r\n            case 0 -> 'P';  //Es como un siwtch case mas chico (es lo mismo), pero ver mucho texto me pone nerviosa\r\n            case 1 -> 'A';\r\n            default -> 'B';\r\n        };\r\n\r\n        //Creamos el tiquete\r\n        //Aqui lo que necesito es hacer que el tiquete tenga la hora. La lógica la encontré en: https://www.w3schools.com/java/java_date.asp\r\n        LocalDateTime fecha = LocalDateTime.now();\r\n        DateTimeFormatter formato = DateTimeFormatter.ofPattern(\"dd-MM-yyyy HH:mm:ss\"); //Aqui esta el formateo\r\n\r\n        String fechaConFormato = fecha.format(formato);\r\n\r\n        //pip pip ojala sirva-------------------------------------------------------------------------------------------\r\n        Ticket nuevoTiquete = new Ticket(nombre, id, edad, monedaCuenta, fechaConFormato, -1, tramite, tipoTramite);\r\n        asignarTiquete(nuevoTiquete);\r\n    }\r\n\r\n\r\n\r\n    //Mas metodos, no se que hacer con mi vida------------------------------------------------------------------------------\r\n\r\n    public static void asignarTiquete(Ticket ticket) {\r\n        String claveCola = switch (ticket.getTipoTramite()) {\r\n            case 'P' -> \"preferencial\";\r\n            case 'A' -> \"rapida\";\r\n            default -> \"normal\";\r\n        };\r\n\r\n        Cola colaAsignada = colas.get(claveCola);\r\n        if (colaAsignada != null) {\r\n            colaAsignada.encolar(ticket);\r\n            int posicion = colaAsignada.obtenerPosicion(ticket.getId()); // Aquí se usa el ID correcto\r\n\r\n            String mensaje = \"Su tiquete ha sido asignado a la caja \" + claveCola.toUpperCase() + \".\\n\"\r\n                    + (posicion == 0 ? \"Es su turno!!!\" : \"Hay \" + posicion + \" personas antes de usted en la cola.\");\r\n            JOptionPane.showMessageDialog(null, mensaje, \"Tiquete Asignado\", JOptionPane.INFORMATION_MESSAGE);\r\n        } else {\r\n            JOptionPane.showMessageDialog(null, \"Error: No se encontró una cola válida para este trámite.\", \"Error\", JOptionPane.ERROR_MESSAGE);\r\n        }\r\n    }\r\n\r\n    public static void verPosicionTicket() {\r\n        int id = Integer.parseInt(JOptionPane.showInputDialog(\"Ingrese el ID del tiquete para consultar su posición:\"));\r\n\r\n        for (String tipo : colas.keySet()) {\r\n            int posicion = colas.get(tipo).obtenerPosicion(id);\r\n            if (posicion != -1) {\r\n                JOptionPane.showMessageDialog(null, \"El tiquete con el ID \" + id + \" está en la posición \" + posicion + \" en la cola \" + tipo.toUpperCase());\r\n                return;\r\n            }\r\n        }\r\n\r\n        JOptionPane.showMessageDialog(null, \"El tiquete con el ID \" + id + \" no se encontró\", \"Error\", JOptionPane.ERROR_MESSAGE);\r\n    }\r\n\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/Mod1/CreacionTicket.java b/src/main/java/org/example/Mod1/CreacionTicket.java
+--- a/src/main/java/org/example/Mod1/CreacionTicket.java	(revision b6c664af134b40f7176d858d01ba6a8749fde3c5)
++++ b/src/main/java/org/example/Mod1/CreacionTicket.java	(date 1741138213557)
+@@ -18,7 +18,13 @@
+ 
+     static HashMap<String, Cola> colas = new HashMap<>(); //Por que? Porque el numero de cajas en el config puede ser dinamico
+ 
++
+     public void funcionesTicket() {
++
++//        //Para que el dato de tiquetes queden guardados incluso si el programa se cierra
++//        Serializacionticket serializacionticket =  new Serializacionticket();
++//        serializacionticket.deserializarColas("tiquetes.json");
++
+         //Manejar errores con try & catch es importante
+ 
+         //primero a leer la configuracion del archivo JSON config
+@@ -35,6 +41,7 @@
+             }
+         }
+ 
++
+         //Por ahora voy a crear un menu de asignacion de ticket
+ 
+         boolean continuar = true;
+Index: tiquetes.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>{\r\n  \"normal\": {\r\n    \"cabeza\": {\r\n      \"dato\": {\r\n        \"nombre\": \"Daniel\",\r\n        \"id\": 4,\r\n        \"edad\": 19,\r\n        \"monedaCuenta\": \"Dólares\",\r\n        \"horaCreacion\": \"02-03-2025 17:38:36\",\r\n        \"horaAtencion\": -1,\r\n        \"tramite\": \"Retiros\",\r\n        \"tipoTramite\": \"B\"\r\n      }\r\n    }\r\n  },\r\n  \"rapida\": {\r\n    \"cabeza\": {\r\n      \"dato\": {\r\n        \"nombre\": \"Maria Fernanda\",\r\n        \"id\": 1,\r\n        \"edad\": 19,\r\n        \"monedaCuenta\": \"Colones\",\r\n        \"horaCreacion\": \"02-03-2025 17:37:22\",\r\n        \"horaAtencion\": -1,\r\n        \"tramite\": \"Depósitos\",\r\n        \"tipoTramite\": \"A\"\r\n      },\r\n      \"siguiente\": {\r\n        \"dato\": {\r\n          \"nombre\": \"Adbeel\",\r\n          \"id\": 2,\r\n          \"edad\": 21,\r\n          \"monedaCuenta\": \"Colones\",\r\n          \"horaCreacion\": \"02-03-2025 17:38:04\",\r\n          \"horaAtencion\": -1,\r\n          \"tramite\": \"Retiros\",\r\n          \"tipoTramite\": \"A\"\r\n        },\r\n        \"siguiente\": {\r\n          \"dato\": {\r\n            \"nombre\": \"Adriana\",\r\n            \"id\": 3,\r\n            \"edad\": 19,\r\n            \"monedaCuenta\": \"Dólares\",\r\n            \"horaCreacion\": \"02-03-2025 17:37:47\",\r\n            \"horaAtencion\": -1,\r\n            \"tramite\": \"Servicios\",\r\n            \"tipoTramite\": \"A\"\r\n          }\r\n        }\r\n      }\r\n    }\r\n  },\r\n  \"preferencial\": {\r\n    \"cabeza\": {\r\n      \"dato\": {\r\n        \"nombre\": \"Santiago\",\r\n        \"id\": 5,\r\n        \"edad\": 66,\r\n        \"monedaCuenta\": \"Colones\",\r\n        \"horaCreacion\": \"02-03-2025 17:38:53\",\r\n        \"horaAtencion\": -1,\r\n        \"tramite\": \"Servicios\",\r\n        \"tipoTramite\": \"P\"\r\n      }\r\n    }\r\n  }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/tiquetes.json b/tiquetes.json
+--- a/tiquetes.json	(revision b6c664af134b40f7176d858d01ba6a8749fde3c5)
++++ b/tiquetes.json	(date 1741137949332)
+@@ -2,13 +2,13 @@
+   "normal": {
+     "cabeza": {
+       "dato": {
+-        "nombre": "Daniel",
+-        "id": 4,
+-        "edad": 19,
+-        "monedaCuenta": "Dólares",
+-        "horaCreacion": "02-03-2025 17:38:36",
++        "nombre": "Adbeel",
++        "id": 3,
++        "edad": 21,
++        "monedaCuenta": "Colones",
++        "horaCreacion": "04-03-2025 19:24:43",
+         "horaAtencion": -1,
+-        "tramite": "Retiros",
++        "tramite": "Cambio de Divisas",
+         "tipoTramite": "B"
+       }
+     }
+@@ -20,33 +20,21 @@
+         "id": 1,
+         "edad": 19,
+         "monedaCuenta": "Colones",
+-        "horaCreacion": "02-03-2025 17:37:22",
++        "horaCreacion": "04-03-2025 19:23:54",
+         "horaAtencion": -1,
+         "tramite": "Depósitos",
+         "tipoTramite": "A"
+       },
+       "siguiente": {
+         "dato": {
+-          "nombre": "Adbeel",
+-          "id": 2,
+-          "edad": 21,
+-          "monedaCuenta": "Colones",
+-          "horaCreacion": "02-03-2025 17:38:04",
+-          "horaAtencion": -1,
+-          "tramite": "Retiros",
+-          "tipoTramite": "A"
+-        },
+-        "siguiente": {
+-          "dato": {
+-            "nombre": "Adriana",
+-            "id": 3,
+-            "edad": 19,
+-            "monedaCuenta": "Dólares",
+-            "horaCreacion": "02-03-2025 17:37:47",
+-            "horaAtencion": -1,
+-            "tramite": "Servicios",
+-            "tipoTramite": "A"
+-          }
++          "nombre": "Adriana",
++          "id": 2,
++          "edad": 19,
++          "monedaCuenta": "Dólares",
++          "horaCreacion": "04-03-2025 19:24:21",
++          "horaAtencion": -1,
++          "tramite": "Retiros",
++          "tipoTramite": "A"
+         }
+       }
+     }
+@@ -54,14 +42,26 @@
+   "preferencial": {
+     "cabeza": {
+       "dato": {
+-        "nombre": "Santiago",
+-        "id": 5,
+-        "edad": 66,
+-        "monedaCuenta": "Colones",
+-        "horaCreacion": "02-03-2025 17:38:53",
+-        "horaAtencion": -1,
+-        "tramite": "Servicios",
+-        "tipoTramite": "P"
++        "nombre": "Josh",
++        "id": 4,
++        "edad": 30,
++        "monedaCuenta": "Dólares",
++        "horaCreacion": "04-03-2025 19:25:23",
++        "horaAtencion": -1,
++        "tramite": "Retiros",
++        "tipoTramite": "P"
++      },
++      "siguiente": {
++        "dato": {
++          "nombre": "Daniel",
++          "id": 5,
++          "edad": 18,
++          "monedaCuenta": "Colones",
++          "horaCreacion": "04-03-2025 19:25:06",
++          "horaAtencion": -1,
++          "tramite": "Cambio de Divisas",
++          "tipoTramite": "P"
++        }
+       }
+     }
+   }
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"46c621c1-f3bd-45e6-9b52-1bcde50b8ebd\" name=\"Changes\" comment=\"Some basic arrangements and a note in MAIN.\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/../README.md\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/../README.md\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$/..\" />\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 3\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2tYUtrAqwYb5asd1EdTbkdMUCIZ\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;Application.CreacionTicket.executor&quot;: &quot;Run&quot;,\r\n    &quot;Application.Main.executor&quot;: &quot;Run&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,\r\n    &quot;git-widget-placeholder&quot;: &quot;main&quot;,\r\n    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,\r\n    &quot;last_opened_file_path&quot;: &quot;C:/Users/kkoni/OneDrive/Desktop/Documents/Q4/ESTRUCTURA/Leccion06 (1)&quot;\r\n  }\r\n}</component>\r\n  <component name=\"RunManager\" selected=\"Application.CreacionTicket\">\r\n    <configuration name=\"CreacionTicket\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"org.example.Mod1.CreacionTicket\" />\r\n      <module name=\"Esferisoft\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"org.example.Mod1.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"FuncionConfig\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"org.example.Mod0.FuncionConfig\" />\r\n      <module name=\"Esferisoft\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"org.example.Mod0.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Application.CreacionTicket\" />\r\n        <item itemvalue=\"Application.FuncionConfig\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"46c621c1-f3bd-45e6-9b52-1bcde50b8ebd\" name=\"Changes\" comment=\"\" />\r\n      <created>1740528719085</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1740528719085</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"Some basic arrangements and a note in MAIN.\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1740890708213</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1740890708213</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"2\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"Some basic arrangements and a note in MAIN.\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Some basic arrangements and a note in MAIN.\" />\r\n  </component>\r\n  <component name=\"XDebuggerManager\">\r\n    <breakpoint-manager>\r\n      <breakpoints>\r\n        <breakpoint enabled=\"true\" type=\"java-exception\">\r\n          <properties class=\"java.lang.NullPointerException\" package=\"java.lang\" />\r\n          <option name=\"timeStamp\" value=\"1\" />\r\n        </breakpoint>\r\n      </breakpoints>\r\n    </breakpoint-manager>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision b6c664af134b40f7176d858d01ba6a8749fde3c5)
++++ b/.idea/workspace.xml	(date 1741192619666)
+@@ -6,7 +6,12 @@
+   <component name="ChangeListManager">
+     <list default="true" id="46c621c1-f3bd-45e6-9b52-1bcde50b8ebd" name="Changes" comment="Some basic arrangements and a note in MAIN.">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../README.md" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Mod1/CreacionTicket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Mod1/CreacionTicket.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Mod1/Serializacionticket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Mod1/Serializacionticket.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Mod1/CreacionTicket.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Mod1/CreacionTicket.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Mod1/Serializacionticket$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Mod1/Serializacionticket$1.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Mod1/Serializacionticket.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Mod1/Serializacionticket.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/tiquetes.json" beforeDir="false" afterPath="$PROJECT_DIR$/tiquetes.json" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -31,18 +36,18 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent">{
+-  &quot;keyToString&quot;: {
+-    &quot;Application.CreacionTicket.executor&quot;: &quot;Run&quot;,
+-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+-    &quot;last_opened_file_path&quot;: &quot;C:/Users/kkoni/OneDrive/Desktop/Documents/Q4/ESTRUCTURA/Leccion06 (1)&quot;
++  <component name="PropertiesComponent"><![CDATA[{
++  "keyToString": {
++    "Application.CreacionTicket.executor": "Run",
++    "Application.Main.executor": "Run",
++    "RunOnceActivity.ShowReadmeOnStart": "true",
++    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
++    "git-widget-placeholder": "main",
++    "kotlin-language-version-configured": "true",
++    "last_opened_file_path": "C:/Users/kkoni/OneDrive/Desktop/Documents/Q4/ESTRUCTURA/AAAAAAA"
+   }
+-}</component>
+-  <component name="RunManager" selected="Application.CreacionTicket">
++}]]></component>
++  <component name="RunManager" selected="Application.Main">
+     <configuration name="CreacionTicket" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+       <option name="MAIN_CLASS_NAME" value="org.example.Mod1.CreacionTicket" />
+       <module name="Esferisoft" />
+@@ -69,8 +74,22 @@
+         <option name="Make" enabled="true" />
+       </method>
+     </configuration>
++    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
++      <option name="MAIN_CLASS_NAME" value="org.example.Main" />
++      <module name="Esferisoft" />
++      <extension name="coverage">
++        <pattern>
++          <option name="PATTERN" value="org.example.*" />
++          <option name="ENABLED" value="true" />
++        </pattern>
++      </extension>
++      <method v="2">
++        <option name="Make" enabled="true" />
++      </method>
++    </configuration>
+     <recent_temporary>
+       <list>
++        <item itemvalue="Application.Main" />
+         <item itemvalue="Application.CreacionTicket" />
+         <item itemvalue="Application.FuncionConfig" />
+       </list>

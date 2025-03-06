@@ -1,16 +1,18 @@
-package org.example.Mod1;
+package org.example.Mod1Cajas;
 
-public class Nodo {
+public class NodoCaja {
+    //El nodo contiene el Ticket que es su dato, ya que en cada cola hay tiquetes
+
     private Ticket dato;
-    private Nodo siguiente;
+    private NodoCaja siguiente;
 
     //Constructores--------------------------
 
-    public Nodo(Ticket dato) {
+    public NodoCaja(Ticket dato) {
         this.dato = dato;
     }
 
-    public Nodo() {
+    public NodoCaja() {
         this.siguiente = null;
     }
 
@@ -25,11 +27,11 @@ public class Nodo {
         this.dato = dato;
     }
 
-    public Nodo getSiguiente() {
+    public NodoCaja getSiguiente() {
         return siguiente;
     }
 
-    public void setSiguiente(Nodo siguiente) {
+    public void setSiguiente(NodoCaja siguiente) {
         this.siguiente = siguiente;
     }
 }
