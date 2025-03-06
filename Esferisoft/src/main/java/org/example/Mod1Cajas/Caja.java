@@ -95,4 +95,20 @@ public class Caja {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+
+    public NodoCaja getFrente() {
+        return frente;
+    }
+
+    public void setFrente(NodoCaja frente) {
+        this.frente = frente;
+    }
+
+    public NodoCaja getFin() {
+        return fin;
+    }
+
+    public void setFin(NodoCaja fin) {
+        this.fin = fin;
+    }
 }

@@ -1,10 +1,4 @@
-package org.example.Mod1TODELETE;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-
-import java.io.FileWriter;
-import java.util.Map;
+package org.example.Mod1Cajas;
 
 
 public class Serializacionticket {

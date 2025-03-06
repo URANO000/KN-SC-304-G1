@@ -5,28 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="46c621c1-f3bd-45e6-9b52-1bcde50b8ebd" name="Changes" comment="Some basic arrangements and a note in MAIN.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Mod1Cajas/Caja.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Mod1Cajas/ListaCajas.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Mod1Cajas/ManagerCajas.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Mod1Cajas/NodoLista.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Mod1Cajas/Ticket.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Mod1TODELETE/Serializacionticket.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/config.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Mod1/Cola.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Mod1/CreacionTicket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Mod1TODELETE/CreacionTicket.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Mod1/Nodo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Mod1Cajas/NodoCaja.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Mod1/Serializacionticket.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Mod1/Ticket.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Mod1Cajas/Caja.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Mod1Cajas/Caja.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Mod1Cajas/ListaCajas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Mod1Cajas/ListaCajas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Mod1Cajas/ManagerCajas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Mod1Cajas/ManagerCajas.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/example/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Mod1/Cola.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Mod1/CreacionTicket.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Mod1/Nodo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Mod1/Serializacionticket$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Mod1/Serializacionticket.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Mod1/Ticket.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tiquetes.json" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

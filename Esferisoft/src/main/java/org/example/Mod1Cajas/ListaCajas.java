@@ -4,6 +4,18 @@ public class ListaCajas {
     //Las cajas van dentro de esta lista
     //Es una lista de cajas -> Linked List
     private NodoLista cabeza;
+    private int contador;
+
+
+    //Getters & setters--------------------------------
+
+    public NodoLista getCabeza() {
+        return cabeza;
+    }
+
+    public void setCabeza(NodoLista cabeza) {
+        this.cabeza = cabeza;
+    }
 
     //Metodos------------------------------------------
     public void insertar(Caja c) {
@@ -48,6 +60,7 @@ public class ListaCajas {
             }
 
         }
+        contador ++;
 
     }
 
@@ -95,6 +108,11 @@ public class ListaCajas {
                 auxiliar = auxiliar.getSiguiente();
             }
         }
+        contador --;
+    }
+
+    public int size() {
+        return contador;
     }
 
 
