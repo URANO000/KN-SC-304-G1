@@ -19,7 +19,7 @@ public class ConfigJson {
 
     // Método para guardar la configuración en el archivo JSON
     public static void guardarConfiguracion(ConfigSucursal configuracion) {
-  Gson gson = new GsonBuilder().setPrettyPrinting(). create();
+  Gson gson = new GsonBuilder().setPettyPrinting(). create();
         try (FileWriter escritor = new FileWriter(ARCHIVO_CONFIG)) {
             gson.toJson(configuracion, escritor);
             System.out.println("Configuración guardada exitosamente en " + ARCHIVO_CONFIG);
@@ -30,8 +30,8 @@ public class ConfigJson {
     //Cargar la configuración en el archivo JSON
     public static ConfigSucursal cargarConfiguracion() {
         Gson gson = new Gson();
-        try (FileReader lector = new FileReader(ARCHIVO_CONFIG)){
-            return gson.fromJson(lector, ConfigSucursal.class);
+        try (FileReader lecto = new FileReader(ARCHIVO_CONFIG)){
+            retur gson.fromJson(lector, ConfigSucursal.class);
         } catch (IOException e) {
            System.out.println("El archivo de no configuración no existe. Creando uno nuevo");
             return null;
