@@ -8,6 +8,9 @@ package org.example.Mod0;
  *
  * @author Adbeel
  */
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -16,19 +19,22 @@ public class ConfigJson {
 
     // Método para guardar la configuración en el archivo JSON
     public static void guardarConfiguracion(ConfigSucursal configuracion) {
+  Gson gson = new GsonBuilder().setPettyPrinting(). create();
         try (FileWriter escritor = new FileWriter(ARCHIVO_CONFIG)) {
-            escritor.write("{\n");
-            escritor.write("  \"nombreSucursal\": \"" + configuracion.getNombreSucursal() + "\",\n");
-            escritor.write("  \"totalCajas\": " + configuracion.getTotalCajas() + ",\n");
-            escritor.write("  \"tiposCajas\": [\n");
-            escritor.write(configuracion.getTiposCajas().obtenerElementos().replace("\n", ",\n"));
-            escritor.write("  ],\n");
-            escritor.write("  \"usuarios\": [\n");
-            escritor.write(configuracion.getUsuarios().obtenerElementos().replace("\n", ",\n"));
-            escritor.write("  ]\n");
-            escritor.write("}");
+            gson.toJson(configuracion, escritor);
+            System.out.println("Configuración guardada exitosamente en " + ARCHIVO_CONFIG);
         } catch (IOException e) {
             e.printStackTrace();
         }
+}
+    //Cargar la configuración en el archivo JSON
+    public static ConfigSucursal cargarConfiguracion() {
+        Gson gson = new Gson();
+        try (FileReader lecto = new FileReader(ARCHIVO_CONFIG)){
+            retur gson.fromJson(lector, ConfigSucursal.class);
+        } catch (IOException e) {
+           System.out.println("El archivo de no configuración no existe. Creando uno nuevo");
+            return null;
+}
     }
 }
