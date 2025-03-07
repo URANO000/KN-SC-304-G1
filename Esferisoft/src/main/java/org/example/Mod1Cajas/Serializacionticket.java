@@ -11,7 +11,7 @@ public class Serializacionticket {
     
     //Método para serializar la Lista de Cajas
     public void serializarListaCajas (ListaCajas lista, String archivo){
-        Gson gson = new GsonBuilder ().create();
+        Gson gson = new GsonBuilder ().setPrettyPrinting().create();
         try (FileWriter writer = new FileWriter(archivo)) {
             
             gson.toJson(lista ,writer);

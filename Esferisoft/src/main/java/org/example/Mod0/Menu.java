@@ -37,7 +37,7 @@ public class Menu {
             tipo = tipo.toLowerCase();
 
             // Validar el tipo de caja
-            while (!tipo.equals("preferencial") && !tipo.equals("rápida") && !tipo.equals("normal")) {
+            while (!tipo.equals("preferencial") && !tipo.equals("rápida") && !tipo.equals("rapida") && !tipo.equals("normal")) {
                 tipo = JOptionPane.showInputDialog("Tipo no válido. Ingrese 'preferencial', 'rápida' o 'normal':");
                 tipo = tipo.toLowerCase();
             }
@@ -47,7 +47,7 @@ public class Menu {
             // Verificar si hay al menos una caja preferencial y una rápida
             if (tipo.equals("preferencial")) {
                 tienePreferencial = true;
-            } else if (tipo.equals("rápida")) {
+            } else if (tipo.equals("rápida") || tipo.equals("rapida")) {
                 tieneRapida = true;
             }
         }

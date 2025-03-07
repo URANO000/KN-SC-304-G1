@@ -16,7 +16,8 @@ public class ManagerCajas {
         //Primero se deben de crear las cajas de acuerdo a el input del usuario
 
         //primero a leer la configuracion del archivo JSON config-------------------------------------
-        BranchConfig config = ConfigManager.loadConfig();
+        ConfigSucursal config = ConfigJson.cargarConfiguracion();
+
         if (config == null) {
             JOptionPane.showMessageDialog(null, "Hubo un Error al cargar la configuracion",
                                                     "Error", JOptionPane.ERROR_MESSAGE);
@@ -24,7 +25,7 @@ public class ManagerCajas {
         }
 
         //Creo la lista de cajas ---------------------------------
-        for(int i = 0; i < config.getTotalBoxes(); i++) {   //Un loop de creación de cajas por cada iteración según las cajas totales
+        for(int i = 0; i < config.getTotalCajas(); i++) {   //Un loop de creación de cajas por cada iteración según las cajas totales
             String tipo;
             if(i == 0) {   //Este if lo que hace es asignar el tipo de caja según el ID
                 tipo = "Preferencial";
@@ -169,7 +170,7 @@ public class ManagerCajas {
             }
         }
         else {  //Si la caja es normal
-            int totalCajas = ConfigManager.loadConfig().getTotalBoxes();
+            int totalCajas = ConfigJson.cargarConfiguracion().getTotalCajas();
             int cajaRandom;
 
             do{

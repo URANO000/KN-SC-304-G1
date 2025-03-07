@@ -7,10 +7,10 @@ public class Main {
     public static void main(String[] args) {
         //Creamos los nuevos objetos de los diferentes modulos
         ManagerCajas managerCajas = new ManagerCajas();
-        Menu menu = new Menu();
-        menu.mostrarMenu();
 
-        funcionConfig.config();
+        Menu menu = new Menu();
+
+//        menu.mostrarMenu();
         managerCajas.menuCajas();
 
 

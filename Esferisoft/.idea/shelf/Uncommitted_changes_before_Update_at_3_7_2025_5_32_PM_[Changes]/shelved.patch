@@ -1,0 +1,197 @@
+Index: src/main/java/org/example/Mod1Cajas/ManagerCajas.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example.Mod1Cajas;\r\nimport org.example.Mod0.*;\r\nimport javax.swing.*;   //Solo la libreria de JAVA SWING\r\nimport java.time.LocalDateTime;\r\nimport java.time.format.DateTimeFormatter;\r\nimport java.util.Random;\r\n\r\npublic class ManagerCajas {\r\n    private ListaCajas listaCajas = new ListaCajas();\r\n\r\n    //Getters & setter\r\n\r\n    //En esta clase se va a manejar t odo lo correspondiente a las cajas\r\n\r\n    public void menuCajas() {\r\n        //Primero se deben de crear las cajas de acuerdo a el input del usuario\r\n\r\n        //primero a leer la configuracion del archivo JSON config-------------------------------------\r\n        BranchConfig config = ConfigManager.loadConfig();\r\n        if (config == null) {\r\n            JOptionPane.showMessageDialog(null, \"Hubo un Error al cargar la configuracion\",\r\n                                                    \"Error\", JOptionPane.ERROR_MESSAGE);\r\n            return;\r\n        }\r\n\r\n        //Creo la lista de cajas ---------------------------------\r\n        for(int i = 0; i < config.getTotalBoxes(); i++) {   //Un loop de creación de cajas por cada iteración según las cajas totales\r\n            String tipo;\r\n            if(i == 0) {   //Este if lo que hace es asignar el tipo de caja según el ID\r\n                tipo = \"Preferencial\";\r\n            } else if(i == 1) {\r\n                tipo = \"Rápida\";\r\n            } else {\r\n                tipo = \"Normal\";\r\n            }\r\n            Caja caja = new Caja(i, \"Caja \" + tipo);\r\n            listaCajas.insertar(caja);\r\n\r\n        }\r\n\r\n        System.out.println(listaCajas.toString());\r\n\r\n\r\n        //---------------Ahora sigue la creación del ticuete con JOptionPane---------------------\r\n        boolean continuar = true;  //Para el menú\r\n\r\n        try{\r\n            while(continuar) {\r\n                int seleccion = Integer.parseInt(JOptionPane.showInputDialog(\"Sistema de tiquetes \\n\" +\r\n                        \"1. Crear nuevo tiquete \\n\" +\r\n                        \"2. Salir\"));\r\n\r\n                switch (seleccion) {\r\n                    case 1:\r\n                        //Metodo de crear un nuevo tiquete\r\n                        crearTicket();\r\n                        break;\r\n\r\n                    case 2:\r\n                        // Aquí va la llamada de la clase serializar\r\n                        Serializacionticket serializador = new Serializacionticket();\r\n                        serializador.serializarListaCajas(listaCajas, \"tiquetes.json\");\r\n                        continuar = false;\r\n                        break;\r\n                        \r\n                    default:\r\n                        JOptionPane.showMessageDialog(null, \"Opción inválida\");\r\n                        break;\r\n\r\n                }\r\n\r\n\r\n            }\r\n        }catch(Exception e) {\r\n            e.printStackTrace();\r\n        }\r\n\r\n\r\n    } //FIN de metodo\r\n\r\n    public void crearTicket(){\r\n        try{\r\n            String nombre = JOptionPane.showInputDialog(\"Ingrese su nombre:\");\r\n            int id = Integer.parseInt(JOptionPane.showInputDialog(\"Ingrese su ID, puede ser número de cédula:\"));\r\n            int edad = Integer.parseInt(JOptionPane.showInputDialog(\"Ingrese su edad:\"));\r\n\r\n            //To check opciones moneda\r\n            String opcionesMoneda;\r\n            while (true) {\r\n                opcionesMoneda = JOptionPane.showInputDialog(\"DOLARES o COLONES\");\r\n                if (!opcionesMoneda.equals(\"DOLARES\") || !opcionesMoneda.equals(\"COLONES\")) {\r\n                    break;\r\n                }\r\n            }\r\n\r\n            String tramite = JOptionPane.showInputDialog(\"Ingrese el trámite a realizar (Depósitos, Servicios, Retiros, Cambio de divisas)\");\r\n\r\n            int tramiteAUX = Integer.parseInt(JOptionPane.showInputDialog(\"Ingrese el tipo de trámite \\n\" +\r\n                    \"1. P: preferencial  \\n\" +\r\n                    \"2. A: Rápida  \\n\" +\r\n                    \"3. B: Normal: \"));\r\n            String tipoTramite = \"\";\r\n            switch (tramiteAUX) {\r\n                case 1:\r\n                    tipoTramite = \"P\";\r\n                    break;\r\n                case 2:\r\n                    tipoTramite = \"A\";\r\n                    break;\r\n                case 3:\r\n                    tipoTramite = \"B\";\r\n                    break;\r\n                default:\r\n                    JOptionPane.showMessageDialog(null, \"Opción inválida\");\r\n\r\n            }\r\n\r\n\r\n            //Creamos el tiquete y asignamos--------------------------------------------------------------------\r\n\r\n            //Aqui lo que necesito es hacer que el tiquete tenga la hora. La lógica la encontré en: https://www.w3schools.com/java/java_date.asp\r\n            LocalDateTime fecha = LocalDateTime.now();\r\n            DateTimeFormatter formato = DateTimeFormatter.ofPattern(\"dd-MM-yyyy HH:mm:ss\"); //Aqui esta el formateo\r\n\r\n            String fechaConFormato = fecha.format(formato);\r\n\r\n            Ticket ticket = new Ticket(nombre,id, edad, opcionesMoneda, fechaConFormato, -1, tramite, tipoTramite);\r\n            asignarCaja(ticket, listaCajas);\r\n\r\n            //Para mostrar las personas al frente\r\n            if (personasAdelante(ticket, listaCajas) == 0) {\r\n                JOptionPane.showMessageDialog(null, \"Es su turno!!!\");\r\n            }else {\r\n                JOptionPane.showMessageDialog(null, \"Hay \" + personasAdelante(ticket, listaCajas) + \" persona(s) frente a usted\");\r\n            }\r\n\r\n\r\n\r\n\r\n        } catch(Exception e) {\r\n            e.printStackTrace();\r\n        }\r\n\r\n\r\n    }\r\n    public void asignarCaja(Ticket ticket, ListaCajas lista) {\r\n        NodoLista actual = lista.getCabeza();\r\n        Random rand = new Random(); //Quiero utilizar lógica para asignar tiquete a cualquier caja random si es una caja normal\r\n\r\n        if(ticket.getTipoTramite().equals(\"P\")){\r\n            while(actual != null){\r\n                if (actual.getDato().getIdCaja() == 0){\r\n                    actual.getDato().encolar(ticket);\r\n                    JOptionPane.showMessageDialog(null, \"Tiquete asginado a Caja Preferencial\");\r\n                    return;\r\n                }\r\n                actual = actual.getSiguiente();\r\n            }\r\n        }\r\n        else if(ticket.getTipoTramite().equals(\"A\")) {\r\n            while(actual != null){\r\n                if(actual.getDato().getIdCaja() == 1){\r\n                    actual.getDato().encolar(ticket);\r\n                    JOptionPane.showMessageDialog(null, \"Tiquete asginado a Caja Rápida\");\r\n                    return;\r\n\r\n                }\r\n                actual = actual.getSiguiente();\r\n            }\r\n        }\r\n        else {  //Si la caja es normal\r\n            int totalCajas = ConfigManager.loadConfig().getTotalBoxes();\r\n            int cajaRandom;\r\n\r\n            do{\r\n                cajaRandom = rand.nextInt(totalCajas); //Se pone en cualquier caja normal\r\n\r\n            }while(cajaRandom == 0 || cajaRandom == 1);  //Mientras el ID de la caja no sea 0 o 1\r\n\r\n            //Ahora asignamos a la caja normal, cualquiera que sea\r\n            while(actual != null) {  //Mientras el nodo actual no esté vacío\r\n                if(actual.getDato().getIdCaja() == cajaRandom) {\r\n                    actual.getDato().encolar(ticket);  //encolamos el ticket en la caja random\r\n                    JOptionPane.showMessageDialog(null, \"Tiquete asignado a Caja Normal \" + cajaRandom);\r\n                    return;\r\n                }\r\n                actual = actual.getSiguiente(); //Siempre hay que actualizar el puntero\r\n\r\n            }\r\n\r\n        }\r\n        JOptionPane.showMessageDialog(null, \"No se encontró una caja\"); //No debería de pasar!!!\r\n\r\n    }\r\n\r\n    //El método para mostrar personas Adelante\r\n    public int personasAdelante(Ticket ticket, ListaCajas lista) {\r\n        //Voy a utilizar el método SIZE que tengo en caja, retorna un número\r\n        NodoLista actual = lista.getCabeza();\r\n\r\n        while(actual != null) {\r\n            Caja caja = actual.getDato();\r\n            NodoCaja nodoTicket = caja.getFrente();\r\n\r\n\r\n            while(nodoTicket !=null) {\r\n                if (nodoTicket.getDato() == ticket) { //si se encuentra el tiquete\r\n                    return caja.size() - 1; //Personas adelante -1\r\n                }\r\n\r\n                nodoTicket = nodoTicket.getSiguiente(); //Se mueve al siguiente tiquete\r\n            }\r\n            actual = actual.getSiguiente(); //Se mueve a la siguiente caja\r\n        }\r\n        return -1; //Si no se encontró el tiquete\r\n\r\n    }\r\n\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/Mod1Cajas/ManagerCajas.java b/src/main/java/org/example/Mod1Cajas/ManagerCajas.java
+--- a/src/main/java/org/example/Mod1Cajas/ManagerCajas.java	(revision 8d63f8b7c3cbc79991129a15a312b8783fc638b1)
++++ b/src/main/java/org/example/Mod1Cajas/ManagerCajas.java	(date 1741389418675)
+@@ -17,6 +17,7 @@
+ 
+         //primero a leer la configuracion del archivo JSON config-------------------------------------
+         BranchConfig config = ConfigManager.loadConfig();
++
+         if (config == null) {
+             JOptionPane.showMessageDialog(null, "Hubo un Error al cargar la configuracion",
+                                                     "Error", JOptionPane.ERROR_MESSAGE);
+Index: src/main/java/org/example/Main.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example;\r\n\r\nimport org.example.Mod0.Menu;\r\nimport org.example.Mod1Cajas.ManagerCajas;\r\n\r\npublic class Main {\r\n    public static void main(String[] args) {\r\n        //Creamos los nuevos objetos de los diferentes modulos\r\n        ManagerCajas managerCajas = new ManagerCajas();\r\n        Menu menu = new Menu();\r\n        menu.mostrarMenu();\r\n\r\n        funcionConfig.config();\r\n        managerCajas.menuCajas();\r\n\r\n\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/Main.java b/src/main/java/org/example/Main.java
+--- a/src/main/java/org/example/Main.java	(revision 8d63f8b7c3cbc79991129a15a312b8783fc638b1)
++++ b/src/main/java/org/example/Main.java	(date 1741388041971)
+@@ -8,10 +8,9 @@
+         //Creamos los nuevos objetos de los diferentes modulos
+         ManagerCajas managerCajas = new ManagerCajas();
+         Menu menu = new Menu();
++
+         menu.mostrarMenu();
+-
+-        funcionConfig.config();
+-        managerCajas.menuCajas();
++//        managerCajas.menuCajas();
+ 
+ 
+     }
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_2_27_2025_5_20_PM_[Changes]/shelved.patch
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Update_at_2_27_2025_5_20_PM_[Changes]/shelved.patch b/.idea/shelf/Uncommitted_changes_before_Update_at_2_27_2025_5_20_PM_[Changes]/shelved.patch
+deleted file mode 100644
+--- a/.idea/shelf/Uncommitted_changes_before_Update_at_2_27_2025_5_20_PM_[Changes]/shelved.patch	(revision 8d63f8b7c3cbc79991129a15a312b8783fc638b1)
++++ /dev/null	(revision 8d63f8b7c3cbc79991129a15a312b8783fc638b1)
+@@ -1,59 +0,0 @@
+-Index: src/main/java/org/example/Mod1/Queue.java
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/src/main/java/org/example/Mod1/Queue.java b/src/main/java/org/example/Mod1/Queue.java
+-new file mode 100644
+---- /dev/null	(date 1740528863777)
+-+++ b/src/main/java/org/example/Mod1/Queue.java	(date 1740528863777)
+-@@ -0,0 +1,4 @@
+-+package org.example.Mod1;
+-+
+-+public class Queue {
+-+}
+-Index: src/main/java/org/example/Mod1/Node.java
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/src/main/java/org/example/Mod1/Node.java b/src/main/java/org/example/Mod1/Node.java
+-new file mode 100644
+---- /dev/null	(date 1740528863768)
+-+++ b/src/main/java/org/example/Mod1/Node.java	(date 1740528863768)
+-@@ -0,0 +1,4 @@
+-+package org.example.Mod1;
+-+
+-+public class Node {
+-+}
+-Index: .idea/vcs.xml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/.idea/vcs.xml b/.idea/vcs.xml
+-new file mode 100644
+---- /dev/null	(date 1740528894440)
+-+++ b/.idea/vcs.xml	(date 1740528894440)
+-@@ -0,0 +1,6 @@
+-+<?xml version="1.0" encoding="UTF-8"?>
+-+<project version="4">
+-+  <component name="VcsDirectoryMappings">
+-+    <mapping directory="$PROJECT_DIR$/.." vcs="Git" />
+-+  </component>
+-+</project>
+-\ No newline at end of file
+-Index: src/main/java/org/example/Mod1/Ticket.java
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/src/main/java/org/example/Mod1/Ticket.java b/src/main/java/org/example/Mod1/Ticket.java
+-new file mode 100644
+---- /dev/null	(date 1740528863785)
+-+++ b/src/main/java/org/example/Mod1/Ticket.java	(date 1740528863785)
+-@@ -0,0 +1,4 @@
+-+package org.example.Mod1;
+-+
+-+public class Ticket {
+-+}
+Index: config.json
+===================================================================
+diff --git a/config.json b/config.json
+deleted file mode 100644
+--- a/config.json	(revision 8d63f8b7c3cbc79991129a15a312b8783fc638b1)
++++ /dev/null	(revision 8d63f8b7c3cbc79991129a15a312b8783fc638b1)
+@@ -1,27 +0,0 @@
+-{
+-  "branchName": "Super1",
+-  "totalBoxes": 6,
+-  "boxTypes": [
+-    "preferencial",
+-    "rapida",
+-    "normal"
+-  ],
+-  "users": [
+-    {
+-      "username": "asev",
+-      "password": "01200628"
+-    },
+-    {
+-      "username": "mafeh",
+-      "password": "02110"
+-    },
+-    {
+-      "username": "ajev",
+-      "password": "123456789"
+-    },
+-    {
+-      "username": "dan",
+-      "password": "456321"
+-    }
+-  ]
+-}
+\ No newline at end of file
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_2_27_2025_5_20_PM__Changes_.xml
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Update_at_2_27_2025_5_20_PM__Changes_.xml b/.idea/shelf/Uncommitted_changes_before_Update_at_2_27_2025_5_20_PM__Changes_.xml
+deleted file mode 100644
+--- a/.idea/shelf/Uncommitted_changes_before_Update_at_2_27_2025_5_20_PM__Changes_.xml	(revision 8d63f8b7c3cbc79991129a15a312b8783fc638b1)
++++ /dev/null	(revision 8d63f8b7c3cbc79991129a15a312b8783fc638b1)
+@@ -1,4 +0,0 @@
+-<changelist name="Uncommitted_changes_before_Update_at_2_27_2025_5_20_PM_[Changes]" date="1740698406450" recycled="true" deleted="true">
+-  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_27_2025_5_20_PM_[Changes]/shelved.patch" />
+-  <option name="DESCRIPTION" value="Uncommitted changes before Update at 2/27/2025 5:20 PM [Changes]" />
+-</changelist>
+\ No newline at end of file
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"46c621c1-f3bd-45e6-9b52-1bcde50b8ebd\" name=\"Changes\" comment=\"Some basic arrangements and a note in MAIN.\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/org/example/Main.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/org/example/Main.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/org/example/Mod1Cajas/Caja.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/org/example/Mod1Cajas/Caja.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/org/example/Mod1Cajas/ListaCajas.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/org/example/Mod1Cajas/ListaCajas.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/org/example/Mod1Cajas/ManagerCajas.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/org/example/Mod1Cajas/ManagerCajas.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/org/example/Main.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/org/example/Main.class\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$/..\" />\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 3\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2tYUtrAqwYb5asd1EdTbkdMUCIZ\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"Application.CreacionTicket.executor\": \"Run\",\r\n    \"Application.Main.executor\": \"Run\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"SHARE_PROJECT_CONFIGURATION_FILES\": \"true\",\r\n    \"git-widget-placeholder\": \"main\",\r\n    \"kotlin-language-version-configured\": \"true\",\r\n    \"last_opened_file_path\": \"C:/Users/kkoni/OneDrive/Desktop/Documents/IdeaProjects/Q4/ESTRUCTURA/402740838_Adriana_Sevilla_PP1\"\r\n  }\r\n}]]></component>\r\n  <component name=\"RunManager\" selected=\"Application.Main\">\r\n    <configuration name=\"CreacionTicket\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"org.example.Mod1TODELETE.CreacionTicket\" />\r\n      <module name=\"Esferisoft\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"org.example.Mod1TODELETE.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"FuncionConfig\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"org.example.Mod0.FuncionConfig\" />\r\n      <module name=\"Esferisoft\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"org.example.Mod0.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"Main\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"org.example.Main\" />\r\n      <module name=\"Esferisoft\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"org.example.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Application.Main\" />\r\n        <item itemvalue=\"Application.CreacionTicket\" />\r\n        <item itemvalue=\"Application.FuncionConfig\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"46c621c1-f3bd-45e6-9b52-1bcde50b8ebd\" name=\"Changes\" comment=\"\" />\r\n      <created>1740528719085</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1740528719085</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"Some basic arrangements and a note in MAIN.\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1740890708213</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1740890708213</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"2\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"Some basic arrangements and a note in MAIN.\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Some basic arrangements and a note in MAIN.\" />\r\n  </component>\r\n  <component name=\"XDebuggerManager\">\r\n    <breakpoint-manager>\r\n      <breakpoints>\r\n        <breakpoint enabled=\"true\" type=\"java-exception\">\r\n          <properties class=\"java.lang.NullPointerException\" package=\"java.lang\" />\r\n          <option name=\"timeStamp\" value=\"1\" />\r\n        </breakpoint>\r\n      </breakpoints>\r\n    </breakpoint-manager>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 8d63f8b7c3cbc79991129a15a312b8783fc638b1)
++++ b/.idea/workspace.xml	(date 1741390353082)
+@@ -5,12 +5,20 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="46c621c1-f3bd-45e6-9b52-1bcde50b8ebd" name="Changes" comment="Some basic arrangements and a note in MAIN.">
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_27_2025_5_20_PM_[Changes]/shelved.patch" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_27_2025_5_20_PM__Changes_.xml" beforeDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/config.json" beforeDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Mod1Cajas/Caja.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Mod1Cajas/Caja.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Mod1Cajas/ListaCajas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Mod1Cajas/ListaCajas.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Mod1Cajas/ManagerCajas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Mod1Cajas/ManagerCajas.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Main.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Main.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Mod0/BranchConfig.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Mod0/ConfigManager.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Mod0/FuncionConfig.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Mod0/User.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Mod1Cajas/ManagerCajas.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Mod1TODELETE/CreacionTicket.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Mod1TODELETE/Serializacionticket.class" beforeDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -52,7 +60,7 @@
+       <module name="Esferisoft" />
+       <extension name="coverage">
+         <pattern>
+-          <option name="PATTERN" value="org.example.Mod1TODELETE.*" />
++          <option name="PATTERN" value="org.example.Mod1Cajas.*" />
+           <option name="ENABLED" value="true" />
+         </pattern>
+       </extension>
