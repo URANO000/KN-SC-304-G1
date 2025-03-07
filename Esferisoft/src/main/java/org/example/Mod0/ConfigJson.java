@@ -33,7 +33,7 @@ public class ConfigJson {
         try (FileReader lecto = new FileReader(ARCHIVO_CONFIG)){
             retur gson.fromJson(lector, ConfigSucursal.class);
         } catch (IOException e) {
-           System.out.println("El archivo de no configuración no existe. Creando uno nuevo");
+           System.out.println("El archivo de configuración no existe. Creando uno nuevo");
             return null;
 }
     }
