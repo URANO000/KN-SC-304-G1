@@ -57,10 +57,12 @@ public class ManagerCajas {
                         break;
 
                     case 2:
-                        //Aquí va el metodo de serializar
-
+                        // Aquí va el método de serializar
+                        Serializacionticket serializador = new Serializacionticket();
+                        serializador.serializarListaCajas(listaCajas, "tiquetes.json");
                         continuar = false;
                         break;
+                        
                     default:
                         JOptionPane.showMessageDialog(null, "Opción inválida");
                         break;
