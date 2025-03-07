@@ -57,7 +57,7 @@ public class ManagerCajas {
                         break;
 
                     case 2:
-                        // Aquí va el método de serializar
+                        // Aquí va la llamada de la clase serializar
                         Serializacionticket serializador = new Serializacionticket();
                         serializador.serializarListaCajas(listaCajas, "tiquetes.json");
                         continuar = false;
