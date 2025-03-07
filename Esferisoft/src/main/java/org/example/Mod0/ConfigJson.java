@@ -19,7 +19,7 @@ public class ConfigJson {
 
     // Método para guardar la configuración en el archivo JSON
     public static void guardarConfiguracion(ConfigSucursal configuracion) {
-  Gson gson = new GsonBuilder().setPettyPrinting(). create();
+  Gson gson = new GsonBuilder().setPettryPrinting(). create();
         try (FileWriter escritor = new FileWriter(ARCHIVO_CONFIG)) {
             gson.toJson(configuracion, escritor);
             System.out.println("Configuración guardada exitosamente en " + ARCHIVO_CONFIG);
