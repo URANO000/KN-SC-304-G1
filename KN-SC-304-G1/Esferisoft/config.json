@@ -1,0 +1,29 @@
+{
+  "nombreSucursal": "Sucursal1",
+  "totalCajas": 4,
+  "tiposCajas": {
+    "cabeza": {
+      "dato": "rapida 1",
+      "siguiente": {
+        "dato": "preferencial 1",
+        "siguiente": {
+          "dato": "normal 2"
+        }
+      }
+    }
+  },
+  "usuarios": {
+    "cabeza": {
+      "dato": "asev:2028",
+      "siguiente": {
+        "dato": "mafe:0211",
+        "siguiente": {
+          "dato": "adb:1234",
+          "siguiente": {
+            "dato": "dan:6543"
+          }
+        }
+      }
+    }
+  }
+}

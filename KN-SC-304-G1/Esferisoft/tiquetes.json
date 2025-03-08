@@ -1,0 +1,31 @@
+{
+  "cabeza": {
+    "dato": {
+      "idCaja": 0,
+      "nombre": "Caja Preferencial",
+      "contador": 0
+    },
+    "siguiente": {
+      "dato": {
+        "idCaja": 1,
+        "nombre": "Caja Rápida",
+        "contador": 0
+      },
+      "siguiente": {
+        "dato": {
+          "idCaja": 2,
+          "nombre": "Caja Normal",
+          "contador": 0
+        },
+        "siguiente": {
+          "dato": {
+            "idCaja": 3,
+            "nombre": "Caja Normal",
+            "contador": 0
+          }
+        }
+      }
+    }
+  },
+  "contador": 4
+}
