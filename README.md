@@ -10,7 +10,7 @@ Daniel Quiros
 ==================Requisitos implementados==========================================
 
 1. MOD 1.0: Adbeel-
-Para la implementación de este modulo necesite realizar cambios constantes en la configuración de la clase main y la clase user ya que tuve os problemas para que toda la información necesaria quedara registrada
+Para la implementación de este modulo necesite realizar cambios constantes en la configuración de la clase main y la clase user ya que tuve algunos problemas para que toda la información necesaria quedara registrada
 en el archivo JSON, sin embargo gracias a mi compañera Adriana logre darme cuenta de lo que necesitaba cambiar para que todo quedara en orden.
 
 2. MOD 1.1: Adriana-
@@ -29,10 +29,12 @@ De esta manera se vé más decluttered.
 ==================Documentación Breve de clases==========================================
 MOD 1.0:
 Clases:
-User -> en esta clase se hace el registro inicial del usuario con sus respectivos nombres de usuario y contraseñas
-ConfigManager -> en esta clase se guarda la configuración del archivo JSON y además tambien carga la información registrada del archivo
-BranchConfig -> desde esta clase se obtienen las cajas y se les asigna un tipo
-Main -> En el paquete por default, es el main de la app.
+ConfigJson -> Esta clase se encarga de guardar los datos en el archivo JSON en un inicio y luego los carga
+ConfigSucursal -> De esta clase se obtienen los datos de la sucursal como el nombre, numero de cajas, tipos entre otros
+ListaEnlazada -> Esta clase agrega el nodo para obtener cada dato y verificar datos espeificos de la lista
+Nodo -> Una clase Nodo para dar paso a los siguientes datos
+Menu -> La clase menu llama a las demas clases y se utiliza JOptionPane para la interacción con el usuario
+Main -> Desde la clase main se llaman a las clases menus de los distintos modulos para su respectivo uso
 
 MOD 1.1: 
 Clases:
