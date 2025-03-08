@@ -10,10 +10,11 @@ Daniel Quiros
 ==================Requisitos implementados==========================================
 
 1. MOD 1.0: Adbeel-
-Para la implementación de este modulo necesite realizar cambios constantes en la configuración de la clase main y la clase user ya que tuve algunos problemas para que toda la información necesaria quedara registrada
-en el archivo JSON, sin embargo gracias a mi compañera Adriana logre darme cuenta de lo que necesitaba cambiar para que todo quedara en orden.
+Para la implementación de este modulo necesite realizar cambios constantes en distintas clases ya que tuve algunos problemas para que toda la información necesaria quedara registrada
+en el archivo JSON, sin embargo gracias a mi compañera Adriana logre darme cuenta de lo que necesitaba cambiar para que todo quedara en orden. Ademas cabe decir que realice varias
+versiones de este modulo ya que a parte de algunos problemas a solucionar también se presentaron otros cambios como el cambio de idioma y la organización de las clases.
 
-2. MOD 1.1: Adriana-
+3. MOD 1.1: Adriana-
 Para la implementación del segundo módulo no se me ocurrió una buena manera de hacer las cosas más que con un HashMap para los keys, pero apreciaría muchísimo feedback
 para pensar en una mejor manera más adecuada de realizarlo, por lo que puedo decir que no está del todo finalizado en cuanto a la división correcta de cajas
 El requisito de cargar el archivo de JSON incluso si la app se cierra, no está listo todavía. 
