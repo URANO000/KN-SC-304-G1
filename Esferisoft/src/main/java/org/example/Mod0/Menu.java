@@ -19,6 +19,17 @@ public class Menu {
 
     //Mostrar el menú principal
     public void mostrarMenu() {
+        if (configuracion == null) {        // si no existe el archivo JSON, solitar la configuración 
+            solicitarConfiguracionInicial();
+        } else {
+            JOptionPane.showMessageDialog(null, "Configuración cargada:\n" +
+            "Nombre de la sucursal: " configuracion.getNombreSucursal() + "\n" 
+             + "Número de cajas: " + configuracion.getTotalCajas() + "\n" +
+             "Tipos de cajas: \n" + configuracion.getTiposCajas().obtenerElementos() + "\n"
+                    "Usuarios: \n" + configuracion.getUsuarios().obtenerElementos());
+        }
+    }
+    Private void solicitarConfiguracionInicial() {
         //Nombre de la sucursal
         String nombreSucursal = JOptionPane.showInputDialog("Ingrese el nombre de la sucursal:");
         configuracion.setNombreSucursal(nombreSucursal);
