@@ -19,7 +19,7 @@ public class Menu {
 
     //Mostrar el menú principal
     public void mostrarMenu() {
-        if (configuracion == null) {        // si no existe el archivo JSON, solitar la configuración 
+        if (configuracion == null) {        // si no existe el archivo JSON, solitar la configuración para crearlo
             solicitarConfiguracionInicial();
         } else {
             JOptionPane.showMessageDialog(null, "Configuración cargada:\n" +
