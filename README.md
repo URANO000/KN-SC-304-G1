@@ -17,7 +17,9 @@ versiones de este modulo ya que a parte de algunos problemas a solucionar tambi�
 3. MOD 1.1: Adriana-
 Para la implementación del segundo módulo no se me ocurrió una buena manera de hacer las cosas más que con un HashMap para los keys, pero apreciaría muchísimo feedback
 para pensar en una mejor manera más adecuada de realizarlo, por lo que puedo decir que no está del todo finalizado en cuanto a la división correcta de cajas
-El requisito de cargar el archivo de JSON incluso si la app se cierra, no está listo todavía. 
+El requisito de cargar el archivo de JSON incluso si la app se cierra, no está listo todavía.
+María Fernanda Mata-
+Para este módulo utilicé como referencia uno de los ejercicios del profe durante la clase para realizar los módulos de serializar y desserializar a ListaCajas.
 
 
 
