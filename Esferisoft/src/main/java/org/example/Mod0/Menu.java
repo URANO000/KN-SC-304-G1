@@ -8,13 +8,16 @@ package org.example.Mod0;
  *
  * @author Adbeel
  */
+import org.json.simple.parser.ParseException;
+
 import javax.swing.JOptionPane;
+import java.io.IOException;
 
 public class Menu {
-    private final ConfigSucursal configuracion;
+    private ConfigSucursal configuracion;
 
-    public Menu() {
-        this.configuracion = new ConfigSucursal();
+    public Menu() throws IOException, ParseException {
+        this.configuracion = ConfigJson.cargarConfiguracion();
     }
 
     //Mostrar el menú principal
@@ -23,14 +26,15 @@ public class Menu {
             solicitarConfiguracionInicial();
         } else {
             JOptionPane.showMessageDialog(null, "Configuración cargada:\n" +
-            "Nombre de la sucursal: " configuracion.getNombreSucursal() + "\n" 
+            "Nombre de la sucursal: " + configuracion.getNombreSucursal() + "\n"
              + "Número de cajas: " + configuracion.getTotalCajas() + "\n" +
-             "Tipos de cajas: \n" + configuracion.getTiposCajas().obtenerElementos() + "\n"
+             "Tipos de cajas: \n" + configuracion.getTiposCajas().obtenerElementos() + "\n" +
                     "Usuarios: \n" + configuracion.getUsuarios().obtenerElementos());
         }
     }
-    Private void solicitarConfiguracionInicial() {
+    private void solicitarConfiguracionInicial() {
         //Nombre de la sucursal
+        this.configuracion = new ConfigSucursal();
         String nombreSucursal = JOptionPane.showInputDialog("Ingrese el nombre de la sucursal:");
         configuracion.setNombreSucursal(nombreSucursal);
 

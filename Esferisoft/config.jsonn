@@ -1,0 +1,17 @@
+{
+  "nombreSucursal": "D",
+  "totalCajas": 2,
+  "tiposCajas": {
+    "cabeza": {
+      "dato": "preferencial",
+      "siguiente": {
+        "dato": "rapida"
+      }
+    }
+  },
+  "usuarios": {
+    "cabeza": {
+      "dato": "Adriana:"
+    }
+  }
+}

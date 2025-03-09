@@ -1,0 +1,13 @@
+org\example\Mod0\ListaEnlazada.class
+org\example\Mod1Cajas\Ticket.class
+org\example\Mod1Cajas\Caja.class
+org\example\Mod0\ConfigSucursal.class
+org\example\Mod1Cajas\Serializacionticket.class
+org\example\Mod1Cajas\ListaCajas.class
+org\example\Mod0\Menu.class
+org\example\Mod0\ConfigJson.class
+org\example\Main.class
+org\example\Mod1Cajas\NodoLista.class
+org\example\Mod1Cajas\ManagerCajas.class
+org\example\Mod0\Nodo.class
+org\example\Mod1Cajas\NodoCaja.class

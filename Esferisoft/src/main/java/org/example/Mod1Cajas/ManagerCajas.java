@@ -1,6 +1,9 @@
 package org.example.Mod1Cajas;
 import org.example.Mod0.*;
+import org.json.simple.parser.ParseException;
+
 import javax.swing.*;   //Solo la libreria de JAVA SWING
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Random;
@@ -12,8 +15,10 @@ public class ManagerCajas {
 
     //En esta clase se va a manejar t odo lo correspondiente a las cajas
 
-    public void menuCajas() {
+    public void menuCajas() throws IOException, ParseException {
         //Primero se deben de crear las cajas de acuerdo a el input del usuario
+
+        int seleccion;
 
         //primero a leer la configuracion del archivo JSON config-------------------------------------
         ConfigSucursal config = ConfigJson.cargarConfiguracion();
@@ -47,9 +52,17 @@ public class ManagerCajas {
 
         try{
             while(continuar) {
-                int seleccion = Integer.parseInt(JOptionPane.showInputDialog("Sistema de tiquetes \n" +
-                        "1. Crear nuevo tiquete \n" +
-                        "2. Salir"));
+
+                try{
+                    seleccion = Integer.parseInt(JOptionPane.showInputDialog("Sistema de tiquetes \n" +
+                            "1. Crear nuevo tiquete \n" +
+                            "2. Salir"));
+                }catch (Exception e){
+                    System.out.println("User hit Cancel!");
+                    seleccion = 2;
+                    continuar = false;
+                }
+
 
                 switch (seleccion) {
                     case 1:
@@ -144,7 +157,7 @@ public class ManagerCajas {
 
 
     }
-    public void asignarCaja(Ticket ticket, ListaCajas lista) {
+    public void asignarCaja(Ticket ticket, ListaCajas lista) throws IOException, ParseException {
         NodoLista actual = lista.getCabeza();
         Random rand = new Random(); //Quiero utilizar lógica para asignar tiquete a cualquier caja random si es una caja normal
 

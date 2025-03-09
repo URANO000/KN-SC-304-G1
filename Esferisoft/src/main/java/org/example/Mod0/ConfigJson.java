@@ -10,12 +10,17 @@ package org.example.Mod0;
  */
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
 public class ConfigJson {
-    private static final String ARCHIVO_CONFIG = "config.json";
+    private static final String ARCHIVO_CONFIG = "config.jsonn";
 
     // Método para guardar la configuración en el archivo JSON
     public static void guardarConfiguracion(ConfigSucursal configuracion) {
@@ -28,7 +33,11 @@ public class ConfigJson {
         }
 }
     //Cargar la configuración en el archivo JSON
-    public static ConfigSucursal cargarConfiguracion() {
+    public static ConfigSucursal cargarConfiguracion() throws IOException, ParseException {
+
+//        Object initialObj = new JSONParser().parse(new FileReader(ARCHIVO_CONFIG));
+//        JSONObject configJSON = (JSONObject) initialObj;
+
         Gson gson = new Gson();
         try (FileReader lector = new FileReader(ARCHIVO_CONFIG)){
             return gson.fromJson(lector, ConfigSucursal.class);
