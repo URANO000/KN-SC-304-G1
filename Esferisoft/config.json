@@ -1,6 +1,6 @@
 {
   "nombreSucursal": "Sucursal1",
-  "totalCajas": 3,
+  "totalCajas": 5,
   "tiposCajas": {
     "cabeza": {
       "dato": "rapida",

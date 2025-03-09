@@ -4,25 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="46c621c1-f3bd-45e6-9b52-1bcde50b8ebd" name="Changes" comment="Some basic arrangements and a note in MAIN.">
-      <change afterPath="$PROJECT_DIR$/tiquetes.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_27_2025_5_20_PM_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_27_2025_5_20_PM__Changes_.xml" beforeDir="false" />
+    <list default="true" id="46c621c1-f3bd-45e6-9b52-1bcde50b8ebd" name="Changes" comment="Fixed basic mistakes in mod1.0">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/config.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Mod0/ConfigJson.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Mod0/ConfigJson.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Mod0/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Mod0/Menu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Mod1Cajas/ManagerCajas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Mod1Cajas/ManagerCajas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Mod1Cajas/Serializacionticket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Mod1Cajas/Serializacionticket.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Mod0/BranchConfig.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Mod0/ConfigManager.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Mod0/FuncionConfig.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Mod0/User.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Mod1Cajas/ManagerCajas.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Mod1TODELETE/CreacionTicket.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Mod1TODELETE/Serializacionticket.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Mod1Cajas/ManagerCajas.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Mod1Cajas/ManagerCajas.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Mod1Cajas/Serializacionticket.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Mod1Cajas/Serializacionticket.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tiquetes.json" beforeDir="false" afterPath="$PROJECT_DIR$/tiquetes.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,7 +128,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Some basic arrangements and a note in MAIN." />
-    <option name="LAST_COMMIT_MESSAGE" value="Some basic arrangements and a note in MAIN." />
+    <MESSAGE value="Fixed basic mistakes in mod1.0" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed basic mistakes in mod1.0" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

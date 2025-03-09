@@ -25,11 +25,11 @@ public class ManagerCajas {
         }
 
         //Creo la lista de cajas ---------------------------------
-        for(int i = 0; i < config.getTotalCajas(); i++) {   //Un loop de creación de cajas por cada iteración según las cajas totales
+        for(int i = 1; i < config.getTotalCajas() + 1; i++) {   //Un loop de creación de cajas por cada iteración según las cajas totales
             String tipo;
-            if(i == 0) {   //Este if lo que hace es asignar el tipo de caja según el ID
+            if(i == 1) {   //Este if lo que hace es asignar el tipo de caja según el ID
                 tipo = "Preferencial";
-            } else if(i == 1) {
+            } else if(i == 2) {
                 tipo = "Rápida";
             } else {
                 tipo = "Normal";
@@ -42,7 +42,7 @@ public class ManagerCajas {
         System.out.println(listaCajas.toString());
 
 
-        //---------------Ahora sigue la creación del ticuete con JOptionPane---------------------
+        //---------------Ahora sigue la creación del tiquete con JOptionPane---------------------
         boolean continuar = true;  //Para el menú
 
         try{
@@ -150,7 +150,7 @@ public class ManagerCajas {
 
         if(ticket.getTipoTramite().equals("P")){
             while(actual != null){
-                if (actual.getDato().getIdCaja() == 0){
+                if (actual.getDato().getIdCaja() == 1){
                     actual.getDato().encolar(ticket);
                     JOptionPane.showMessageDialog(null, "Tiquete asginado a Caja Preferencial");
                     return;
@@ -160,7 +160,7 @@ public class ManagerCajas {
         }
         else if(ticket.getTipoTramite().equals("A")) {
             while(actual != null){
-                if(actual.getDato().getIdCaja() == 1){
+                if(actual.getDato().getIdCaja() == 2){
                     actual.getDato().encolar(ticket);
                     JOptionPane.showMessageDialog(null, "Tiquete asginado a Caja Rápida");
                     return;
@@ -176,7 +176,7 @@ public class ManagerCajas {
             do{
                 cajaRandom = rand.nextInt(totalCajas); //Se pone en cualquier caja normal
 
-            }while(cajaRandom == 0 || cajaRandom == 1);  //Mientras el ID de la caja no sea 0 o 1
+            }while(cajaRandom == 1 || cajaRandom == 2);  //Mientras el ID de la caja no sea 0 o 1
 
             //Ahora asignamos a la caja normal, cualquiera que sea
             while(actual != null) {  //Mientras el nodo actual no esté vacío

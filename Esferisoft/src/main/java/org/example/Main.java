@@ -10,7 +10,7 @@ public class Main {
 
         Menu menu = new Menu();
 
-//        menu.mostrarMenu();
+        menu.mostrarMenu();
         managerCajas.menuCajas();
 
 
