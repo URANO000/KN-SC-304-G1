@@ -20,7 +20,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class ConfigJson {
-    private static final String ARCHIVO_CONFIG = "config.jsonn";
+    private static final String ARCHIVO_CONFIG = "config.json";
 
     // Método para guardar la configuración en el archivo JSON
     public static void guardarConfiguracion(ConfigSucursal configuracion) {
