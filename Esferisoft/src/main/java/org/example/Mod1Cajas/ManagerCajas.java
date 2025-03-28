@@ -25,7 +25,7 @@ public class ManagerCajas {
 
         if (config == null) {
             JOptionPane.showMessageDialog(null, "Hubo un Error al cargar la configuracion",
-                                                    "Error", JOptionPane.ERROR_MESSAGE);
+                    "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
@@ -76,7 +76,7 @@ public class ManagerCajas {
                         serializador.serializarListaCajas(listaCajas, "tiquetes.json");
                         continuar = false;
                         break;
-                        
+
                     default:
                         JOptionPane.showMessageDialog(null, "Opción inválida");
                         break;

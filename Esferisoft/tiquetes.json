@@ -3,15 +3,108 @@
     "dato": {
       "idCaja": 1,
       "nombre": "Caja Preferencial",
-      "contador": 0
+      "frente": {
+        "dato": {
+          "nombre": "Lennox",
+          "id": 2717364,
+          "edad": 31,
+          "monedaCuenta": "COLONES",
+          "horaCreacion": "28-03-2025 08:23:09",
+          "horaAtencion": -1,
+          "tramite": "Retiros",
+          "tipoTramite": "P"
+        }
+      },
+      "fin": {
+        "dato": {
+          "nombre": "Lennox",
+          "id": 2717364,
+          "edad": 31,
+          "monedaCuenta": "COLONES",
+          "horaCreacion": "28-03-2025 08:23:09",
+          "horaAtencion": -1,
+          "tramite": "Retiros",
+          "tipoTramite": "P"
+        }
+      },
+      "contador": 1
     },
     "siguiente": {
       "dato": {
         "idCaja": 2,
         "nombre": "Caja Rápida",
-        "contador": 0
+        "frente": {
+          "dato": {
+            "nombre": "Roberto",
+            "id": 94587574,
+            "edad": 40,
+            "monedaCuenta": "DOLARES",
+            "horaCreacion": "28-03-2025 08:23:29",
+            "horaAtencion": -1,
+            "tramite": "Servicios",
+            "tipoTramite": "A"
+          }
+        },
+        "fin": {
+          "dato": {
+            "nombre": "Roberto",
+            "id": 94587574,
+            "edad": 40,
+            "monedaCuenta": "DOLARES",
+            "horaCreacion": "28-03-2025 08:23:29",
+            "horaAtencion": -1,
+            "tramite": "Servicios",
+            "tipoTramite": "A"
+          }
+        },
+        "contador": 1
+      },
+      "siguiente": {
+        "dato": {
+          "idCaja": 3,
+          "nombre": "Caja Normal",
+          "frente": {
+            "dato": {
+              "nombre": "Facundo",
+              "id": 99948,
+              "edad": 19,
+              "monedaCuenta": "COLONES",
+              "horaCreacion": "28-03-2025 08:24:00",
+              "horaAtencion": -1,
+              "tramite": "Cambio de divisas",
+              "tipoTramite": "B"
+            }
+          },
+          "fin": {
+            "dato": {
+              "nombre": "Facundo",
+              "id": 99948,
+              "edad": 19,
+              "monedaCuenta": "COLONES",
+              "horaCreacion": "28-03-2025 08:24:00",
+              "horaAtencion": -1,
+              "tramite": "Cambio de divisas",
+              "tipoTramite": "B"
+            }
+          },
+          "contador": 1
+        },
+        "siguiente": {
+          "dato": {
+            "idCaja": 4,
+            "nombre": "Caja Normal",
+            "contador": 0
+          },
+          "siguiente": {
+            "dato": {
+              "idCaja": 5,
+              "nombre": "Caja Normal",
+              "contador": 0
+            }
+          }
+        }
       }
     }
   },
-  "contador": 2
+  "contador": 5
 }
