@@ -10,8 +10,9 @@ import java.util.Random;
 
 public class ManagerCajas {
     private ListaCajas listaCajas = new ListaCajas();
+    boolean continuar = true;  //Para el menú
 
-    //Getters & setter
+
 
     //En esta clase se va a manejar t odo lo correspondiente a las cajas
 
@@ -48,15 +49,15 @@ public class ManagerCajas {
 
 
         //---------------Ahora sigue la creación del tiquete con JOptionPane---------------------
-        boolean continuar = true;  //Para el menú
 
         try{
             while(continuar) {
 
                 try{
-                    seleccion = Integer.parseInt(JOptionPane.showInputDialog("Sistema de tiquetes \n" +
-                            "1. Crear nuevo tiquete \n" +
-                            "2. Salir"));
+                    seleccion = Integer.parseInt(JOptionPane.showInputDialog("""
+                            Sistema de tiquetes\s
+                            1. Crear nuevo tiquete\s
+                            2. Salir"""));
                 }catch (Exception e){
                     System.out.println("User hit Cancel!");
                     seleccion = 2;
@@ -100,19 +101,15 @@ public class ManagerCajas {
 
             //To check opciones moneda
             String opcionesMoneda;
-            while (true) {
-                opcionesMoneda = JOptionPane.showInputDialog("DOLARES o COLONES");
-                if (!opcionesMoneda.equals("DOLARES") || !opcionesMoneda.equals("COLONES")) {
-                    break;
-                }
-            }
+
+            opcionesMoneda = JOptionPane.showInputDialog("DOLARES o COLONES");
 
             String tramite = JOptionPane.showInputDialog("Ingrese el trámite a realizar (Depósitos, Servicios, Retiros, Cambio de divisas)");
 
             int tramiteAUX = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el tipo de trámite \n" +
-                    "1. P: preferencial  \n" +
-                    "2. A: Rápida  \n" +
-                    "3. B: Normal: "));
+                    "1.  Preferencial  \n" +
+                    "2.  Rápida  \n" +
+                    "3.  Normal: "));
             String tipoTramite = "";
             switch (tramiteAUX) {
                 case 1:
@@ -144,11 +141,11 @@ public class ManagerCajas {
             //Para mostrar las personas al frente
             if (personasAdelante(ticket, listaCajas) == 0) {
                 JOptionPane.showMessageDialog(null, "Es su turno!!!");
-            }else {
-                JOptionPane.showMessageDialog(null, "Hay " + personasAdelante(ticket, listaCajas) + " persona(s) frente a usted");
+            }else if (personasAdelante(ticket, listaCajas) ==1){
+                JOptionPane.showMessageDialog(null, "Hay " + personasAdelante(ticket, listaCajas) + " persona frente a usted!");
+            } else {
+                JOptionPane.showMessageDialog(null, "Hay " + personasAdelante(ticket, listaCajas) + "personas frente a usted!");
             }
-
-
 
 
         } catch(Exception e) {
@@ -159,7 +156,6 @@ public class ManagerCajas {
     }
     public void asignarCaja(Ticket ticket, ListaCajas lista) throws IOException, ParseException {
         NodoLista actual = lista.getCabeza();
-        Random rand = new Random(); //Quiero utilizar lógica para asignar tiquete a cualquier caja random si es una caja normal
 
         if(ticket.getTipoTramite().equals("P")){
             while(actual != null){
@@ -182,28 +178,32 @@ public class ManagerCajas {
                 actual = actual.getSiguiente();
             }
         }
-        else {  //Si la caja es normal
-            int totalCajas = ConfigJson.cargarConfiguracion().getTotalCajas();
-            int cajaRandom;
-
-            do{
-                cajaRandom = rand.nextInt(totalCajas); //Se pone en cualquier caja normal
-
-            }while(cajaRandom == 1 || cajaRandom == 2);  //Mientras el ID de la caja no sea 0 o 1
-
-            //Ahora asignamos a la caja normal, cualquiera que sea
-            while(actual != null) {  //Mientras el nodo actual no esté vacío
-                if(actual.getDato().getIdCaja() == cajaRandom) {
-                    actual.getDato().encolar(ticket);  //encolamos el ticket en la caja random
-                    JOptionPane.showMessageDialog(null, "Tiquete asignado a Caja Normal " + cajaRandom);
-                    return;
+        else if(ticket.getTipoTramite().equals("B")){  //Si la caja es normal
+            Caja cajaMenosLlena = null;
+            int min = Integer.MAX_VALUE; //El mayor entero!!
+            while(actual != null){  //mientra la lista no esté vacía
+                Caja cajaActual = actual.getDato();
+                int size = actual.getDato().size();
+                if(cajaActual.getIdCaja() != 1 && cajaActual.getIdCaja() != 2){  //Si la caja no es ni preferencial ni rapida
+                    if(size <= min) {
+                        min = size;
+                        cajaMenosLlena = cajaActual; //Constantemente va a cambiar a las cajas de menor tamaño
+                    }
                 }
-                actual = actual.getSiguiente(); //Siempre hay que actualizar el puntero
+                actual = actual.getSiguiente(); //Actualizar el puntero a la siguiente caja
+            }
+            if (cajaMenosLlena != null){ //si la caja contiene tiquetes
+                cajaMenosLlena.encolar(ticket);
+                JOptionPane.showMessageDialog(null,"Tiquete asignado a Caja Normal " + cajaMenosLlena.getIdCaja() );
+
+            } else {
+                JOptionPane.showMessageDialog(null,"Oh Snap! X_X  No hay cajas para el tiquete");
 
             }
 
+        }else{
+            JOptionPane.showMessageDialog(null, "No hay un trámite válido"); //No debería de pasar!!!
         }
-        JOptionPane.showMessageDialog(null, "No se encontró una caja"); //No debería de pasar!!!
 
     }
 

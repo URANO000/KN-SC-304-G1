@@ -3,61 +3,13 @@
     "dato": {
       "idCaja": 1,
       "nombre": "Caja Preferencial",
-      "frente": {
-        "dato": {
-          "nombre": "Lennox",
-          "id": 2717364,
-          "edad": 31,
-          "monedaCuenta": "COLONES",
-          "horaCreacion": "28-03-2025 08:23:09",
-          "horaAtencion": -1,
-          "tramite": "Retiros",
-          "tipoTramite": "P"
-        }
-      },
-      "fin": {
-        "dato": {
-          "nombre": "Lennox",
-          "id": 2717364,
-          "edad": 31,
-          "monedaCuenta": "COLONES",
-          "horaCreacion": "28-03-2025 08:23:09",
-          "horaAtencion": -1,
-          "tramite": "Retiros",
-          "tipoTramite": "P"
-        }
-      },
-      "contador": 1
+      "contador": 0
     },
     "siguiente": {
       "dato": {
         "idCaja": 2,
         "nombre": "Caja Rápida",
-        "frente": {
-          "dato": {
-            "nombre": "Roberto",
-            "id": 94587574,
-            "edad": 40,
-            "monedaCuenta": "DOLARES",
-            "horaCreacion": "28-03-2025 08:23:29",
-            "horaAtencion": -1,
-            "tramite": "Servicios",
-            "tipoTramite": "A"
-          }
-        },
-        "fin": {
-          "dato": {
-            "nombre": "Roberto",
-            "id": 94587574,
-            "edad": 40,
-            "monedaCuenta": "DOLARES",
-            "horaCreacion": "28-03-2025 08:23:29",
-            "horaAtencion": -1,
-            "tramite": "Servicios",
-            "tipoTramite": "A"
-          }
-        },
-        "contador": 1
+        "contador": 0
       },
       "siguiente": {
         "dato": {
@@ -65,11 +17,11 @@
           "nombre": "Caja Normal",
           "frente": {
             "dato": {
-              "nombre": "Facundo",
-              "id": 99948,
-              "edad": 19,
-              "monedaCuenta": "COLONES",
-              "horaCreacion": "28-03-2025 08:24:00",
+              "nombre": "Goofy",
+              "id": 29933,
+              "edad": 50,
+              "monedaCuenta": "DOLARES",
+              "horaCreacion": "28-03-2025 16:04:22",
               "horaAtencion": -1,
               "tramite": "Cambio de divisas",
               "tipoTramite": "B"
@@ -77,11 +29,11 @@
           },
           "fin": {
             "dato": {
-              "nombre": "Facundo",
-              "id": 99948,
-              "edad": 19,
-              "monedaCuenta": "COLONES",
-              "horaCreacion": "28-03-2025 08:24:00",
+              "nombre": "Goofy",
+              "id": 29933,
+              "edad": 50,
+              "monedaCuenta": "DOLARES",
+              "horaCreacion": "28-03-2025 16:04:22",
               "horaAtencion": -1,
               "tramite": "Cambio de divisas",
               "tipoTramite": "B"
@@ -93,13 +45,61 @@
           "dato": {
             "idCaja": 4,
             "nombre": "Caja Normal",
-            "contador": 0
+            "frente": {
+              "dato": {
+                "nombre": "Bradley",
+                "id": 894993494,
+                "edad": 20,
+                "monedaCuenta": "COLONES",
+                "horaCreacion": "28-03-2025 16:03:43",
+                "horaAtencion": -1,
+                "tramite": "Retiros",
+                "tipoTramite": "B"
+              }
+            },
+            "fin": {
+              "dato": {
+                "nombre": "Bradley",
+                "id": 894993494,
+                "edad": 20,
+                "monedaCuenta": "COLONES",
+                "horaCreacion": "28-03-2025 16:03:43",
+                "horaAtencion": -1,
+                "tramite": "Retiros",
+                "tipoTramite": "B"
+              }
+            },
+            "contador": 1
           },
           "siguiente": {
             "dato": {
               "idCaja": 5,
               "nombre": "Caja Normal",
-              "contador": 0
+              "frente": {
+                "dato": {
+                  "nombre": "Max",
+                  "id": 38884848,
+                  "edad": 17,
+                  "monedaCuenta": "COLONES",
+                  "horaCreacion": "28-03-2025 16:03:24",
+                  "horaAtencion": -1,
+                  "tramite": "Retiro",
+                  "tipoTramite": "B"
+                }
+              },
+              "fin": {
+                "dato": {
+                  "nombre": "Max",
+                  "id": 38884848,
+                  "edad": 17,
+                  "monedaCuenta": "COLONES",
+                  "horaCreacion": "28-03-2025 16:03:24",
+                  "horaAtencion": -1,
+                  "tramite": "Retiro",
+                  "tipoTramite": "B"
+                }
+              },
+              "contador": 1
             }
           }
         }

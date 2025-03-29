@@ -4,56 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="46c621c1-f3bd-45e6-9b52-1bcde50b8ebd" name="Changes" comment="Fixed basic mistakes in mod1.0">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_3_5_2025_10_45_AM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_3_5_2025_10_45_AM__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_3_7_2025_5_32_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_3_7_2025_5_32_PM__Changes_.xml" afterDir="false" />
+    <list default="true" id="46c621c1-f3bd-45e6-9b52-1bcde50b8ebd" name="Changes" comment="Fixed more stuff..ughh">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Mod3/SerializaciónColas.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Mod0/ConfigJson.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Mod0/ConfigJson.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Mod0/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Mod0/Menu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Mod1Cajas/ManagerCajas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Mod1Cajas/ManagerCajas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Mod0/ConfigJson.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Mod0/ConfigJson.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Mod0/Menu.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Mod0/Menu.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/example/Mod1Cajas/ManagerCajas.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Mod1Cajas/ManagerCajas.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Mod1Cajas/NodoLista.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Mod1Cajas/NodoLista.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../KN-SC-304-G1/Esferisoft/config.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../KN-SC-304-G1/Esferisoft/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../KN-SC-304-G1/Esferisoft/src/main/java/org/example/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../KN-SC-304-G1/Esferisoft/src/main/java/org/example/Mod0/ConfigJson.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../KN-SC-304-G1/Esferisoft/src/main/java/org/example/Mod0/ConfigSucursal.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../KN-SC-304-G1/Esferisoft/src/main/java/org/example/Mod0/ListaEnlazada.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../KN-SC-304-G1/Esferisoft/src/main/java/org/example/Mod0/Menu.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../KN-SC-304-G1/Esferisoft/src/main/java/org/example/Mod0/Nodo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../KN-SC-304-G1/Esferisoft/src/main/java/org/example/Mod1Cajas/Caja.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../KN-SC-304-G1/Esferisoft/src/main/java/org/example/Mod1Cajas/ListaCajas.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../KN-SC-304-G1/Esferisoft/src/main/java/org/example/Mod1Cajas/ManagerCajas.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../KN-SC-304-G1/Esferisoft/src/main/java/org/example/Mod1Cajas/NodoCaja.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../KN-SC-304-G1/Esferisoft/src/main/java/org/example/Mod1Cajas/NodoLista.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../KN-SC-304-G1/Esferisoft/src/main/java/org/example/Mod1Cajas/Serializacionticket.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../KN-SC-304-G1/Esferisoft/src/main/java/org/example/Mod1Cajas/Ticket.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../KN-SC-304-G1/Esferisoft/target/Esferisoft-1.0-SNAPSHOT.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../KN-SC-304-G1/Esferisoft/target/classes/org/example/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../KN-SC-304-G1/Esferisoft/target/classes/org/example/Mod0/ConfigJson.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../KN-SC-304-G1/Esferisoft/target/classes/org/example/Mod0/ConfigSucursal.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../KN-SC-304-G1/Esferisoft/target/classes/org/example/Mod0/ListaEnlazada.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../KN-SC-304-G1/Esferisoft/target/classes/org/example/Mod0/Menu.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../KN-SC-304-G1/Esferisoft/target/classes/org/example/Mod0/Nodo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../KN-SC-304-G1/Esferisoft/target/classes/org/example/Mod1Cajas/Caja.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../KN-SC-304-G1/Esferisoft/target/classes/org/example/Mod1Cajas/ListaCajas.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../KN-SC-304-G1/Esferisoft/target/classes/org/example/Mod1Cajas/ManagerCajas.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../KN-SC-304-G1/Esferisoft/target/classes/org/example/Mod1Cajas/NodoCaja.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../KN-SC-304-G1/Esferisoft/target/classes/org/example/Mod1Cajas/NodoLista.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../KN-SC-304-G1/Esferisoft/target/classes/org/example/Mod1Cajas/Serializacionticket.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../KN-SC-304-G1/Esferisoft/target/classes/org/example/Mod1Cajas/Ticket.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../KN-SC-304-G1/Esferisoft/target/maven-archiver/pom.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../KN-SC-304-G1/Esferisoft/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../KN-SC-304-G1/Esferisoft/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../KN-SC-304-G1/Esferisoft/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../KN-SC-304-G1/Esferisoft/tiquetes.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../KN-SC-304-G1/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../KN-SC-304-G1/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tiquetes.json" beforeDir="false" afterPath="$PROJECT_DIR$/tiquetes.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,6 +24,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/.." value="Releases" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="ProjectColorInfo">{
@@ -81,12 +42,12 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.CreacionTicket.executor": "Run",
-    "Application.Main.executor": "Debug",
+    "Application.Main.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "Releases",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/kkoni/OneDrive/Desktop/U Work/KN-SC-304-G1/Esferisoft"
+    "last_opened_file_path": "C:/Users/kkoni/OneDrive/Desktop/Documents/Q4/ESTRUCTURA/AAAAAAA"
   }
 }]]></component>
   <component name="RunManager" selected="Application.Main">
@@ -154,7 +115,15 @@
       <option name="project" value="LOCAL" />
       <updated>1740890708213</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Fixed more stuff..ughh">
+      <option name="closed" value="true" />
+      <created>1743171933574</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1743171933574</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -171,7 +140,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Some basic arrangements and a note in MAIN." />
     <MESSAGE value="Fixed basic mistakes in mod1.0" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed basic mistakes in mod1.0" />
+    <MESSAGE value="Fixed more stuff..ughh" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed more stuff..ughh" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -180,11 +150,6 @@
           <properties class="java.lang.NullPointerException" package="java.lang" />
           <option name="timeStamp" value="1" />
         </breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/Mod0/ConfigJson.java</url>
-          <line>40</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
