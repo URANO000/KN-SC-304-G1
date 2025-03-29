@@ -1,0 +1,15 @@
+{
+  "ticket": {
+    "nombre": "Kurt",
+    "id": 88737374,
+    "edad": 32,
+    "monedaCuenta": "COLONES",
+    "horaCreacion": "28-03-2025 22:53:05",
+    "horaAtencion": 1743224030972,
+    "tramite": "Retiros",
+    "tipoTramite": "P"
+  },
+  "idCaja": 1,
+  "nombreCaja": "Caja Preferencial",
+  "nombreSucursal": "Sucursal1"
+}

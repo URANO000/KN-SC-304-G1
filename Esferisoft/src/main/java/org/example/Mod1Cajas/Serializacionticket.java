@@ -5,14 +5,15 @@ import java.io.FileReader;
 import java.io.FileWriter;
 
 public class Serializacionticket {
+    public static final String ARCHIVO_2 = "tiquetes.json";
 
     public Serializacionticket() {
     }
     
     //Método para serializar la Lista de Cajas
-    public void serializarListaCajas (ListaCajas lista, String archivo){
+    public void serializarListaCajas (ListaCajas lista){
         Gson gson = new GsonBuilder ().setPrettyPrinting().create();
-        try (FileWriter writer = new FileWriter(archivo)) {
+        try (FileWriter writer = new FileWriter(ARCHIVO_2)) {
             
             gson.toJson(lista ,writer);
             
@@ -22,13 +23,18 @@ public class Serializacionticket {
     } 
     
     //Método para desserializar la Lista de Cajas
-    public ListaCajas desseralizarPila(String archivo){
-        Gson gson = new GsonBuilder().create();
-        try (FileReader reader = new FileReader(archivo)) {            
-            return gson.fromJson(reader, ListaCajas.class);            
-        } catch (Exception e) {
+    private ListaCajas deserializarListaCajas(){
+        Gson gson = new Gson();
+        ListaCajas lista = null;
+
+        try(FileReader reader = new FileReader(ARCHIVO_2)){
+            //Aqui la deserializacion creo......
+            lista = gson.fromJson(reader, ListaCajas.class);
+
+        }catch (Exception e) {
             e.printStackTrace();
         }
-        return null;
+        return lista;
+
     }
 }

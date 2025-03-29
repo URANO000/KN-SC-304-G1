@@ -28,10 +28,11 @@ public class ManagerAtencion {
         
         while (continuar){
             int opcion = Integer.parseInt(JOptionPane.showInputDialog(//Muestra el menú de este módulo
-                    "Módulo de Atención de Tiquetes\n" +
-                    "1. Ver cajas disponibles\n" +
-                    "2. Atender siguiente en una caja\n" +
-                    "3. Salir"
+                    """
+                            Módulo de Atención de Tiquetes
+                            1. Ver cajas disponibles
+                            2. Atender siguiente en una caja
+                            3. Salir"""
             ));
             
             switch (opcion) {

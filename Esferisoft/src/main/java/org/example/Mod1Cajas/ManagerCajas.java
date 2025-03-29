@@ -1,5 +1,6 @@
 package org.example.Mod1Cajas;
 import org.example.Mod0.*;
+import org.example.Mod3.SerializaciónColas;
 import org.json.simple.parser.ParseException;
 
 import javax.swing.*;   //Solo la libreria de JAVA SWING
@@ -11,7 +12,7 @@ import java.util.Random;
 public class ManagerCajas {
     private ListaCajas listaCajas = new ListaCajas();
     boolean continuar = true;  //Para el menú
-
+    SerializaciónColas json = new SerializaciónColas();  //Para metodo add cajas
 
 
     //En esta clase se va a manejar t odo lo correspondiente a las cajas
@@ -74,7 +75,7 @@ public class ManagerCajas {
                     case 2:
                         // Aquí va la llamada de la clase serializar
                         Serializacionticket serializador = new Serializacionticket();
-                        serializador.serializarListaCajas(listaCajas, "tiquetes.json");
+                        serializador.serializarListaCajas(listaCajas);
                         continuar = false;
                         break;
 
@@ -195,6 +196,7 @@ public class ManagerCajas {
             if (cajaMenosLlena != null){ //si la caja contiene tiquetes
                 cajaMenosLlena.encolar(ticket);
                 JOptionPane.showMessageDialog(null,"Tiquete asignado a Caja Normal " + cajaMenosLlena.getIdCaja() );
+                json.serializarColas(listaCajas);  //Se crea colas.json
 
             } else {
                 JOptionPane.showMessageDialog(null,"Oh Snap! X_X  No hay cajas para el tiquete");
@@ -230,5 +232,14 @@ public class ManagerCajas {
 
     }
 
+    //Getters & setters--------------------------------
 
+
+    public ListaCajas getListaCajas() {
+        return listaCajas;
+    }
+
+    public void setListaCajas(ListaCajas listaCajas) {
+        this.listaCajas = listaCajas;
+    }
 }

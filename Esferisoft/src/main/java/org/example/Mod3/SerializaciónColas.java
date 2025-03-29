@@ -1,11 +1,15 @@
 package org.example.Mod3;
 
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.example.Mod1Cajas.ListaCajas;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
+
+import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.IOException;
 
 public class SerializaciónColas {
     //Aqui se hace la serialización pertinente a colas.json -->
@@ -21,4 +25,21 @@ public class SerializaciónColas {
             e.printStackTrace();
         }
     }
+
+    private ListaCajas deserializarColas(){
+        Gson gson = new Gson();
+        ListaCajas lista = null;
+
+        try(FileReader reader = new FileReader(ARCHIVO_3)){
+            //Aqui creo que intento deserializar
+            lista = gson.fromJson(reader, ListaCajas.class);
+
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+        return lista;
+
+    }
+
+
 }

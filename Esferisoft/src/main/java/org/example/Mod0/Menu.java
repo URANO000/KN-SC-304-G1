@@ -94,4 +94,14 @@ public class Menu {
         ConfigJson.guardarConfiguracion(configuracion);
         JOptionPane.showMessageDialog(null, "Configuración guardada exitosamente en config.json.");
     }
+
+    //Getters & setters--------------------------
+
+    public ConfigSucursal getConfiguracion() {
+        return configuracion;
+    }
+
+    public void setConfiguracion(ConfigSucursal configuracion) {
+        this.configuracion = configuracion;
+    }
 }

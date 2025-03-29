@@ -1,6 +1,7 @@
 package org.example.Mod1Cajas;
 
 
+
 public class Caja {
     //La clase cajas es basicamente como decir la clase: Colas
     //Le voy a dar un id a la caja, de esta manera se puede tener un control de cual es cual
