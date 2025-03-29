@@ -5,11 +5,8 @@ import java.io.FileReader;
 import java.io.FileWriter;
 
 public class Serializacionticket {
-    public static final String ARCHIVO_2 = "tiquetes.json";
+    private static final String ARCHIVO_2 = "tiquetes.json";
 
-    public Serializacionticket() {
-    }
-    
     //Método para serializar la Lista de Cajas
     public void serializarListaCajas (ListaCajas lista){
         Gson gson = new GsonBuilder ().setPrettyPrinting().create();
@@ -23,7 +20,7 @@ public class Serializacionticket {
     } 
     
     //Método para desserializar la Lista de Cajas
-    private ListaCajas deserializarListaCajas(){
+    public ListaCajas deserializarListaCajas(){
         Gson gson = new Gson();
         ListaCajas lista = null;
 

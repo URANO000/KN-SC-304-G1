@@ -4,17 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="46c621c1-f3bd-45e6-9b52-1bcde50b8ebd" name="Changes" comment="Mod 3,also trying to figure things out with Jackson instead of Json">
-      <change afterPath="$PROJECT_DIR$/atendidos.json" afterDir="false" />
+    <list default="true" id="46c621c1-f3bd-45e6-9b52-1bcde50b8ebd" name="Changes" comment="Last commit of the day. I am just missing deserializar working.">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_3_5_2025_10_45_AM__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_3_7_2025_5_32_PM__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Mod0/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Mod0/Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/colas.json" beforeDir="false" afterPath="$PROJECT_DIR$/colas.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Mod0/ConfigJson.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Mod0/ConfigJson.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Mod1Cajas/ManagerCajas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Mod1Cajas/ManagerCajas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Mod2Atencion/ManagerAtencion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Mod2Atencion/ManagerAtencion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Mod3/SerializaciónColas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Mod3/SerializaciónColas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Mod0/Menu.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Mod0/Menu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Mod1Cajas/Serializacionticket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Mod1Cajas/Serializacionticket.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Mod1Cajas/Ticket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Mod1Cajas/Ticket.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Mod3/SerializaciónColas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Mod3/SerializacionColas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Mod0/ConfigJson.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Mod0/ConfigJson.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/example/Mod1Cajas/Caja.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Mod1Cajas/Caja.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/example/Mod1Cajas/ManagerCajas.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Mod1Cajas/ManagerCajas.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Mod1Cajas/Serializacionticket.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Mod1Cajas/Serializacionticket.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tiquetes.json" beforeDir="false" afterPath="$PROJECT_DIR$/tiquetes.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -37,6 +40,9 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3
 }</component>
@@ -57,7 +63,10 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "Releases",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/kkoni/OneDrive/Desktop/Documents/Q4/ESTRUCTURA/AAAAAAA"
+    "last_opened_file_path": "C:/Users/kkoni/Downloads/jackson-core-2.18.3.jar",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2"
   }
 }]]></component>
   <component name="RunDashboard">
@@ -148,7 +157,15 @@
       <option name="project" value="LOCAL" />
       <updated>1743220724374</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Last commit of the day. I am just missing deserializar working.">
+      <option name="closed" value="true" />
+      <created>1743232810951</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1743232810951</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -168,7 +185,8 @@
     <MESSAGE value="Fixed basic mistakes in mod1.0" />
     <MESSAGE value="Fixed more stuff..ughh" />
     <MESSAGE value="Mod 3,also trying to figure things out with Jackson instead of Json" />
-    <option name="LAST_COMMIT_MESSAGE" value="Mod 3,also trying to figure things out with Jackson instead of Json" />
+    <MESSAGE value="Last commit of the day. I am just missing deserializar working." />
+    <option name="LAST_COMMIT_MESSAGE" value="Last commit of the day. I am just missing deserializar working." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

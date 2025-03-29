@@ -6,12 +6,10 @@ import com.google.gson.GsonBuilder;
 import org.example.Mod1Cajas.ListaCajas;
 
 
-import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.io.IOException;
 
-public class SerializaciónColas {
+public class SerializacionColas {
     //Aqui se hace la serialización pertinente a colas.json -->
     private static final String ARCHIVO_3 = "colas.json";
 

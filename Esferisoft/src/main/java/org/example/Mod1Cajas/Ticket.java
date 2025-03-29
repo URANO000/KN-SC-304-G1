@@ -1,5 +1,7 @@
 package org.example.Mod1Cajas;
 
+import java.util.Objects;
+
 public class Ticket {
     //La clase Ticket es basicamente como decir la clase: Dato   ya que es el dato dentro del nodo en cajas
 

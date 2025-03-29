@@ -15,7 +15,31 @@
         "dato": {
           "idCaja": 3,
           "nombre": "Caja Normal",
-          "contador": 0
+          "frente": {
+            "dato": {
+              "nombre": "Mimi",
+              "id": 83838838,
+              "edad": 19,
+              "monedaCuenta": "COLONES",
+              "horaCreacion": "29-03-2025 13:51:34",
+              "horaAtencion": -1,
+              "tramite": "Retiros",
+              "tipoTramite": "B"
+            }
+          },
+          "fin": {
+            "dato": {
+              "nombre": "Mimi",
+              "id": 83838838,
+              "edad": 19,
+              "monedaCuenta": "COLONES",
+              "horaCreacion": "29-03-2025 13:51:34",
+              "horaAtencion": -1,
+              "tramite": "Retiros",
+              "tipoTramite": "B"
+            }
+          },
+          "contador": 1
         },
         "siguiente": {
           "dato": {
@@ -65,17 +89,17 @@
               },
               "fin": {
                 "dato": {
-                  "nombre": "Johnny",
-                  "id": 8892998,
-                  "edad": 17,
-                  "monedaCuenta": "COLONES",
-                  "horaCreacion": "28-03-2025 23:09:46",
+                  "nombre": "Lala",
+                  "id": 847557858,
+                  "edad": 15,
+                  "monedaCuenta": "DOLARES",
+                  "horaCreacion": "29-03-2025 13:52:02",
                   "horaAtencion": -1,
-                  "tramite": "Retiros",
+                  "tramite": "Cambio de divisas",
                   "tipoTramite": "B"
                 }
               },
-              "contador": 1
+              "contador": 2
             }
           }
         }

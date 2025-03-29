@@ -3,19 +3,91 @@
     "dato": {
       "idCaja": 1,
       "nombre": "Caja Preferencial",
-      "contador": 0
+      "frente": {
+        "dato": {
+          "nombre": "Coco",
+          "id": 92384834,
+          "edad": 20,
+          "monedaCuenta": "DOLARES",
+          "horaCreacion": "29-03-2025 13:52:45",
+          "horaAtencion": -1,
+          "tramite": "Servicios",
+          "tipoTramite": "P"
+        }
+      },
+      "fin": {
+        "dato": {
+          "nombre": "Poko",
+          "id": 99928288,
+          "edad": 34,
+          "monedaCuenta": "COLONES",
+          "horaCreacion": "29-03-2025 14:58:09",
+          "horaAtencion": -1,
+          "tramite": "Servicios",
+          "tipoTramite": "P"
+        }
+      },
+      "contador": 3
     },
     "siguiente": {
       "dato": {
         "idCaja": 2,
         "nombre": "Caja Rápida",
-        "contador": 0
+        "frente": {
+          "dato": {
+            "nombre": "Chocola",
+            "id": 3959956,
+            "edad": 90,
+            "monedaCuenta": "COLONES",
+            "horaCreacion": "29-03-2025 13:53:27",
+            "horaAtencion": -1,
+            "tramite": "Depositos",
+            "tipoTramite": "A"
+          }
+        },
+        "fin": {
+          "dato": {
+            "nombre": "Jotaro",
+            "id": 99947774,
+            "edad": 17,
+            "monedaCuenta": "DOLARES",
+            "horaCreacion": "29-03-2025 15:06:40",
+            "horaAtencion": -1,
+            "tramite": "Cambio de divisas",
+            "tipoTramite": "A"
+          }
+        },
+        "contador": 3
       },
       "siguiente": {
         "dato": {
           "idCaja": 3,
           "nombre": "Caja Normal",
-          "contador": 0
+          "frente": {
+            "dato": {
+              "nombre": "Mimi",
+              "id": 83838838,
+              "edad": 19,
+              "monedaCuenta": "COLONES",
+              "horaCreacion": "29-03-2025 13:51:34",
+              "horaAtencion": -1,
+              "tramite": "Retiros",
+              "tipoTramite": "B"
+            }
+          },
+          "fin": {
+            "dato": {
+              "nombre": "Mimi",
+              "id": 83838838,
+              "edad": 19,
+              "monedaCuenta": "COLONES",
+              "horaCreacion": "29-03-2025 13:51:34",
+              "horaAtencion": -1,
+              "tramite": "Retiros",
+              "tipoTramite": "B"
+            }
+          },
+          "contador": 1
         },
         "siguiente": {
           "dato": {
@@ -65,17 +137,17 @@
               },
               "fin": {
                 "dato": {
-                  "nombre": "Johnny",
-                  "id": 8892998,
-                  "edad": 17,
-                  "monedaCuenta": "COLONES",
-                  "horaCreacion": "28-03-2025 23:09:46",
+                  "nombre": "Lala",
+                  "id": 847557858,
+                  "edad": 15,
+                  "monedaCuenta": "DOLARES",
+                  "horaCreacion": "29-03-2025 13:52:02",
                   "horaAtencion": -1,
-                  "tramite": "Retiros",
+                  "tramite": "Cambio de divisas",
                   "tipoTramite": "B"
                 }
               },
-              "contador": 1
+              "contador": 2
             }
           }
         }
