@@ -1,4 +1,4 @@
-// Aquí se define en qué clase se definió el ticket y a la vez el nombre de la sucursal
+
 package org.example.Mod2Atencion;
 import org.example.Mod1Cajas.Ticket;
 /**
@@ -11,6 +11,7 @@ public class TicketAtendido {
     private String nombreCaja;
     private String nombreSucursal;
 
+    // Constructor que define en qué clase se definió el ticket y a la vez el nombre de la sucursal
     public TicketAtendido(Ticket ticket, int idCaja, String nombreCaja, String nombreSucursal) {
         this.ticket = ticket;
         this.idCaja = idCaja;
