@@ -96,6 +96,8 @@ public class ManagerAtencion {
 
                     // Eliminar de la cola
                     caja.atender();
+                    serializarColasActualizadas();
+
                     return;
                 }
                 actual = actual.getSiguiente();
@@ -106,6 +108,13 @@ public class ManagerAtencion {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Hubo un error al atender tiquete.");
         }
+    }
+    
+    /*Este método va sobreescribir los tiquetes json cada vez que las cajas 
+    sean actualizadas cada vez que se atiende un cliente*/
+    private void serializarColasActualizadas() {
+    Serializacionticket serializador = new Serializacionticket();
+    serializador.serializarListaCajas(listaCajas);
     }
     
     private String obtenerHoraFormateada(long milis){
