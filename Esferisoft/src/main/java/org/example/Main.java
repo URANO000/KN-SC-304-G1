@@ -3,6 +3,7 @@ package org.example;
 import org.example.Mod0.*;
 import org.example.Mod1Cajas.*;
 import org.example.Mod2Atencion.*;
+import Mod4.GrafoServicios;
 import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
@@ -11,6 +12,9 @@ import javax.swing.JOptionPane;
 public class Main {
     public static void main(String[] args) throws IOException, ParseException {
         
+        // Grafos (mod4)
+        GrafoServicios grafo = new GrafoServicios();
+        grafo.mostrarGrafo();
 
         // Crear objeto de módulo 1.0 (configuración del sistema)
         Menu menu = new Menu();
