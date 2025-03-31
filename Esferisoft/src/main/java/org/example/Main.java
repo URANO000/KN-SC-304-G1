@@ -3,8 +3,6 @@ package org.example;
 import org.example.Mod0.*;
 import org.example.Mod1Cajas.*;
 import org.example.Mod2Atencion.*;
-
-import org.example.Mod4.GrafoServicios;
 import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
@@ -30,21 +28,24 @@ public class Main {
         ManagerCajas managerCajas = new ManagerCajas();
         ListaCajas listaCajas = managerCajas.getListaCajas();
         ManagerAtencion managerAtencion = new ManagerAtencion(listaCajas, config.getNombreSucursal());
-         GrafoServicios grafo = new GrafoServicios(); // Instanciar el grafo de servicios
+//        GrafoServicios grafo = new GrafoServicios(); // Instanciar el grafo de servicios
         
         //Ahora sí, el menú principal
         boolean proseguir = true;
         while (proseguir){
             try {
                 int opcion = Integer.parseInt(JOptionPane.showInputDialog(
-                        "¡Bienvenido al sistema de EcoColones!\n"+
-                        "---------------------------------------------\n"+
-                        "-------- Sistema de Gestión --------\n"+
-                        "---------------------------------------------\n"+
-                        "1. Gestión de Tiquetes\n"+
-                        "2. Gestión de Atenciones\n"+ 
-                        "3. Gestión de Servicios (Grafo)\n"+
-                        "4. Salir\n"));
+                        """
+                                ¡Bienvenido al sistema de EcoColones!
+                                ---------------------------------------------
+                                -------- Sistema de Gestión --------
+                                ---------------------------------------------
+                                1. Gestión de Tiquetes
+                                2. Gestión de Atención
+                                3. Gestión de Servicios (Grafo)
+                                4. Ver tipo de cambio
+                                5. Salir
+                                """));
 
                 switch (opcion){
                     case 1:
@@ -56,6 +57,7 @@ public class Main {
                             break;
 
                         case 3:
+                            JOptionPane.showMessageDialog(null, "En construcción...");
 //                            int opcionGrafo = Integer.parseInt(JOptionPane.showInputDialog(
 //                                "Gestión de Servicios (Grafo):\n" +
 //                                "1. Mostrar Grafo\n" +
@@ -93,6 +95,10 @@ public class Main {
                             break;
 
                     case 4:
+                        JOptionPane.showMessageDialog(null, "Invoca web services, en construcción...");
+                        break;
+
+                    case 5:
                         JOptionPane.showMessageDialog(null, "Gracias por usar EcoColones. ¡Hasta pronto!");
                         proseguir = false;
                         break;

@@ -1,0 +1,338 @@
+Index: src/main/java/org/example/Mod4/GrafoServicios.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>/*\r\n * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license\r\n * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template\r\n */\r\npackage Mod4;\r\n\r\n/**\r\n *\r\n * @author Adbeel\r\n */\r\n\r\nimport javax.swing.JOptionPane;\r\nimport java.io.*;\r\nimport org.json.*;\r\n\r\npublic class GrafoServicios {\r\n    private NodoTramite inicio;\r\n    private static final String ARCHIVO = \"grafo.txt\";\r\n\r\n    // Clase interna para nodos de trámite\r\n    private static class NodoTramite {\r\n        String nombre;\r\n        NodoServicio primerServicio;\r\n        NodoTramite siguienteTramite;\r\n\r\n        NodoTramite(String nombre) {\r\n            this.nombre = nombre;\r\n        }\r\n    }\r\n\r\n    // Clase interna para nodos de servicio\r\n    private static class NodoServicio {\r\n        String nombre;\r\n        NodoServicio siguienteServicio;\r\n\r\n        NodoServicio(String nombre) {\r\n            this.nombre = nombre;\r\n        }\r\n    }\r\n\r\n    public GrafoServicios() {\r\n        cargarGrafo();\r\n        if (inicio == null) {\r\n            inicializarDatos();\r\n        }\r\n    }\r\n\r\n    private void inicializarDatos() {\r\n        // Grupo 1: Depósitos, Monedas, Divisas\r\n        agregarTramite(\"Depósitos\");\r\n        agregarServicioComplementario(\"Depósitos\", \"Seguro de Ahorros\");\r\n        agregarServicioComplementario(\"Depósitos\", \"Protección Contra Fraudes\");\r\n        agregarServicioComplementario(\"Depósitos\", \"Seguro de Vida Gold\");\r\n\r\n        // Grupo 2: Retiros, Cancelaciones, Planes Ecológicos\r\n        agregarTramite(\"Retiros\");\r\n        agregarServicioComplementario(\"Retiros\", \"Retiro sin tarjeta en cajeros\");\r\n        agregarServicioComplementario(\"Retiros\", \"Ayuda a la fauna de Costa Rica\");\r\n        agregarServicioComplementario(\"Retiros\", \"Compensación de huella de carbono\");\r\n\r\n        // Grupo 3: Emergencia Ejecutivo\r\n        agregarTramite(\"Emergencia Ejecutivo\");\r\n        agregarServicioComplementario(\"Emergencia Ejecutivo\", \"Plan Salva Vidas\");\r\n        \r\n        guardarGrafo();\r\n    }\r\n\r\n    public void agregarTramite(String tramite) {\r\n        NodoTramite nuevo = new NodoTramite(tramite);\r\n        if (inicio == null) {\r\n            inicio = nuevo;\r\n        } else {\r\n            NodoTramite actual = inicio;\r\n            while (actual.siguienteTramite != null) {\r\n                actual = actual.siguienteTramite;\r\n            }\r\n            actual.siguienteTramite = nuevo;\r\n        }\r\n    }\r\n\r\n    public void agregarServicioComplementario(String tramite, String servicio) {\r\n        NodoTramite nodoTramite = buscarTramite(tramite);\r\n        if (nodoTramite != null) {\r\n            NodoServicio nuevo = new NodoServicio(servicio);\r\n            if (nodoTramite.primerServicio == null) {\r\n                nodoTramite.primerServicio = nuevo;\r\n            } else {\r\n                NodoServicio actual = nodoTramite.primerServicio;\r\n                while (actual.siguienteServicio != null) {\r\n                    actual = actual.siguienteServicio;\r\n                }\r\n                actual.siguienteServicio = nuevo;\r\n            }\r\n        }\r\n    }\r\n\r\n    private NodoTramite buscarTramite(String tramite) {\r\n        NodoTramite actual = inicio;\r\n        while (actual != null) {\r\n            if (actual.nombre.equals(tramite)) {\r\n                return actual;\r\n            }\r\n            actual = actual.siguienteTramite;\r\n        }\r\n        return null;\r\n    }\r\n\r\n    public void mostrarServicios(String tramite) {\r\n        NodoTramite nodo = buscarTramite(tramite);\r\n        if (nodo != null) {\r\n            StringBuilder servicios = new StringBuilder();\r\n            NodoServicio actual = nodo.primerServicio;\r\n            while (actual != null) {\r\n                servicios.append(\"- \").append(actual.nombre).append(\"\\n\");\r\n                actual = actual.siguienteServicio;\r\n            }\r\n            \r\n            if (servicios.length() > 0) {\r\n                JOptionPane.showMessageDialog(null, \r\n                    \"Servicios complementarios para \" + tramite + \":\\n\" + servicios.toString(),\r\n                    \"Oferta Complementaria\", \r\n                    JOptionPane.INFORMATION_MESSAGE);\r\n            }\r\n        }\r\n    }\r\n\r\n    public void mostrarGrafo() {\r\n        if (inicio == null) {\r\n            JOptionPane.showMessageDialog(null, \"El grafo está vacío\", \"Información\", JOptionPane.INFORMATION_MESSAGE);\r\n            return;\r\n        }\r\n\r\n        StringBuilder grafoCompleto = new StringBuilder(\"=== GRAFO DE SERVICIOS ===\\n\");\r\n        NodoTramite actualTramite = inicio;\r\n        \r\n        while (actualTramite != null) {\r\n            grafoCompleto.append(\"\\nTrámite: \").append(actualTramite.nombre).append(\"\\n\");\r\n            grafoCompleto.append(\"Servicios complementarios:\\n\");\r\n            \r\n            NodoServicio actualServicio = actualTramite.primerServicio;\r\n            if (actualServicio == null) {\r\n                grafoCompleto.append(\"  - No tiene servicios asociados\\n\");\r\n            } else {\r\n                while (actualServicio != null) {\r\n                    grafoCompleto.append(\"  - \").append(actualServicio.nombre).append(\"\\n\");\r\n                    actualServicio = actualServicio.siguienteServicio;\r\n                }\r\n            }\r\n            \r\n            actualTramite = actualTramite.siguienteTramite;\r\n        }\r\n        \r\n        JOptionPane.showMessageDialog(null, grafoCompleto.toString(), \"Grafo Completo\", JOptionPane.INFORMATION_MESSAGE);\r\n    }\r\n\r\n    private void guardarGrafo() {\r\n        try (FileWriter file = new FileWriter(ARCHIVO)) {\r\n            JSONObject json = new JSONObject();\r\n            NodoTramite actualTramite = inicio;\r\n            \r\n            while (actualTramite != null) {\r\n                JSONArray serviciosArray = new JSONArray();\r\n                NodoServicio actualServicio = actualTramite.primerServicio;\r\n                \r\n                while (actualServicio != null) {\r\n                    serviciosArray.put(actualServicio.nombre);\r\n                    actualServicio = actualServicio.siguienteServicio;\r\n                }\r\n                \r\n                json.put(actualTramite.nombre, serviciosArray);\r\n                actualTramite = actualTramite.siguienteTramite;\r\n            }\r\n            \r\n            file.write(json.toString());\r\n        } catch (IOException e) {\r\n            e.printStackTrace();\r\n        }\r\n    }\r\n\r\n    private void cargarGrafo() {\r\n        File archivo = new File(ARCHIVO);\r\n        if (!archivo.exists()) return;\r\n        \r\n        try (BufferedReader reader = new BufferedReader(new FileReader(archivo))) {\r\n            StringBuilder contenido = new StringBuilder();\r\n            String linea;\r\n            while ((linea = reader.readLine()) != null) {\r\n                contenido.append(linea);\r\n            }\r\n            \r\n            JSONObject json = new JSONObject(contenido.toString());\r\n            for (String tramite : json.keySet()) {\r\n                agregarTramite(tramite);\r\n                JSONArray servicios = json.getJSONArray(tramite);\r\n                for (int i = 0; i < servicios.length(); i++) {\r\n                    agregarServicioComplementario(tramite, servicios.getString(i));\r\n                }\r\n            }\r\n        } catch (IOException | JSONException e) {\r\n            e.printStackTrace();\r\n        }\r\n    }\r\n\r\n    public boolean existeCamino(String tramiteOrigen, String servicioBuscado) {\r\n        NodoTramite nodo = buscarTramite(tramiteOrigen);\r\n        if (nodo == null) return false;\r\n        \r\n        return dfsBuscarServicio(nodo, servicioBuscado, new java.util.HashSet<>());\r\n    }\r\n\r\n    private boolean dfsBuscarServicio(NodoTramite nodo, String servicio, java.util.Set<NodoTramite> visitados) {\r\n        if (visitados.contains(nodo)) return false;\r\n        visitados.add(nodo);\r\n        \r\n        NodoServicio actual = nodo.primerServicio;\r\n        while (actual != null) {\r\n            if (actual.nombre.equals(servicio)) {\r\n                return true;\r\n            }\r\n            actual = actual.siguienteServicio;\r\n        }\r\n        \r\n        return false;\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/Mod4/GrafoServicios.java b/src/main/java/org/example/Mod4/GrafoServicios.java
+--- a/src/main/java/org/example/Mod4/GrafoServicios.java	(revision 96c86d39dea5123282123d3ac98d275ef2f7c783)
++++ b/src/main/java/org/example/Mod4/GrafoServicios.java	(date 1743445416401)
+@@ -12,8 +12,11 @@
+ import javax.swing.JOptionPane;
+ import java.io.*;
+ import org.json.*;
++import org.json.simple.JSONArray;
++import org.json.simple.JSONObject;
+ 
+ public class GrafoServicios {
++    /**
+     private NodoTramite inicio;
+     private static final String ARCHIVO = "grafo.txt";
+ 
+@@ -222,4 +225,5 @@
+         
+         return false;
+     }
++     **/
+ }
+Index: src/main/java/org/example/Main.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example;\r\n\r\nimport org.example.Mod0.*;\r\nimport org.example.Mod1Cajas.*;\r\nimport org.example.Mod2Atencion.*;\r\nimport Mod4.GrafoServicios;\r\nimport org.json.simple.parser.ParseException;\r\n\r\nimport java.io.IOException;\r\nimport javax.swing.JOptionPane;\r\n\r\npublic class Main {\r\n    public static void main(String[] args) throws IOException, ParseException {\r\n        \r\n        // Crear objeto de módulo 1.0 (configuración del sistema)\r\n        Menu menu = new Menu();\r\n        menu.mostrarMenu(); // Si no existe config.json, la crea; si sí existe, la muestra\r\n        \r\n        //Validación del usuario (login)\r\n        ConfigSucursal config = menu.getConfiguracion();\r\n        if (!menu.validarUsuario(config.getUsuarios())) {\r\n            JOptionPane.showMessageDialog(null, \"Sesión cancelada. Cerrando sistema.\");\r\n            return;\r\n        }\r\n        \r\n        //Objetos de módulos principales\r\n        ManagerCajas managerCajas = new ManagerCajas();\r\n        ListaCajas listaCajas = managerCajas.getListaCajas();\r\n        ManagerAtencion managerAtencion = new ManagerAtencion(listaCajas, config.getNombreSucursal());\r\n         GrafoServicios grafo = new GrafoServicios(); // Instanciar el grafo de servicios\r\n        \r\n        //Ahora sí, el menú principal\r\n        boolean proseguir = true;\r\n        while (proseguir){\r\n            try {\r\n                int opcion = Integer.parseInt(JOptionPane.showInputDialog(\r\n                        \"¡Bienvenido al sistema de EcoColones!\\n\"+\r\n                        \"---------------------------------------------\\n\"+\r\n                        \"-------- Sistema de Gestión --------\\n\"+\r\n                        \"---------------------------------------------\\n\"+\r\n                        \"1. Gestión de Tiquetes\\n\"+\r\n                        \"2. Gestión de Atenciones\\n\"+ \r\n                        \"3. Gestión de Servicios (Grafo)\\n\"+\r\n                        \"4. Salir\\n\"));\r\n\r\n                    switch (opcion){\r\n                        case 1:\r\n                            managerCajas.menuCajas(); //Menú del módulo de Cajas\r\n                            break;\r\n\r\n                        case 2:\r\n                            managerAtencion.mostrarMenuAtencion(); //Menú del módulo de Atención de Cajas\r\n                            break;\r\n\r\n                        case 3:\r\n                            int opcionGrafo = Integer.parseInt(JOptionPane.showInputDialog(\r\n                                \"Gestión de Servicios (Grafo):\\n\" +\r\n                                \"1. Mostrar Grafo\\n\" +\r\n                                \"2. Mostrar Servicios de un Trámite\\n\" +\r\n                                \"3. Verificar Camino entre Trámite y Servicio\\n\" +\r\n                                \"4. Regresar al Menú Principal\\n\"));\r\n\r\n                            switch (opcionGrafo) {\r\n                            case 1:\r\n                                grafo.mostrarGrafo();\r\n                                break;\r\n\r\n                            case 2:\r\n                                String tramite = JOptionPane.showInputDialog(\"Ingrese el nombre del trámite:\");\r\n                                grafo.mostrarServicios(tramite);\r\n                                break;\r\n\r\n                            case 3:\r\n                                String tramiteOrigen = JOptionPane.showInputDialog(\"Ingrese el nombre del trámite de origen:\");\r\n                                String servicioBuscado = JOptionPane.showInputDialog(\"Ingrese el nombre del servicio buscado:\");\r\n                                boolean existe = grafo.existeCamino(tramiteOrigen, servicioBuscado);\r\n                                JOptionPane.showMessageDialog(null, \r\n                                    existe ? \"El servicio está disponible desde el trámite indicado.\" \r\n                                           : \"No se encontró un camino al servicio desde el trámite indicado.\");\r\n                                break;\r\n\r\n                            case 4:\r\n                                break;\r\n\r\n                            default:\r\n                                JOptionPane.showMessageDialog(null, \"Opción inválida\");\r\n                                break;\r\n                        }\r\n\r\n                            break;\r\n\r\n                        case 4:\r\n                            JOptionPane.showMessageDialog(null, \"Gracias por usar EcoColones. ¡Hasta pronto!\");\r\n                            proseguir = false;\r\n                            break;\r\n\r\n                        default:\r\n                                JOptionPane.showMessageDialog(null, \"Opción inválida\");\r\n                                break;\r\n                    }\r\n            } catch (Exception e) {\r\n                    JOptionPane.showMessageDialog(null, \"Error inesperado: \" + e.getMessage());\r\n                }\r\n        }\r\n        \r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/Main.java b/src/main/java/org/example/Main.java
+--- a/src/main/java/org/example/Main.java	(revision 96c86d39dea5123282123d3ac98d275ef2f7c783)
++++ b/src/main/java/org/example/Main.java	(date 1743445845537)
+@@ -3,7 +3,6 @@
+ import org.example.Mod0.*;
+ import org.example.Mod1Cajas.*;
+ import org.example.Mod2Atencion.*;
+-import Mod4.GrafoServicios;
+ import org.json.simple.parser.ParseException;
+ 
+ import java.io.IOException;
+@@ -11,97 +10,63 @@
+ 
+ public class Main {
+     public static void main(String[] args) throws IOException, ParseException {
+-        
++
++
+         // Crear objeto de módulo 1.0 (configuración del sistema)
+         Menu menu = new Menu();
+         menu.mostrarMenu(); // Si no existe config.json, la crea; si sí existe, la muestra
+-        
++
+         //Validación del usuario (login)
+         ConfigSucursal config = menu.getConfiguracion();
+         if (!menu.validarUsuario(config.getUsuarios())) {
+             JOptionPane.showMessageDialog(null, "Sesión cancelada. Cerrando sistema.");
+             return;
+         }
+-        
++
+         //Objetos de módulos principales
+         ManagerCajas managerCajas = new ManagerCajas();
+         ListaCajas listaCajas = managerCajas.getListaCajas();
+         ManagerAtencion managerAtencion = new ManagerAtencion(listaCajas, config.getNombreSucursal());
+-         GrafoServicios grafo = new GrafoServicios(); // Instanciar el grafo de servicios
+-        
++
+         //Ahora sí, el menú principal
+         boolean proseguir = true;
+         while (proseguir){
+             try {
+                 int opcion = Integer.parseInt(JOptionPane.showInputDialog(
+                         "¡Bienvenido al sistema de EcoColones!\n"+
+-                        "---------------------------------------------\n"+
+-                        "-------- Sistema de Gestión --------\n"+
+-                        "---------------------------------------------\n"+
+-                        "1. Gestión de Tiquetes\n"+
+-                        "2. Gestión de Atenciones\n"+ 
+-                        "3. Gestión de Servicios (Grafo)\n"+
+-                        "4. Salir\n"));
++                                "---------------------------------------------\n"+
++                                "-------- Sistema de Gestión --------\n"+
++                                "---------------------------------------------\n"+
++                                "1. Gestión de Tiquetes\n"+
++                                "2. Gestión de Atenciones\n"+
++                                "3. Gestión de Gráfos (no implemetado aún)\n"+
++                                "4. Salir\n"));
+ 
+-                    switch (opcion){
+-                        case 1:
+-                            managerCajas.menuCajas(); //Menú del módulo de Cajas
+-                            break;
++                switch (opcion){
++                    case 1:
++                        managerCajas.menuCajas(); //Menú del módulo de Cajas
++                        break;
+ 
+-                        case 2:
+-                            managerAtencion.mostrarMenuAtencion(); //Menú del módulo de Atención de Cajas
+-                            break;
+-
+-                        case 3:
+-                            int opcionGrafo = Integer.parseInt(JOptionPane.showInputDialog(
+-                                "Gestión de Servicios (Grafo):\n" +
+-                                "1. Mostrar Grafo\n" +
+-                                "2. Mostrar Servicios de un Trámite\n" +
+-                                "3. Verificar Camino entre Trámite y Servicio\n" +
+-                                "4. Regresar al Menú Principal\n"));
+-
+-                            switch (opcionGrafo) {
+-                            case 1:
+-                                grafo.mostrarGrafo();
+-                                break;
+-
+-                            case 2:
+-                                String tramite = JOptionPane.showInputDialog("Ingrese el nombre del trámite:");
+-                                grafo.mostrarServicios(tramite);
+-                                break;
++                    case 2:
++                        managerAtencion.mostrarMenuAtencion(); //Menú del módulo de Atención de Cajas
++                        break;
+ 
+-                            case 3:
+-                                String tramiteOrigen = JOptionPane.showInputDialog("Ingrese el nombre del trámite de origen:");
+-                                String servicioBuscado = JOptionPane.showInputDialog("Ingrese el nombre del servicio buscado:");
+-                                boolean existe = grafo.existeCamino(tramiteOrigen, servicioBuscado);
+-                                JOptionPane.showMessageDialog(null, 
+-                                    existe ? "El servicio está disponible desde el trámite indicado." 
+-                                           : "No se encontró un camino al servicio desde el trámite indicado.");
+-                                break;
+-
+-                            case 4:
+-                                break;
+-
+-                            default:
+-                                JOptionPane.showMessageDialog(null, "Opción inválida");
+-                                break;
+-                        }
+-
+-                            break;
++                    case 3:
++                        break;
+ 
+-                        case 4:
+-                            JOptionPane.showMessageDialog(null, "Gracias por usar EcoColones. ¡Hasta pronto!");
+-                            proseguir = false;
+-                            break;
++                    case 4:
++                        JOptionPane.showMessageDialog(null, "Gracias por usar EcoColones. ¡Hasta pronto!");
++                        proseguir = false;
++                        break;
+ 
+-                        default:
+-                                JOptionPane.showMessageDialog(null, "Opción inválida");
+-                                break;
+-                    }
++                    default:
++                        JOptionPane.showMessageDialog(null, "Opción inválida");
++                        break;
++                }
+             } catch (Exception e) {
+-                    JOptionPane.showMessageDialog(null, "Error inesperado: " + e.getMessage());
+-                }
++                JOptionPane.showMessageDialog(null, "Error inesperado: " + e.getMessage());
++            }
+         }
+-        
++
+     }
+-}
++}
+\ No newline at end of file
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"46c621c1-f3bd-45e6-9b52-1bcde50b8ebd\" name=\"Changes\" comment=\"Last commit of the day. I am just missing deserializar working.\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_3_5_2025_10_45_AM__Changes_.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_3_7_2025_5_32_PM__Changes_.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/colas.json\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/colas.json\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/org/example/Mod0/ConfigJson.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/org/example/Mod0/ConfigJson.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/org/example/Mod1Cajas/ManagerCajas.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/org/example/Mod1Cajas/ManagerCajas.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/org/example/Mod1Cajas/Serializacionticket.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/org/example/Mod1Cajas/Serializacionticket.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/org/example/Mod1Cajas/Ticket.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/org/example/Mod1Cajas/Ticket.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/org/example/Mod3/SerializaciónColas.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/org/example/Mod3/SerializacionColas.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/org/example/Mod0/ConfigJson.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/org/example/Mod0/ConfigJson.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/org/example/Mod1Cajas/Caja.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/org/example/Mod1Cajas/Caja.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/org/example/Mod1Cajas/ManagerCajas.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/org/example/Mod1Cajas/ManagerCajas.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/org/example/Mod1Cajas/Serializacionticket.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/org/example/Mod1Cajas/Serializacionticket.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/tiquetes.json\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/tiquetes.json\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$/..\" value=\"Releases\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$/..\" />\r\n  </component>\r\n  <component name=\"ProblemsViewState\">\r\n    <option name=\"selectedTabId\" value=\"CurrentFile\" />\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 3\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2tYUtrAqwYb5asd1EdTbkdMUCIZ\" />\r\n  <component name=\"ProjectLevelVcsManager\">\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"ASKED_ADD_EXTERNAL_FILES\": \"true\",\r\n    \"Application.CreacionTicket.executor\": \"Run\",\r\n    \"Application.Main.executor\": \"Run\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"SHARE_PROJECT_CONFIGURATION_FILES\": \"true\",\r\n    \"git-widget-placeholder\": \"Releases\",\r\n    \"kotlin-language-version-configured\": \"true\",\r\n    \"last_opened_file_path\": \"C:/Users/kkoni/Downloads/jackson-core-2.18.3.jar\",\r\n    \"project.structure.last.edited\": \"Modules\",\r\n    \"project.structure.proportion\": \"0.15\",\r\n    \"project.structure.side.proportion\": \"0.2\"\r\n  }\r\n}]]></component>\r\n  <component name=\"RunDashboard\">\r\n    <option name=\"configurationTypes\">\r\n      <set>\r\n        <option value=\"Application\" />\r\n      </set>\r\n    </option>\r\n  </component>\r\n  <component name=\"RunManager\" selected=\"Application.Main\">\r\n    <configuration name=\"CreacionTicket\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"org.example.Mod1TODELETE.CreacionTicket\" />\r\n      <module name=\"Esferisoft\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"org.example.Mod1Cajas.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"FuncionConfig\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"org.example.Mod0.FuncionConfig\" />\r\n      <module name=\"Esferisoft\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"org.example.Mod0.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"Main\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"org.example.Main\" />\r\n      <module name=\"Esferisoft\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"org.example.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Application.Main\" />\r\n        <item itemvalue=\"Application.CreacionTicket\" />\r\n        <item itemvalue=\"Application.FuncionConfig\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"46c621c1-f3bd-45e6-9b52-1bcde50b8ebd\" name=\"Changes\" comment=\"\" />\r\n      <created>1740528719085</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1740528719085</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"Some basic arrangements and a note in MAIN.\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1740890708213</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1740890708213</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"Fixed more stuff..ughh\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1743171933574</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1743171933574</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"Mod 3,also trying to figure things out with Jackson instead of Json\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1743220724374</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1743220724374</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"Last commit of the day. I am just missing deserializar working.\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1743232810951</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1743232810951</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"5\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <option name=\"ADD_EXTERNAL_FILES_SILENTLY\" value=\"true\" />\r\n    <MESSAGE value=\"Some basic arrangements and a note in MAIN.\" />\r\n    <MESSAGE value=\"Fixed basic mistakes in mod1.0\" />\r\n    <MESSAGE value=\"Fixed more stuff..ughh\" />\r\n    <MESSAGE value=\"Mod 3,also trying to figure things out with Jackson instead of Json\" />\r\n    <MESSAGE value=\"Last commit of the day. I am just missing deserializar working.\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Last commit of the day. I am just missing deserializar working.\" />\r\n  </component>\r\n  <component name=\"XDebuggerManager\">\r\n    <breakpoint-manager>\r\n      <breakpoints>\r\n        <breakpoint enabled=\"true\" type=\"java-exception\">\r\n          <properties class=\"java.lang.NullPointerException\" package=\"java.lang\" />\r\n          <option name=\"timeStamp\" value=\"1\" />\r\n        </breakpoint>\r\n      </breakpoints>\r\n    </breakpoint-manager>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 96c86d39dea5123282123d3ac98d275ef2f7c783)
++++ b/.idea/workspace.xml	(date 1743457148853)
+@@ -4,21 +4,12 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="46c621c1-f3bd-45e6-9b52-1bcde50b8ebd" name="Changes" comment="Last commit of the day. I am just missing deserializar working.">
+-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_3_5_2025_10_45_AM__Changes_.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_3_7_2025_5_32_PM__Changes_.xml" beforeDir="false" />
++    <list default="true" id="46c621c1-f3bd-45e6-9b52-1bcde50b8ebd" name="Changes" comment="FUNCIOOOOOONA DESERIALIZAR">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/colas.json" beforeDir="false" afterPath="$PROJECT_DIR$/colas.json" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Mod0/ConfigJson.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Mod0/ConfigJson.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Mod1Cajas/ManagerCajas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Mod1Cajas/ManagerCajas.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Mod1Cajas/Serializacionticket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Mod1Cajas/Serializacionticket.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Mod1Cajas/Ticket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Mod1Cajas/Ticket.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Mod3/SerializaciónColas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Mod3/SerializacionColas.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Mod0/ConfigJson.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Mod0/ConfigJson.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Mod1Cajas/Caja.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Mod1Cajas/Caja.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Mod1Cajas/ManagerCajas.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Mod1Cajas/ManagerCajas.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Mod1Cajas/Serializacionticket.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Mod1Cajas/Serializacionticket.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/tiquetes.json" beforeDir="false" afterPath="$PROJECT_DIR$/tiquetes.json" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Mod4/GrafoServicios.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Mod4/GrafoServicios.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Mod1Cajas/Ticket.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Mod1Cajas/Ticket.class" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -165,7 +156,15 @@
+       <option name="project" value="LOCAL" />
+       <updated>1743232810951</updated>
+     </task>
+-    <option name="localTasksCounter" value="5" />
++    <task id="LOCAL-00005" summary="FUNCIOOOOOONA DESERIALIZAR">
++      <option name="closed" value="true" />
++      <created>1743282556963</created>
++      <option name="number" value="00005" />
++      <option name="presentableId" value="LOCAL-00005" />
++      <option name="project" value="LOCAL" />
++      <updated>1743282556963</updated>
++    </task>
++    <option name="localTasksCounter" value="6" />
+     <servers />
+   </component>
+   <component name="Vcs.Log.Tabs.Properties">
+@@ -186,7 +185,8 @@
+     <MESSAGE value="Fixed more stuff..ughh" />
+     <MESSAGE value="Mod 3,also trying to figure things out with Jackson instead of Json" />
+     <MESSAGE value="Last commit of the day. I am just missing deserializar working." />
+-    <option name="LAST_COMMIT_MESSAGE" value="Last commit of the day. I am just missing deserializar working." />
++    <MESSAGE value="FUNCIOOOOOONA DESERIALIZAR" />
++    <option name="LAST_COMMIT_MESSAGE" value="FUNCIOOOOOONA DESERIALIZAR" />
+   </component>
+   <component name="XDebuggerManager">
+     <breakpoint-manager>
+Index: colas.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>{\r\n  \"cabeza\": {\r\n    \"dato\": {\r\n      \"idCaja\": 1,\r\n      \"nombre\": \"Caja Preferencial\",\r\n      \"contador\": 0\r\n    },\r\n    \"siguiente\": {\r\n      \"dato\": {\r\n        \"idCaja\": 2,\r\n        \"nombre\": \"Caja Rápida\",\r\n        \"contador\": 0\r\n      },\r\n      \"siguiente\": {\r\n        \"dato\": {\r\n          \"idCaja\": 3,\r\n          \"nombre\": \"Caja Normal\",\r\n          \"frente\": {\r\n            \"dato\": {\r\n              \"nombre\": \"Mimi\",\r\n              \"id\": 83838838,\r\n              \"edad\": 19,\r\n              \"monedaCuenta\": \"COLONES\",\r\n              \"horaCreacion\": \"29-03-2025 13:51:34\",\r\n              \"horaAtencion\": -1,\r\n              \"tramite\": \"Retiros\",\r\n              \"tipoTramite\": \"B\"\r\n            }\r\n          },\r\n          \"fin\": {\r\n            \"dato\": {\r\n              \"nombre\": \"Mimi\",\r\n              \"id\": 83838838,\r\n              \"edad\": 19,\r\n              \"monedaCuenta\": \"COLONES\",\r\n              \"horaCreacion\": \"29-03-2025 13:51:34\",\r\n              \"horaAtencion\": -1,\r\n              \"tramite\": \"Retiros\",\r\n              \"tipoTramite\": \"B\"\r\n            }\r\n          },\r\n          \"contador\": 1\r\n        },\r\n        \"siguiente\": {\r\n          \"dato\": {\r\n            \"idCaja\": 4,\r\n            \"nombre\": \"Caja Normal\",\r\n            \"frente\": {\r\n              \"dato\": {\r\n                \"nombre\": \"Mary\",\r\n                \"id\": 39393939,\r\n                \"edad\": 80,\r\n                \"monedaCuenta\": \"COLONES\",\r\n                \"horaCreacion\": \"28-03-2025 23:10:11\",\r\n                \"horaAtencion\": -1,\r\n                \"tramite\": \"Retiros\",\r\n                \"tipoTramite\": \"B\"\r\n              }\r\n            },\r\n            \"fin\": {\r\n              \"dato\": {\r\n                \"nombre\": \"Mary\",\r\n                \"id\": 39393939,\r\n                \"edad\": 80,\r\n                \"monedaCuenta\": \"COLONES\",\r\n                \"horaCreacion\": \"28-03-2025 23:10:11\",\r\n                \"horaAtencion\": -1,\r\n                \"tramite\": \"Retiros\",\r\n                \"tipoTramite\": \"B\"\r\n              }\r\n            },\r\n            \"contador\": 1\r\n          },\r\n          \"siguiente\": {\r\n            \"dato\": {\r\n              \"idCaja\": 5,\r\n              \"nombre\": \"Caja Normal\",\r\n              \"frente\": {\r\n                \"dato\": {\r\n                  \"nombre\": \"Johnny\",\r\n                  \"id\": 8892998,\r\n                  \"edad\": 17,\r\n                  \"monedaCuenta\": \"COLONES\",\r\n                  \"horaCreacion\": \"28-03-2025 23:09:46\",\r\n                  \"horaAtencion\": -1,\r\n                  \"tramite\": \"Retiros\",\r\n                  \"tipoTramite\": \"B\"\r\n                }\r\n              },\r\n              \"fin\": {\r\n                \"dato\": {\r\n                  \"nombre\": \"Lala\",\r\n                  \"id\": 847557858,\r\n                  \"edad\": 15,\r\n                  \"monedaCuenta\": \"DOLARES\",\r\n                  \"horaCreacion\": \"29-03-2025 13:52:02\",\r\n                  \"horaAtencion\": -1,\r\n                  \"tramite\": \"Cambio de divisas\",\r\n                  \"tipoTramite\": \"B\"\r\n                }\r\n              },\r\n              \"contador\": 2\r\n            }\r\n          }\r\n        }\r\n      }\r\n    }\r\n  },\r\n  \"contador\": 5\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/colas.json b/colas.json
+--- a/colas.json	(revision 96c86d39dea5123282123d3ac98d275ef2f7c783)
++++ b/colas.json	(date 1743395536545)
+@@ -3,13 +3,61 @@
+     "dato": {
+       "idCaja": 1,
+       "nombre": "Caja Preferencial",
+-      "contador": 0
++      "frente": {
++        "dato": {
++          "nombre": "Coco",
++          "id": 92384834,
++          "edad": 20,
++          "monedaCuenta": "DOLARES",
++          "horaCreacion": "29-03-2025 13:52:45",
++          "horaAtencion": -1,
++          "tramite": "Servicios",
++          "tipoTramite": "P"
++        }
++      },
++      "fin": {
++        "dato": {
++          "nombre": "Poko",
++          "id": 99928288,
++          "edad": 34,
++          "monedaCuenta": "COLONES",
++          "horaCreacion": "29-03-2025 14:58:09",
++          "horaAtencion": -1,
++          "tramite": "Servicios",
++          "tipoTramite": "P"
++        }
++      },
++      "contador": 3
+     },
+     "siguiente": {
+       "dato": {
+         "idCaja": 2,
+         "nombre": "Caja Rápida",
+-        "contador": 0
++        "frente": {
++          "dato": {
++            "nombre": "Chocola",
++            "id": 3959956,
++            "edad": 90,
++            "monedaCuenta": "COLONES",
++            "horaCreacion": "29-03-2025 13:53:27",
++            "horaAtencion": -1,
++            "tramite": "Depositos",
++            "tipoTramite": "A"
++          }
++        },
++        "fin": {
++          "dato": {
++            "nombre": "Jotaro",
++            "id": 99947774,
++            "edad": 17,
++            "monedaCuenta": "DOLARES",
++            "horaCreacion": "29-03-2025 15:06:40",
++            "horaAtencion": -1,
++            "tramite": "Cambio de divisas",
++            "tipoTramite": "A"
++          }
++        },
++        "contador": 3
+       },
+       "siguiente": {
+         "dato": {
+@@ -59,17 +107,17 @@
+             },
+             "fin": {
+               "dato": {
+-                "nombre": "Mary",
+-                "id": 39393939,
+-                "edad": 80,
++                "nombre": "Kenneth",
++                "id": 388477473,
++                "edad": 34,
+                 "monedaCuenta": "COLONES",
+-                "horaCreacion": "28-03-2025 23:10:11",
++                "horaCreacion": "30-03-2025 22:32:00",
+                 "horaAtencion": -1,
+                 "tramite": "Retiros",
+                 "tipoTramite": "B"
+               }
+             },
+-            "contador": 1
++            "contador": 2
+           },
+           "siguiente": {
+             "dato": {

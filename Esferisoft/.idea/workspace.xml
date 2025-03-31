@@ -4,13 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="46c621c1-f3bd-45e6-9b52-1bcde50b8ebd" name="Changes" comment="FUNCIOOOOOONA DESERIALIZAR">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colas.json" beforeDir="false" afterPath="$PROJECT_DIR$/colas.json" afterDir="false" />
+    <list default="true" id="46c621c1-f3bd-45e6-9b52-1bcde50b8ebd" name="Changes" comment="Funcional">
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Mod0/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Mod0/Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Mod4/GrafoServicios.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Mod4/GrafoServicios.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Mod1Cajas/Ticket.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Mod1Cajas/Ticket.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -165,7 +160,15 @@
       <option name="project" value="LOCAL" />
       <updated>1743282556963</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Funcional">
+      <option name="closed" value="true" />
+      <created>1743457785513</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1743457785513</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -187,7 +190,8 @@
     <MESSAGE value="Mod 3,also trying to figure things out with Jackson instead of Json" />
     <MESSAGE value="Last commit of the day. I am just missing deserializar working." />
     <MESSAGE value="FUNCIOOOOOONA DESERIALIZAR" />
-    <option name="LAST_COMMIT_MESSAGE" value="FUNCIOOOOOONA DESERIALIZAR" />
+    <MESSAGE value="Funcional" />
+    <option name="LAST_COMMIT_MESSAGE" value="Funcional" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
