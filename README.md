@@ -51,8 +51,14 @@ ListaCajas
 Caja
 Serialización ticket
 
+MOD 1.2
+Clases:
+ManagerAtencion -> tiene todas los métodos para desarrollar las funcionalidades del módulo
+TicketAtendido -> concentra los atributos, constructores, y los getters para acceder a esos atributos.
 
-Main -> En el paquete por default, es el main de la app.
+Main -> María Fernanda
+Se encuentra como primero la función de validar los usuarios (el método se llama validarUsuario y se encuentra en la clase Menu, modulo 1.0), 
+y luego de validar entra a un menú donde podrá acceder a las funcionalidades implementadas por el moemento.
 
 
 ------------VIDEO----------------------------------
