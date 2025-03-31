@@ -12,10 +12,6 @@ import javax.swing.JOptionPane;
 public class Main {
     public static void main(String[] args) throws IOException, ParseException {
         
-        // Grafos (mod4)
-        GrafoServicios grafo = new GrafoServicios();
-        grafo.mostrarGrafo();
-
         // Crear objeto de módulo 1.0 (configuración del sistema)
         Menu menu = new Menu();
         menu.mostrarMenu(); // Si no existe config.json, la crea; si sí existe, la muestra
@@ -30,7 +26,8 @@ public class Main {
         //Objetos de módulos principales
         ManagerCajas managerCajas = new ManagerCajas();
         ListaCajas listaCajas = managerCajas.getListaCajas();
-        ManagerAtencion managerAtencion = new ManagerAtencion(listaCajas, config.getNombreSucursal());        
+        ManagerAtencion managerAtencion = new ManagerAtencion(listaCajas, config.getNombreSucursal());
+         GrafoServicios grafo = new GrafoServicios(); // Instanciar el grafo de servicios
         
         //Ahora sí, el menú principal
         boolean proseguir = true;
@@ -43,7 +40,7 @@ public class Main {
                         "---------------------------------------------\n"+
                         "1. Gestión de Tiquetes\n"+
                         "2. Gestión de Atenciones\n"+ 
-                        "3. Módulo 1.3 (no implemetado aún)\n"+
+                        "3. Gestión de Servicios (Grafo)\n"+
                         "4. Salir\n"));
 
                     switch (opcion){
@@ -56,6 +53,40 @@ public class Main {
                             break;
 
                         case 3:
+                            int opcionGrafo = Integer.parseInt(JOptionPane.showInputDialog(
+                                "Gestión de Servicios (Grafo):\n" +
+                                "1. Mostrar Grafo\n" +
+                                "2. Mostrar Servicios de un Trámite\n" +
+                                "3. Verificar Camino entre Trámite y Servicio\n" +
+                                "4. Regresar al Menú Principal\n"));
+
+                            switch (opcionGrafo) {
+                            case 1:
+                                grafo.mostrarGrafo();
+                                break;
+
+                            case 2:
+                                String tramite = JOptionPane.showInputDialog("Ingrese el nombre del trámite:");
+                                grafo.mostrarServicios(tramite);
+                                break;
+
+                            case 3:
+                                String tramiteOrigen = JOptionPane.showInputDialog("Ingrese el nombre del trámite de origen:");
+                                String servicioBuscado = JOptionPane.showInputDialog("Ingrese el nombre del servicio buscado:");
+                                boolean existe = grafo.existeCamino(tramiteOrigen, servicioBuscado);
+                                JOptionPane.showMessageDialog(null, 
+                                    existe ? "El servicio está disponible desde el trámite indicado." 
+                                           : "No se encontró un camino al servicio desde el trámite indicado.");
+                                break;
+
+                            case 4:
+                                break;
+
+                            default:
+                                JOptionPane.showMessageDialog(null, "Opción inválida");
+                                break;
+                        }
+
                             break;
 
                         case 4:
