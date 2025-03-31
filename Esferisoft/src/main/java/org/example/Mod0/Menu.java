@@ -95,6 +95,23 @@ public class Menu {
         JOptionPane.showMessageDialog(null, "Configuración guardada exitosamente en config.json.");
     }
 
+    // Método para validar login desde Main
+    public boolean validarUsuario(ListaEnlazada usuarios) {
+        while (true) {
+            String user = JOptionPane.showInputDialog("Ingrese su nombre de usuario:");
+            if (user == null) return false; // cancela
+
+            String pass = JOptionPane.showInputDialog("Ingrese su contraseña:");
+            if (pass == null) return false; // cancela
+
+            if (usuarios.contiene(user + ":" + pass)) {
+                return true; // login exitoso
+            } else {
+                JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos. Intente de nuevo...");
+            }
+        }
+    }
+
     //Getters & setters--------------------------
 
     public ConfigSucursal getConfiguracion() {

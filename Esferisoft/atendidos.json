@@ -13,3 +13,18 @@
   "nombreCaja": "Caja Preferencial",
   "nombreSucursal": "Sucursal1"
 }
+{
+  "ticket": {
+    "nombre": "Coco",
+    "id": 92384834,
+    "edad": 20,
+    "monedaCuenta": "DOLARES",
+    "horaCreacion": "29-03-2025 13:52:45",
+    "horaAtencion": 1743457706539,
+    "tramite": "Servicios",
+    "tipoTramite": "P"
+  },
+  "idCaja": 1,
+  "nombreCaja": "Caja Preferencial",
+  "nombreSucursal": "Sucursal1"
+}

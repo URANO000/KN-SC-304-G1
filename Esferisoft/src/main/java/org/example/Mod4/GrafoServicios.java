@@ -2,18 +2,21 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Mod4;
+package org.example.Mod4;
 
 /**
  *
  * @author Adbeel
  */
 
-import javax.swing.JOptionPane;
-import java.io.*;
-import org.json.*;
+//import javax.swing.JOptionPane;
+//import java.io.*;
+//import org.json.*;
+//import org.json.simple.JSONArray;
+//import org.json.simple.JSONObject;
 
 public class GrafoServicios {
+    /**
     private NodoTramite inicio;
     private static final String ARCHIVO = "grafo.txt";
 
@@ -222,4 +225,5 @@ public class GrafoServicios {
         
         return false;
     }
+     **/
 }
