@@ -18,7 +18,12 @@ versiones de este modulo ya que a parte de algunos problemas a solucionar tambi�
 Para la implementación de el módulo, utilicé una lista de colas, todos los requerimientos se cumplieron menos el requerimiento de cargar las colas si el archivo existe. Ese no se ha implementado todavía.
 Arreglé los bugs del código de MOD 1.0
 
-Maria Fernanda -> Serialización del ticket.
+Maria Fernanda -> Serialización del ticket.// Al final lo terminó realizando Adriana
+
+4. Mod 1.2: María Fernanda Mata
+El aporte fue en el módulo de Atención de tiquetes, donde puse las clases de ManagerAtencion y TicketAtendido. Donde en ManagerAtencion se implementaron los siguientes requerimientos
+como la validación de que la caja no esté vacía, obtención del primer tiquete en cola, el registro de la hora de atención con formato, la serialización del tiquete atendido a "atendidos.json"
+y la actualización del archivo `tiquetes.json` al eliminar el tiquete. Cabe aclarar que el punto 6 del módulo 1.2 quedó pendiente para la proxima entrega.
 
 
 ==================Detalles de la configuración==========================================
