@@ -4,52 +4,22 @@ Proyecto de Estructura de Datos
 ==================Integrantes==========================================
 Adriana Isabel Sevilla Useda
 Maria Fernanda Mata Halleslebens
-Adbeel Espinoza Vanegas
-Daniel Quiros
+Adbeel Espinoza Vanegas --> No participa
+Daniel Quiros  --> No participa
 
 ==================Requisitos implementados==========================================
-
-1. MOD 1.0: Adbeel-
-Para la implementación de este modulo necesite realizar cambios constantes en distintas clases ya que tuve algunos problemas para que toda la información necesaria quedara registrada
-en el archivo JSON, sin embargo gracias a mi compañera Adriana logre darme cuenta de lo que necesitaba cambiar para que todo quedara en orden. Ademas cabe decir que realice varias
-versiones de este modulo ya que a parte de algunos problemas a solucionar también se presentaron otros cambios como el cambio de idioma y la organización de las clases.
-
-3. MOD 1.1: Adriana-  Maria Fernanda
-Para la implementación de el módulo, utilicé una lista de colas, todos los requerimientos se cumplieron menos el requerimiento de cargar las colas si el archivo existe. Ese no se ha implementado todavía.
-Arreglé los bugs del código de MOD 1.0
-
-Maria Fernanda -> Serialización del ticket.// Al final lo terminó realizando Adriana
-
-4. Mod 1.2: María Fernanda Mata
+Mod 1.2: María Fernanda Mata
 El aporte fue en el módulo de Atención de tiquetes, donde puse las clases de ManagerAtencion y TicketAtendido. Donde en ManagerAtencion se implementaron los siguientes requerimientos
 como la validación de que la caja no esté vacía, obtención del primer tiquete en cola, el registro de la hora de atención con formato, la serialización del tiquete atendido a "atendidos.json"
 y la actualización del archivo `tiquetes.json` al eliminar el tiquete. Cabe aclarar que el punto 6 del módulo 1.2 quedó pendiente para la proxima entrega.
 
+Mod 1.3: Adriana Sevilla Useda
+Se resume en agregar tiquetes a las diferentes cajas normales, tomando en cuenta que tan llena esté cada caja normal. El módulo se implementó con éxito. Todo el funcionamiento del módulo se implementó en la misma clase de ManagerCajas, excepto por SerializacionCola. Además, realicé la deserialización del módulo 1.1.
+
 
 ==================Detalles de la configuración==========================================
-Tanto mi módulo (Adriana) como el de Adbeel se ejecutan en el MAIN. Los dos los separé en paquetes para organizarlos. 
-Al principio estaban divididos en dos mains, pero decidí, con feedback de Maria Fernanda, 
-el convertir los dos en métodos para llamarlos en el main principal, sólo utilizando un Main. 
-De esta manera se vé más decluttered.
-
+El código se ejecuta en el MAIN. Se debe de correr desde el root, el archivo con nombre Esferisoft.
 ==================Documentación Breve de clases==========================================
-MOD 1.0:
-Clases:
-ConfigJson -> Esta clase se encarga de guardar los datos en el archivo JSON en un inicio y luego los carga
-ConfigSucursal -> De esta clase se obtienen los datos de la sucursal como el nombre, numero de cajas, tipos entre otros
-ListaEnlazada -> Esta clase agrega el nodo para obtener cada dato y verificar datos espeificos de la lista
-Nodo -> Una clase Nodo para dar paso a los siguientes datos
-Menu -> La clase menu llama a las demas clases y se utiliza JOptionPane para la interacción con el usuario
-Main -> Desde la clase main se llaman a las clases menus de los distintos modulos para su respectivo uso
-
-MOD 1.1: 
-Clases:
-Ticket
-NodoCaja
-NodoLista
-ListaCajas
-Caja
-Serialización ticket
 
 MOD 1.2
 Clases:
@@ -59,6 +29,11 @@ TicketAtendido -> concentra los atributos, constructores, y los getters para acc
 Main -> María Fernanda
 Se encuentra como primero la función de validar los usuarios (el método se llama validarUsuario y se encuentra en la clase Menu, modulo 1.0), 
 y luego de validar entra a un menú donde podrá acceder a las funcionalidades implementadas por el moemento.
+
+MOD 1.3
+Clases:
+ManagerCajas: Respectivamente del módulo 1.1, pero la funcionalidad es del 1.3.
+SerializacionColas: Contiene la serialización y deserialización.
 
 
 ------------VIDEO----------------------------------
