@@ -4,7 +4,7 @@ Proyecto de Estructura de Datos
 ==================Integrantes==========================================
 Adriana Isabel Sevilla Useda
 Maria Fernanda Mata Halleslebens
-Adbeel Espinoza Vanegas --> No participa
+Adbeel Espinoza Vanegas
 Daniel Quiros  --> No participa
 
 ==================Requisitos implementados==========================================
@@ -34,6 +34,10 @@ MOD 1.3
 Clases:
 ManagerCajas: Respectivamente del módulo 1.1, pero la funcionalidad es del 1.3.
 SerializacionColas: Contiene la serialización y deserialización.
+
+MOD 1.4
+Clases
+GrafoServicios: En este modulo se implemento la busqueda por grafos a traves de JSON
 
 
 ------------VIDEO----------------------------------
