@@ -37,4 +37,5 @@ SerializacionColas: Contiene la serialización y deserialización.
 
 
 ------------VIDEO----------------------------------
-https://youtu.be/KOyo9-M0awc
+https://youtu.be/RbfU4Vh7FTs
+
