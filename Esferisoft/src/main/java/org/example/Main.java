@@ -29,6 +29,7 @@ public class Main {
         ListaCajas listaCajas = managerCajas.getListaCajas();
         ManagerAtencion managerAtencion = new ManagerAtencion(listaCajas, config.getNombreSucursal());
 //        GrafoServicios grafo = new GrafoServicios();
+        mostrarNotificacionesServicios(grafo);
         
         //Ahora sí, el menú principal
         boolean proseguir = true;
@@ -41,10 +42,9 @@ public class Main {
                                 -------- Sistema de Gestión --------
                                 ---------------------------------------------
                                 1. Gestión de Tiquetes
-                                2. Gestión de Atención
-                                3. Gestión de Servicios (Grafo)
-                                4. Ver tipo de cambio
-                                5. Salir
+                                2. Gestión de Atención 
+                                3. Ver tipo de cambio
+                                4. Salir
                                 """));
 
                 switch (opcion){
@@ -56,49 +56,6 @@ public class Main {
                             managerAtencion.mostrarMenuAtencion(); //Menú del módulo de Atención de Cajas
                             break;
 
-                        case 3:
-                         boolean continuarGrafo = true;
-    while (continuarGrafo) {
-        try {
-            int opcionGrafo = Integer.parseInt(JOptionPane.showInputDialog(
-                    "Gestión de Servicios (Grafo):\n" +
-                    "1. Mostrar Grafo\n" +
-                    "2. Mostrar Servicios de un Trámite\n" +
-                    "3. Verificar Camino entre Trámite y Servicio\n" +
-                    "4. Regresar al Menú Principal\n"));
-
-            switch (opcionGrafo) {
-                case 1:
-                    JOptionPane.showMessageDialog(null, grafo.obtenerGrafoComoTexto());
-                    break;
-
-                case 2:
-                    String tramite = JOptionPane.showInputDialog("Ingrese el nombre del trámite:");
-                    String servicios = grafo.obtenerServiciosComoTexto(tramite); 
-                    JOptionPane.showMessageDialog(null, servicios);
-                    break;
-
-                case 3:
-                    String tramiteOrigen = JOptionPane.showInputDialog("Ingrese el nombre del trámite de origen:");
-                    String servicioBuscado = JOptionPane.showInputDialog("Ingrese el nombre del servicio buscado:");
-                    boolean existe = grafo.existeCamino(tramiteOrigen, servicioBuscado);
-                    JOptionPane.showMessageDialog(null, 
-                        existe ? "El servicio está disponible desde el trámite indicado." 
-                               : "No se encontró un camino al servicio desde el trámite indicado.");
-                    break;
-
-                case 4:
-                    continuarGrafo = false; // Regresar al menú principal
-                    break;
-
-                default:
-                    JOptionPane.showMessageDialog(null, "Opción inválida");
-                    break;
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error inesperado: " + e.getMessage());
-        }
-    }     
 //                                break;
 //
 //                            case 4:
@@ -111,11 +68,11 @@ public class Main {
 
                             break;
 
-                    case 4:
+                    case 3:
                         JOptionPane.showMessageDialog(null, "Invoca web services, en construcción...");
                         break;
 
-                    case 5:
+                    case 4:
                         JOptionPane.showMessageDialog(null, "Gracias por usar EcoColones. ¡Hasta pronto!");
                         proseguir = false;
                         break;
@@ -126,8 +83,9 @@ public class Main {
                 }
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Error inesperado: " + e.getMessage());
-            }
+            }       
         }
-
+        private static void mostrarNotificacionesServicios(GrafoServicios grafo) {
+        JOptionPane.showMessageDialog(null, grafo.obtenerGrafoComoTexto());
     }
-}
+    }
