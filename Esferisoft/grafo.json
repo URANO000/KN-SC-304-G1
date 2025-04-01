@@ -1,0 +1,30 @@
+{
+  "nombre": "Depósitos",
+  "primerServicio": {
+    "nombre": "Seguro de Ahorros",
+    "siguienteServicio": {
+      "nombre": "Protección Contra Fraudes",
+      "siguienteServicio": {
+        "nombre": "Seguro de Vida Gold"
+      }
+    }
+  },
+  "siguienteTramite": {
+    "nombre": "Retiros",
+    "primerServicio": {
+      "nombre": "Retiro sin tarjeta en cajeros",
+      "siguienteServicio": {
+        "nombre": "Ayuda a la fauna de Costa Rica",
+        "siguienteServicio": {
+          "nombre": "Compensación de huella de carbono"
+        }
+      }
+    },
+    "siguienteTramite": {
+      "nombre": "Emergencia Ejecutivo",
+      "primerServicio": {
+        "nombre": "Plan Salva Vidas"
+      }
+    }
+  }
+}

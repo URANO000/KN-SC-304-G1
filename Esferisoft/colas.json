@@ -3,31 +3,7 @@
     "dato": {
       "idCaja": 1,
       "nombre": "Caja Preferencial",
-      "frente": {
-        "dato": {
-          "nombre": "Coco",
-          "id": 92384834,
-          "edad": 20,
-          "monedaCuenta": "DOLARES",
-          "horaCreacion": "29-03-2025 13:52:45",
-          "horaAtencion": -1,
-          "tramite": "Servicios",
-          "tipoTramite": "P"
-        }
-      },
-      "fin": {
-        "dato": {
-          "nombre": "Poko",
-          "id": 99928288,
-          "edad": 34,
-          "monedaCuenta": "COLONES",
-          "horaCreacion": "29-03-2025 14:58:09",
-          "horaAtencion": -1,
-          "tramite": "Servicios",
-          "tipoTramite": "P"
-        }
-      },
-      "contador": 3
+      "contador": 2
     },
     "siguiente": {
       "dato": {
@@ -77,17 +53,17 @@
           },
           "fin": {
             "dato": {
-              "nombre": "Mimi",
-              "id": 83838838,
-              "edad": 19,
+              "nombre": "Donny",
+              "id": 9384755,
+              "edad": 49,
               "monedaCuenta": "COLONES",
-              "horaCreacion": "29-03-2025 13:51:34",
+              "horaCreacion": "01-04-2025 13:00:38",
               "horaAtencion": -1,
               "tramite": "Retiros",
               "tipoTramite": "B"
             }
           },
-          "contador": 1
+          "contador": 2
         },
         "siguiente": {
           "dato": {

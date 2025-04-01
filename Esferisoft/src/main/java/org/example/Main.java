@@ -10,6 +10,7 @@ import javax.swing.JOptionPane;
 
 
 public class Main {
+
     public static void main(String[] args) throws IOException, ParseException {
 
 
@@ -28,12 +29,10 @@ public class Main {
         ManagerCajas managerCajas = new ManagerCajas();
         ListaCajas listaCajas = managerCajas.getListaCajas();
         ManagerAtencion managerAtencion = new ManagerAtencion(listaCajas, config.getNombreSucursal());
-//        GrafoServicios grafo = new GrafoServicios();
-        mostrarNotificacionesServicios(grafo);
-        
+
         //Ahora sí, el menú principal
         boolean proseguir = true;
-        while (proseguir){
+        while (proseguir) {
             try {
                 int opcion = Integer.parseInt(JOptionPane.showInputDialog(
                         """
@@ -41,32 +40,20 @@ public class Main {
                                 ---------------------------------------------
                                 -------- Sistema de Gestión --------
                                 ---------------------------------------------
-                                1. Gestión de Tiquetes
-                                2. Gestión de Atención 
-                                3. Ver tipo de cambio
+                                1. Gestión de Tiquetes\s
+                                2. Gestión de Atención\s
+                                3. Ver tipo de cambio\s
                                 4. Salir
-                                """));
+                               \s"""));
 
-                switch (opcion){
+                switch (opcion) {
                     case 1:
                         managerCajas.menuCajas(); //Menú del módulo de Cajas
                         break;
 
-                        case 2:
-                            managerAtencion.mostrarMenuAtencion(); //Menú del módulo de Atención de Cajas
-                            break;
-
-//                                break;
-//
-//                            case 4:
-//                                break;
-//
-//                            default:
-//                                JOptionPane.showMessageDialog(null, "Opción inválida");
-//                                break;
-//                        }
-
-                            break;
+                    case 2:
+                        managerAtencion.mostrarMenuAtencion(); //Menú del módulo de Atención de Cajas
+                        break;
 
                     case 3:
                         JOptionPane.showMessageDialog(null, "Invoca web services, en construcción...");
@@ -83,9 +70,9 @@ public class Main {
                 }
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Error inesperado: " + e.getMessage());
-            }       
+            }
         }
-        private static void mostrarNotificacionesServicios(GrafoServicios grafo) {
-        JOptionPane.showMessageDialog(null, grafo.obtenerGrafoComoTexto());
+
     }
-    }
+
+}

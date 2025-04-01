@@ -9,6 +9,7 @@ import java.time.format.DateTimeFormatter;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import org.example.Mod4.GrafoServicios;
 
 /**
  *
@@ -18,13 +19,16 @@ public class ManagerAtencion {
     private ListaCajas listaCajas;
     private String nombreSucursal;
 
-//Constructor encargado de recibir la lista de cajas y el nombre de la sucursal
+    //Agrego la parte de Adbeel aquí, ya que así sale en las instrucciones. -Adriana
+    GrafoServicios grafos = new GrafoServicios();
+
+    //Constructor encargado de recibir la lista de cajas y el nombre de la sucursal
     public ManagerAtencion(ListaCajas listaCajas, String nombreSucursal) {
         this.listaCajas = listaCajas;
         this.nombreSucursal = nombreSucursal;
     }
 
-//Menú principal del módulo    
+    //Menú principal del módulo
     public void mostrarMenuAtencion(){
         boolean continuar = true;
         
@@ -107,6 +111,9 @@ public class ManagerAtencion {
                     
                     // Actualiza el archivo tiquetes.json eliminando al cliente atendido
                     serializarColasActualizadas();
+
+                    //Se muestran los servicios complementarios
+                    grafos.mostrarNotificacionesServicios(grafos);
 
                     return;
                 }

@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Mod4;
+package org.example.Mod4;
 
 /**
  *
@@ -15,7 +15,7 @@ import com.google.gson.GsonBuilder;
 
 public class GrafoServicios {
     private NodoTramite inicio;
-    private static final String ARCHIVO = "grafo.txt";
+    private static final String ARCHIVO = "grafo.json";
     private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
  public String obtenerGrafoComoTexto() {
@@ -142,5 +142,9 @@ public class GrafoServicios {
         } catch (IOException e) {
             JOptionPane.showMessageDialog(null, "Error al cargar el grafo: " + e.getMessage());
         }
+    }
+
+    public void mostrarNotificacionesServicios (GrafoServicios grafo){
+        JOptionPane.showMessageDialog(null, grafo.obtenerGrafoComoTexto());
     }
 }
