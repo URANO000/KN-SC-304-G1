@@ -18,6 +18,27 @@ public class GrafoServicios {
     private static final String ARCHIVO = "grafo.txt";
     private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
+ public String obtenerGrafoComoTexto() {
+    StringBuilder resultado = new StringBuilder("Trámites y sus servicios:\n");
+    NodoTramite actual = inicio;
+
+    if (actual == null) {
+        return "El grafo está vacío.";
+    }
+
+    while (actual != null) {
+        resultado.append("- ").append(actual.nombre).append("\n");
+        NodoServicio servicioActual = actual.primerServicio;
+        while (servicioActual != null) {
+            resultado.append("  * ").append(servicioActual.nombre).append("\n");
+            servicioActual = servicioActual.siguienteServicio;
+        }
+        actual = actual.siguienteTramite;
+    }
+
+    return resultado.toString();
+}
+
     private static class NodoTramite {
         String nombre;
         NodoServicio primerServicio;
