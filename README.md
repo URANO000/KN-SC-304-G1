@@ -5,7 +5,6 @@ Proyecto de Estructura de Datos
 Adriana Isabel Sevilla Useda
 Maria Fernanda Mata Halleslebens
 Adbeel Espinoza Vanegas
-Daniel Quiros  --> No participa
 
 ==================Requisitos implementados==========================================
 Mod 1.2: María Fernanda Mata
@@ -41,5 +40,5 @@ GrafoServicios: En este modulo se implemento la busqueda por grafos a traves de 
 
 
 ------------VIDEO----------------------------------
-https://youtu.be/RbfU4Vh7FTs
+https://youtu.be/k3EL_6CG4LY
 
