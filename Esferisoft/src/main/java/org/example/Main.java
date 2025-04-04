@@ -3,6 +3,7 @@ package org.example;
 import org.example.Mod0.*;
 import org.example.Mod1Cajas.*;
 import org.example.Mod2Atencion.*;
+import org.example.Mod5.BCCR;
 import org.json.simple.parser.ParseException;
 import org.example.Mod4.*;
 import java.io.IOException;
@@ -29,6 +30,7 @@ public class Main {
         ManagerCajas managerCajas = new ManagerCajas();
         ListaCajas listaCajas = managerCajas.getListaCajas();
         ManagerAtencion managerAtencion = new ManagerAtencion(listaCajas, config.getNombreSucursal());
+        BCCR bccr = new BCCR();
 
         //Ahora sí, el menú principal
         boolean proseguir = true;
@@ -56,7 +58,7 @@ public class Main {
                         break;
 
                     case 3:
-                        JOptionPane.showMessageDialog(null, "Invoca web services, en construcción...");
+                        bccr.getIndicadores();
                         break;
 
                     case 4:
