@@ -73,59 +73,86 @@ public class ManagerAtencion {
         }
     }
     
-    
-// Atiende al primer cliente de una caja específica    
-    private void atenderTiquete(){
+    //Atiende a los clientes de una caja específica
+    private void atenderTiquete() {
         try {
             int idCaja = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el ID de la caja a atender: "));
-            
+
             NodoLista actual = listaCajas.getCabeza();
-            
-// Recorre la lista de cajas hasta encontrar la caja con el ID solicitado
-            while (actual != null){
+
+            //Recorre la lista de cajas hasta enocntrar el ID solicitado
+            while (actual != null) {
                 Caja caja = actual.getDato();
-                
-                if (caja.getIdCaja() == idCaja){
-                // Si la caja está vacía, lo notifica
-                    if (caja.isEmpty()){
+
+                if (caja.getIdCaja() == idCaja) {
+
+                    //Si la caja se encuentra vacía, lo notifica
+                    if (caja.isEmpty()) {
                         JOptionPane.showMessageDialog(null, "La caja se encuentra vacía...");
                         return;
                     }
-                    Ticket ticket = caja.frente(); // Obtiene el primer tiquete sin quitarlo
+
+                    // Primero busca si hay emergencia ejecutiva
+                    NodoCaja nodo = caja.getFrente();
+                    NodoCaja anteriorEmergencia = null;
+                    NodoCaja emergencia = null;
+                    NodoCaja anterior = null;
+
+                    while (nodo != null) {
+                        if (nodo.getDato().getTramite().equalsIgnoreCase("Emergencia Ejecutivo")) {
+                            emergencia = nodo;
+                            break;
+                        }
+                        anteriorEmergencia = nodo;
+                        nodo = nodo.getSiguiente();
+                    }
+
+                    Ticket ticket;
+
+                    if (emergencia != null) {
+                        //Si hay un trámite de "Emergencia Ejecutivo", se mueve al frente de la cola
+                        ticket = emergencia.getDato();
+                        if (anteriorEmergencia != null) {
+                            anteriorEmergencia.setSiguiente(emergencia.getSiguiente());
+                            emergencia.setSiguiente(caja.getFrente());
+                            caja.setFrente(emergencia);
+                        }
+                    }
+
+                    //Siempre se va atender el dato del frente
+                    ticket = caja.frente();
                     long horaAtencion = System.currentTimeMillis();
-                    ticket.setHoraAtencion(horaAtencion); // Guarda la hora en el objeto
-                    
-                    // Mostrar información del tiquete
+                    ticket.setHoraAtencion(horaAtencion);//Guarda la hora de atención del objeto
+
+                    //Muestra la información del tiquete
                     JOptionPane.showMessageDialog(null,
                             "Atendiendo cliente:\n" +
-                            "Nombre: " + ticket.getNombre() + "\n" +
-                            "Trámite: " + ticket.getTramite() + "\n" +
-                            "Hora creación: " + ticket.getHoraCreacion() + "\n" +
-                            "Hora atención: " + obtenerHoraFormateada(horaAtencion));
-                    
-                    // Guardar en archivo atendidos
-                    guardarTiqueteAtendido(ticket, caja);
+                                    "Nombre: " + ticket.getNombre() + "\n" +
+                                    "Trámite: " + ticket.getTramite() + "\n" +
+                                    "Hora creación: " + ticket.getHoraCreacion() + "\n" +
+                                    "Hora atención: " + obtenerHoraFormateada(horaAtencion));
 
-                    // Eliminar de la cola
-                    caja.atender();
-                    
-                    // Actualiza el archivo tiquetes.json eliminando al cliente atendido
-                    serializarColasActualizadas();
+                    guardarTiqueteAtendido(ticket, caja);//Guarda en archivos atendidos
+                    caja.atender(); //lo elimina de la cola
+                    serializarColasActualizadas(); //Actualiza el archivo tiquetes.json elimando al cliente atendido
 
-                    //Se muestran los servicios complementarios
+                    //Aquí, se muestran los servicios complementarios
                     grafos.mostrarNotificacionesServicios(grafos);
 
                     return;
                 }
-                actual = actual.getSiguiente(); // Siguiente caja en la lista
+
+                actual = actual.getSiguiente();//Siguiente caja en la lista
             }
-            // Si llegó aquí, no se encontró la caja
+
             JOptionPane.showMessageDialog(null, "No se encontró la caja con ese ID.");
-        } catch (Exception e){
+
+        } catch (Exception e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Hubo un error al atender tiquete.");
         }
     }
+
     
     /*Este método va sobreescribir los tiquetes json cada vez que las cajas 
     sean actualizadas cada vez que se atiende un cliente*/
