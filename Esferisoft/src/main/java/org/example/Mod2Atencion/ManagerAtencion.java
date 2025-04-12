@@ -137,7 +137,7 @@ public class ManagerAtencion {
                     serializarColasActualizadas(); //Actualiza el archivo tiquetes.json elimando al cliente atendido
 
                     //Aquí, se muestran los servicios complementarios
-                    grafos.mostrarNotificacionesServicios(grafos);
+                    grafos.mostrarRecomendaciones(ticket.getTramite());
 
                     return;
                 }
