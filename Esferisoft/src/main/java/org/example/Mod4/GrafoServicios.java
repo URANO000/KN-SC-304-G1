@@ -94,8 +94,8 @@ public void mostrarRecomendaciones(String tramiteRealizado) {
         agregarServicioComplementario("Retiros", "Ayuda a la fauna de Costa Rica");
         agregarServicioComplementario("Retiros", "Compensación de huella de carbono");
 
-        agregarTramite("Servicios");
-        agregarServicioComplementario("Servicios", "Plan Salva Vidas");
+        agregarTramite("Emergencia Ejecutivo");
+        agregarServicioComplementario("Emergencia Ejecutivo", "Plan Salva Vidas");
 
         guardarGrafo();
     }
