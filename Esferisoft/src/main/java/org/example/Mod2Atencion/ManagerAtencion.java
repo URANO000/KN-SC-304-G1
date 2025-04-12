@@ -80,7 +80,7 @@ public class ManagerAtencion {
 
             NodoLista actual = listaCajas.getCabeza();
 
-            //Recorre la lista de cajas hasta enocntrar el ID solicitado
+            //Recorre la lista de cajas hasta enocntrar el ID solicitado por el usuario
             while (actual != null) {
                 Caja caja = actual.getDato();
 
