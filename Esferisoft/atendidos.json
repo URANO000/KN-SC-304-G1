@@ -193,3 +193,138 @@
   "nombreCaja": "Caja Normal",
   "nombreSucursal": "Sucursal1"
 }
+{
+  "ticket": {
+    "nombre": "Alonso Sequeira",
+    "id": 784521,
+    "edad": 47,
+    "monedaCuenta": "Dolares",
+    "horaCreacion": "11-04-2025 16:59:12",
+    "horaAtencion": 1744428228948,
+    "tramite": "Servicios",
+    "tipoTramite": "P"
+  },
+  "idCaja": 1,
+  "nombreCaja": "Caja Preferencial",
+  "nombreSucursal": "Sucursal1"
+}
+{
+  "ticket": {
+    "nombre": "Gustavo Fonseca",
+    "id": 653247,
+    "edad": 32,
+    "monedaCuenta": "Dolares",
+    "horaCreacion": "11-04-2025 16:59:41",
+    "horaAtencion": 1744428599717,
+    "tramite": "Retiros",
+    "tipoTramite": "P"
+  },
+  "idCaja": 1,
+  "nombreCaja": "Caja Preferencial",
+  "nombreSucursal": "Sucursal1"
+}
+{
+  "ticket": {
+    "nombre": "Mart�n Villegas",
+    "id": 963156,
+    "edad": 38,
+    "monedaCuenta": "Colones",
+    "horaCreacion": "11-04-2025 17:00:30",
+    "horaAtencion": 1744428619586,
+    "tramite": "Emergencia Ejecutiva",
+    "tipoTramite": "P"
+  },
+  "idCaja": 1,
+  "nombreCaja": "Caja Preferencial",
+  "nombreSucursal": "Sucursal1"
+}
+{
+  "ticket": {
+    "nombre": "Pumpkin",
+    "id": 7374646,
+    "edad": 19,
+    "monedaCuenta": "DOLARES",
+    "horaCreacion": "11-04-2025 21:32:30",
+    "horaAtencion": 1744428781524,
+    "tramite": "Cambio de divisas",
+    "tipoTramite": "P"
+  },
+  "idCaja": 1,
+  "nombreCaja": "Caja Preferencial",
+  "nombreSucursal": "Sucursal1"
+}
+{
+  "ticket": {
+    "nombre": "Roberto",
+    "id": 238938837,
+    "edad": 40,
+    "monedaCuenta": "DOLARES",
+    "horaCreacion": "11-04-2025 21:35:02",
+    "horaAtencion": 1744428916916,
+    "tramite": "Servicios",
+    "tipoTramite": "A"
+  },
+  "idCaja": 2,
+  "nombreCaja": "Caja Rápida",
+  "nombreSucursal": "Sucursal1"
+}
+{
+  "ticket": {
+    "nombre": "Johnny",
+    "id": 8888859,
+    "edad": 20,
+    "monedaCuenta": "COLONES",
+    "horaCreacion": "11-04-2025 21:36:34",
+    "horaAtencion": 1744429002595,
+    "tramite": "Emergencia ejecutiva",
+    "tipoTramite": "A"
+  },
+  "idCaja": 2,
+  "nombreCaja": "Caja Rápida",
+  "nombreSucursal": "Sucursal1"
+}
+{
+  "ticket": {
+    "nombre": "Lennox",
+    "id": 2874655,
+    "edad": 30,
+    "monedaCuenta": "COLONES",
+    "horaCreacion": "11-04-2025 21:33:43",
+    "horaAtencion": 1744429442235,
+    "tramite": "Servicios",
+    "tipoTramite": "P"
+  },
+  "idCaja": 1,
+  "nombreCaja": "Caja Preferencial",
+  "nombreSucursal": "Sucursal1"
+}
+{
+  "ticket": {
+    "nombre": "Al Martino",
+    "id": 1294574,
+    "edad": 20,
+    "monedaCuenta": "DOLARES",
+    "horaCreacion": "11-04-2025 21:48:03",
+    "horaAtencion": 1744430022961,
+    "tramite": "Retiros",
+    "tipoTramite": "A"
+  },
+  "idCaja": 2,
+  "nombreCaja": "Caja Rápida",
+  "nombreSucursal": "Sucursal1"
+}
+{
+  "ticket": {
+    "nombre": "Johnny",
+    "id": 8374665,
+    "edad": 19,
+    "monedaCuenta": "DOLARES",
+    "horaCreacion": "11-04-2025 21:47:39",
+    "horaAtencion": 1744430288659,
+    "tramite": "Emergencia Ejecutivo",
+    "tipoTramite": "P"
+  },
+  "idCaja": 1,
+  "nombreCaja": "Caja Preferencial",
+  "nombreSucursal": "Sucursal1"
+}

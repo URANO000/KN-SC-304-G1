@@ -5,101 +5,113 @@
       "nombre": "Caja Preferencial",
       "frente": {
         "dato": {
-          "nombre": "Alonso Sequeira",
-          "id": 784521,
-          "edad": 47,
-          "monedaCuenta": "Dolares",
-          "horaCreacion": "11-04-2025 16:59:12",
+          "nombre": "Vito Corleone",
+          "id": 1888837,
+          "edad": 56,
+          "monedaCuenta": "DOLARES",
+          "horaCreacion": "11-04-2025 21:48:30",
           "horaAtencion": -1,
-          "tramite": "Servicios",
-          "tipoTramite": "P"
-        },
-        "siguiente": {
-          "dato": {
-            "nombre": "Gustavo Fonseca",
-            "id": 653247,
-            "edad": 32,
-            "monedaCuenta": "Dolares",
-            "horaCreacion": "11-04-2025 16:59:41",
-            "horaAtencion": -1,
-            "tramite": "Retiros",
-            "tipoTramite": "P"
-          },
-          "siguiente": {
-            "dato": {
-              "nombre": "Martín Villegas",
-              "id": 963156,
-              "edad": 38,
-              "monedaCuenta": "Colones",
-              "horaCreacion": "11-04-2025 17:00:30",
-              "horaAtencion": -1,
-              "tramite": "Emergencia Ejecutiva",
-              "tipoTramite": "P"
-            }
-          }
-        }
-      },
-      "fin": {
-        "dato": {
-          "nombre": "Mafalda",
-          "id": 6546546,
-          "edad": 32,
-          "monedaCuenta": "Colones",
-          "horaCreacion": "11-04-2025 20:54:54",
-          "horaAtencion": 1744426507718,
           "tramite": "Emergencia Ejecutivo",
           "tipoTramite": "P"
         },
         "siguiente": {
           "dato": {
-            "nombre": "Alonso Sequeira",
-            "id": 784521,
-            "edad": 47,
-            "monedaCuenta": "Dolares",
-            "horaCreacion": "11-04-2025 16:59:12",
+            "nombre": "Roberto Alvarado",
+            "id": 82347345,
+            "edad": 43,
+            "monedaCuenta": "DOLARES",
+            "horaCreacion": "11-04-2025 21:52:58",
             "horaAtencion": -1,
-            "tramite": "Servicios",
+            "tramite": "Cambio de divisas",
             "tipoTramite": "P"
-          },
-          "siguiente": {
-            "dato": {
-              "nombre": "Gustavo Fonseca",
-              "id": 653247,
-              "edad": 32,
-              "monedaCuenta": "Dolares",
-              "horaCreacion": "11-04-2025 16:59:41",
-              "horaAtencion": -1,
-              "tramite": "Retiros",
-              "tipoTramite": "P"
-            },
-            "siguiente": {
-              "dato": {
-                "nombre": "Martín Villegas",
-                "id": 963156,
-                "edad": 38,
-                "monedaCuenta": "Colones",
-                "horaCreacion": "11-04-2025 17:00:30",
-                "horaAtencion": -1,
-                "tramite": "Emergencia Ejecutiva",
-                "tipoTramite": "P"
-              }
-            }
           }
         }
       },
-      "contador": 3
+      "fin": {
+        "dato": {
+          "nombre": "Roberto Alvarado",
+          "id": 82347345,
+          "edad": 43,
+          "monedaCuenta": "DOLARES",
+          "horaCreacion": "11-04-2025 21:52:58",
+          "horaAtencion": -1,
+          "tramite": "Cambio de divisas",
+          "tipoTramite": "P"
+        }
+      },
+      "contador": 2
     },
     "siguiente": {
       "dato": {
         "idCaja": 2,
         "nombre": "Caja RÃ¡pida",
-        "contador": 0
+        "frente": {
+          "dato": {
+            "nombre": "Michael Corleone",
+            "id": 182362634,
+            "edad": 30,
+            "monedaCuenta": "DOLARES",
+            "horaCreacion": "11-04-2025 21:48:56",
+            "horaAtencion": -1,
+            "tramite": "Cambio de divisas",
+            "tipoTramite": "A"
+          },
+          "siguiente": {
+            "dato": {
+              "nombre": "Johnny Fontana",
+              "id": 19073646,
+              "edad": 43,
+              "monedaCuenta": "COLONES",
+              "horaCreacion": "11-04-2025 21:53:26",
+              "horaAtencion": -1,
+              "tramite": "Cambio de divisas",
+              "tipoTramite": "A"
+            }
+          }
+        },
+        "fin": {
+          "dato": {
+            "nombre": "Johnny Fontana",
+            "id": 19073646,
+            "edad": 43,
+            "monedaCuenta": "COLONES",
+            "horaCreacion": "11-04-2025 21:53:26",
+            "horaAtencion": -1,
+            "tramite": "Cambio de divisas",
+            "tipoTramite": "A"
+          }
+        },
+        "contador": 2
       },
       "siguiente": {
         "dato": {
           "idCaja": 3,
           "nombre": "Caja Normal",
-          "contador": 0
+          "frente": {
+            "dato": {
+              "nombre": "Sonny Corleone",
+              "id": 237475453,
+              "edad": 40,
+              "monedaCuenta": "COLONES",
+              "horaCreacion": "11-04-2025 21:49:51",
+              "horaAtencion": -1,
+              "tramite": "Depositos",
+              "tipoTramite": "B"
+            }
+          },
+          "fin": {
+            "dato": {
+              "nombre": "Sonny Corleone",
+              "id": 237475453,
+              "edad": 40,
+              "monedaCuenta": "COLONES",
+              "horaCreacion": "11-04-2025 21:49:51",
+              "horaAtencion": -1,
+              "tramite": "Depositos",
+              "tipoTramite": "B"
+            }
+          },
+          "contador": 1
         },
         "siguiente": {
           "dato": {
@@ -145,21 +157,33 @@
                   "horaAtencion": -1,
                   "tramite": "Retiros",
                   "tipoTramite": "B"
+                },
+                "siguiente": {
+                  "dato": {
+                    "nombre": "Fredo Corleone",
+                    "id": 19346464,
+                    "edad": 35,
+                    "monedaCuenta": "DOLARES",
+                    "horaCreacion": "11-04-2025 21:52:31",
+                    "horaAtencion": -1,
+                    "tramite": "Emergencia ejecutiva",
+                    "tipoTramite": "B"
+                  }
                 }
               },
               "fin": {
                 "dato": {
-                  "nombre": "Johnny",
-                  "id": 8892998,
-                  "edad": 17,
-                  "monedaCuenta": "COLONES",
-                  "horaCreacion": "28-03-2025 23:09:46",
+                  "nombre": "Fredo Corleone",
+                  "id": 19346464,
+                  "edad": 35,
+                  "monedaCuenta": "DOLARES",
+                  "horaCreacion": "11-04-2025 21:52:31",
                   "horaAtencion": -1,
-                  "tramite": "Retiros",
+                  "tramite": "Emergencia ejecutiva",
                   "tipoTramite": "B"
                 }
               },
-              "contador": 1
+              "contador": 2
             }
           }
         }

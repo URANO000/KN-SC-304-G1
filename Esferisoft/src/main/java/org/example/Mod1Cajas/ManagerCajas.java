@@ -111,7 +111,7 @@ public class ManagerCajas {
 
             opcionesMoneda = JOptionPane.showInputDialog("DOLARES o COLONES");
 
-            String tramite = JOptionPane.showInputDialog("Ingrese el trámite a realizar (Depósitos, Servicios, Retiros, Cambio de divisas)");
+            String tramite = JOptionPane.showInputDialog("Ingrese el trámite a realizar (Depósitos, Servicios, Retiros, Cambio de divisas, Emergencia Ejecutivo)");
 
             int tramiteAUX = Integer.parseInt(JOptionPane.showInputDialog(
                     """

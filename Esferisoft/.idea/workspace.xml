@@ -5,12 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="46c621c1-f3bd-45e6-9b52-1bcde50b8ebd" name="Changes" comment="Funcional">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Mod5/BCCR.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Mod5/IndicadorEco.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_3_31_2025_3_39_PM_[Changes]/Ticket.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_3_31_2025_3_39_PM_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_3_31_2025_3_39_PM__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Mod5/WebService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Mod5/WebService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/atendidos.json" beforeDir="false" afterPath="$PROJECT_DIR$/atendidos.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/colas.json" beforeDir="false" afterPath="$PROJECT_DIR$/colas.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Mod1Cajas/ManagerCajas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Mod1Cajas/ManagerCajas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Mod5/BCCR.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Mod5/BCCR.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Mod1Cajas/Caja.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Mod1Cajas/Caja.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Mod1Cajas/ManagerCajas.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Mod1Cajas/ManagerCajas.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Mod2Atencion/ManagerAtencion.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Mod2Atencion/ManagerAtencion.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Mod4/GrafoServicios$NodoServicio.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Mod4/GrafoServicios$NodoServicio.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Mod4/GrafoServicios$NodoTramite.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Mod4/GrafoServicios$NodoTramite.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Mod4/GrafoServicios.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Mod4/GrafoServicios.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tiquetes.json" beforeDir="false" afterPath="$PROJECT_DIR$/tiquetes.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,21 +55,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Application.CreacionTicket.executor": "Run",
-    "Application.Main.executor": "Debug",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "Releases",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/kkoni/OneDrive/Desktop/Documents/Q4/ESTRUCTURA/Leccion11",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Application.CreacionTicket.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Releases&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/kkoni/OneDrive/Desktop/Documents/Q4/ESTRUCTURA/Leccion11&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
   }
-}]]></component>
+}</component>
   <component name="RunDashboard">
     <option name="configurationTypes">
       <set>

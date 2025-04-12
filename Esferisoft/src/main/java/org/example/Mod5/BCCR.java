@@ -10,7 +10,7 @@ public class BCCR {
         WebService webService = new WebService();
 
         //Lleno de informacion
-        IndicadorEco indicadorEco = webService.getIndicador("318", "02/04/2025", "02/04/2025", "Ratman",
+        IndicadorEco indicadorEco = webService.getIndicador("318", "15/04/2025", "15/04/2025", "Ratman",
                 "N", "asevilla40838@ufide.ac.cr", "3E5D58A0A0");
 
         BigDecimal tipoCambio = tipoCambio(indicadorEco);
