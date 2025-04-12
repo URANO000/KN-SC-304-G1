@@ -18,6 +18,27 @@ public class GrafoServicios {
     private static final String ARCHIVO = "grafo.json";
     private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
+     public String obtenerGrafoComoTexto() {
+    StringBuilder resultado = new StringBuilder("Trámites y sus servicios:\n");
+    NodoTramite actual = inicio;
+
+    if (actual == null) {
+        return "El grafo está vacío.";
+    }
+
+    while (actual != null) {
+        resultado.append("- ").append(actual.nombre).append("\n");
+        NodoServicio servicioActual = actual.primerServicio;
+        while (servicioActual != null) {
+            resultado.append("  * ").append(servicioActual.nombre).append("\n");
+            servicioActual = servicioActual.siguienteServicio;
+        }
+        actual = actual.siguienteTramite;
+    }
+
+    return resultado.toString();
+}
+
 public void mostrarRecomendaciones(String tramiteRealizado) {
         NodoTramite tramite = buscarTramite(tramiteRealizado);
         
@@ -73,8 +94,8 @@ public void mostrarRecomendaciones(String tramiteRealizado) {
         agregarServicioComplementario("Retiros", "Ayuda a la fauna de Costa Rica");
         agregarServicioComplementario("Retiros", "Compensación de huella de carbono");
 
-        agregarTramite("Emergencia Ejecutivo");
-        agregarServicioComplementario("Emergencia Ejecutivo", "Plan Salva Vidas");
+        agregarTramite("Servicios");
+        agregarServicioComplementario("Servicios", "Plan Salva Vidas");
 
         guardarGrafo();
     }
