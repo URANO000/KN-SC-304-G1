@@ -18,7 +18,7 @@ public class GrafoServicios {
     private static final String ARCHIVO = "grafo.json";
     private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
-public void mostrarNotificacionesServicios(String tramiteRealizado) {
+public void mostrarRecomendaciones(String tramiteRealizado) {
         NodoTramite tramite = buscarTramite(tramiteRealizado);
         
         if (tramite == null || tramite.primerServicio == null) {
@@ -139,9 +139,5 @@ public void mostrarNotificacionesServicios(String tramiteRealizado) {
         } catch (IOException e) {
             JOptionPane.showMessageDialog(null, "Error al cargar el grafo: " + e.getMessage());
         }
-    }
-
-    public void mostrarNotificacionesServicios (GrafoServicios grafo){
-        JOptionPane.showMessageDialog(null, grafo.obtenerGrafoComoTexto());
     }
 }
