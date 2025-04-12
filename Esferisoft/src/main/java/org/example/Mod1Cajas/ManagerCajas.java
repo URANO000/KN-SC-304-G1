@@ -19,6 +19,8 @@ public class ManagerCajas {
     //En esta clase se va a manejar lo correspondiente a las cajas
 
     public void menuCajas() throws IOException, ParseException {
+        boolean continuar = true;
+        
         //primero a leer la configuracion del archivo JSON config-------------------------------------
         ConfigSucursal config = ConfigJson.cargarConfiguracion();
 
@@ -57,6 +59,7 @@ public class ManagerCajas {
 
         try{
             while(continuar) {
+                int seleccion; //Lo vuelve una variable local
 
                 try{
                     seleccion = Integer.parseInt(JOptionPane.showInputDialog("""
@@ -238,7 +241,7 @@ public class ManagerCajas {
 
 
 
-    //Getters & setters--------------------------------
+    //Getters & setters
 
 
     public ListaCajas getListaCajas() {

@@ -11,7 +11,7 @@ public class Caja {
     private NodoCaja fin;
     private int contador;
 
-    //Constructor----------------------------
+    //Constructor
     //A la hora de crear cada caja
 
 
@@ -30,7 +30,9 @@ public class Caja {
         this.fin = fin;
     }
 
-    //Metodos---------------------------------
+    //Métodos
+
+    
     public void encolar(Ticket t) {
         NodoCaja nuevo = new NodoCaja(t); //Creo un nuevo nodo con el tiquete
 
@@ -114,4 +116,10 @@ public class Caja {
     public void setFin(NodoCaja fin) {
         this.fin = fin;
     }
+
+    public void setContador(int contador) {
+        this.contador = contador;
+    }
+    
+    
 }

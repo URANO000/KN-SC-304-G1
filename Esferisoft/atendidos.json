@@ -43,3 +43,153 @@
   "nombreCaja": "Caja Preferencial",
   "nombreSucursal": "Sucursal1"
 }
+{
+  "ticket": {
+    "nombre": "Marta",
+    "id": 954646846,
+    "edad": 32,
+    "monedaCuenta": "Colones",
+    "horaCreacion": "10-04-2025 15:49:45",
+    "horaAtencion": 1744324345668,
+    "tramite": "Retiros",
+    "tipoTramite": "P"
+  },
+  "idCaja": 1,
+  "nombreCaja": "Caja Preferencial",
+  "nombreSucursal": "Sucursal1"
+}
+{
+  "ticket": {
+    "nombre": "Lorena",
+    "id": 65684684,
+    "edad": 98,
+    "monedaCuenta": "Dolares",
+    "horaCreacion": "10-04-2025 15:50:22",
+    "horaAtencion": 1744324366451,
+    "tramite": "Retiros",
+    "tipoTramite": "P"
+  },
+  "idCaja": 1,
+  "nombreCaja": "Caja Preferencial",
+  "nombreSucursal": "Sucursal1"
+}
+{
+  "ticket": {
+    "nombre": "Chocola",
+    "id": 3959956,
+    "edad": 90,
+    "monedaCuenta": "COLONES",
+    "horaCreacion": "29-03-2025 13:53:27",
+    "horaAtencion": 1744349994227,
+    "tramite": "Depositos",
+    "tipoTramite": "A"
+  },
+  "idCaja": 2,
+  "nombreCaja": "Caja RÃ¡pida",
+  "nombreSucursal": "Sucursal1"
+}
+{
+  "ticket": {
+    "nombre": "Euronio",
+    "id": 4644646,
+    "edad": 50,
+    "monedaCuenta": "Dolares",
+    "horaCreacion": "10-04-2025 23:39:27",
+    "horaAtencion": 1744350010136,
+    "tramite": "Emergencia Ejecutivo",
+    "tipoTramite": "P"
+  },
+  "idCaja": 1,
+  "nombreCaja": "Caja Preferencial",
+  "nombreSucursal": "Sucursal1"
+}
+{
+  "ticket": {
+    "nombre": "Julián",
+    "id": 5642555,
+    "edad": 45,
+    "monedaCuenta": "Dolares",
+    "horaCreacion": "10-04-2025 15:49:14",
+    "horaAtencion": 1744350101715,
+    "tramite": "Servicios",
+    "tipoTramite": "A"
+  },
+  "idCaja": 2,
+  "nombreCaja": "Caja RÃ¡pida",
+  "nombreSucursal": "Sucursal1"
+}
+{
+  "ticket": {
+    "nombre": "Marta Segura",
+    "id": 96321,
+    "edad": 78,
+    "monedaCuenta": "Colones",
+    "horaCreacion": "11-04-2025 16:58:39",
+    "horaAtencion": 1744412445996,
+    "tramite": "Depósitos",
+    "tipoTramite": "P"
+  },
+  "idCaja": 1,
+  "nombreCaja": "Caja Preferencial",
+  "nombreSucursal": "Sucursal1"
+}
+{
+  "ticket": {
+    "nombre": "Helena Martínes",
+    "id": 56456546,
+    "edad": 41,
+    "monedaCuenta": "Colones",
+    "horaCreacion": "11-04-2025 17:02:41",
+    "horaAtencion": 1744412574269,
+    "tramite": "Emergencia Ejecutivo",
+    "tipoTramite": "P"
+  },
+  "idCaja": 1,
+  "nombreCaja": "Caja Preferencial",
+  "nombreSucursal": "Sucursal1"
+}
+{
+  "ticket": {
+    "nombre": "Mafalda",
+    "id": 6546546,
+    "edad": 32,
+    "monedaCuenta": "Colones",
+    "horaCreacion": "11-04-2025 20:54:54",
+    "horaAtencion": 1744426507718,
+    "tramite": "Emergencia Ejecutivo",
+    "tipoTramite": "P"
+  },
+  "idCaja": 1,
+  "nombreCaja": "Caja Preferencial",
+  "nombreSucursal": "Sucursal1"
+}
+{
+  "ticket": {
+    "nombre": "Helena+}",
+    "id": 48464,
+    "edad": 54,
+    "monedaCuenta": "Dolares",
+    "horaCreacion": "10-04-2025 23:41:28",
+    "horaAtencion": 1744426523476,
+    "tramite": "Emergencia Ejecutiva",
+    "tipoTramite": "A"
+  },
+  "idCaja": 2,
+  "nombreCaja": "Caja RÃ¡pida",
+  "nombreSucursal": "Sucursal1"
+}
+{
+  "ticket": {
+    "nombre": "Mimi",
+    "id": 83838838,
+    "edad": 19,
+    "monedaCuenta": "COLONES",
+    "horaCreacion": "29-03-2025 13:51:34",
+    "horaAtencion": 1744426546176,
+    "tramite": "Retiros",
+    "tipoTramite": "B"
+  },
+  "idCaja": 3,
+  "nombreCaja": "Caja Normal",
+  "nombreSucursal": "Sucursal1"
+}

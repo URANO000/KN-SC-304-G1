@@ -25,13 +25,34 @@ public class Serializacionticket {
         ListaCajas lista = null;
 
         try(FileReader reader = new FileReader(ARCHIVO_2)){
-            //Aqui la deserializacion creo......
             lista = gson.fromJson(reader, ListaCajas.class);
 
-        }catch (Exception e) {
+            NodoLista actual = lista.getCabeza();
+            while (actual != null) {
+                Caja caja = actual.getDato();
+
+                // Se reconstruye el contador y fin a partir de frente
+                int count = 0;
+                NodoCaja cursor = caja.getFrente();
+                NodoCaja ultimo = null;
+
+                while (cursor != null) {
+                    count++;
+                    ultimo = cursor;
+                    cursor = cursor.getSiguiente(); //Aquí se recorre la lista enlazada
+                }
+
+                caja.setContador(count);    //
+                caja.setFin(ultimo);        //sin esto, no se podría encolar correctamente
+
+                actual = actual.getSiguiente(); // siguiente caja
+            }
+
+        } catch (Exception e) {
             e.printStackTrace();
         }
-        return lista;
 
+        return lista;
     }
+
 }

@@ -10,11 +10,9 @@ public class NodoCaja {
 
     public NodoCaja(Ticket dato) {
         this.dato = dato;
-    }
-
-    public NodoCaja() {
         this.siguiente = null;
     }
+
 
 
     //Getters & setters----------------------
