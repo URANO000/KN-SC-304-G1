@@ -14,7 +14,7 @@ y la actualización del archivo `tiquetes.json` al eliminar el tiquete. Cabe acl
 Update (13/04/2025): Ya se encuentra listo el punto 6 :D
 
 Mod 1.3: Adriana Sevilla Useda
-Se resume en agregar tiquetes a las diferentes cajas normales, tomando en cuenta que tan llena esté cada caja normal. El módulo se implementó con éxito. Todo el funcionamiento del módulo se implementó en la misma clase de ManagerCajas, excepto por SerializacionCola. Además, realicé la deserialización del módulo 1.1.
+El aporte de esta entrega fue el mod 1.5 con la llamada a web services del BCCR. Además, hice los módulos 1.1, y 1.3.
 
 
 ==================Detalles de la configuración==========================================
@@ -39,7 +39,14 @@ MOD 1.4
 Clases
 GrafoServicios: En este modulo se implemento la busqueda por grafos a traves de JSON
 
+MOD 1.5 
+Clases:
+BCCR: Como el main donde se llaman los ws.
+IndicadorEco: Es el blueprint para la información de los indicadores.
+WebService: Llama al web service y hace la conexión HTTPS.
+
+
 
 ------------VIDEO----------------------------------
-https://youtu.be/k3EL_6CG4LY
+https://youtu.be/hX3JsSknEeo
 
