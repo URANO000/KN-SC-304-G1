@@ -11,6 +11,7 @@ Mod 1.2: María Fernanda Mata
 El aporte fue en el módulo de Atención de tiquetes, donde puse las clases de ManagerAtencion y TicketAtendido. Donde en ManagerAtencion se implementaron los siguientes requerimientos
 como la validación de que la caja no esté vacía, obtención del primer tiquete en cola, el registro de la hora de atención con formato, la serialización del tiquete atendido a "atendidos.json"
 y la actualización del archivo `tiquetes.json` al eliminar el tiquete. Cabe aclarar que el punto 6 del módulo 1.2 quedó pendiente para la proxima entrega.
+Update (13/04/2025): Ya se encuentra listo el punto 6 :D
 
 Mod 1.3: Adriana Sevilla Useda
 Se resume en agregar tiquetes a las diferentes cajas normales, tomando en cuenta que tan llena esté cada caja normal. El módulo se implementó con éxito. Todo el funcionamiento del módulo se implementó en la misma clase de ManagerCajas, excepto por SerializacionCola. Además, realicé la deserialización del módulo 1.1.
